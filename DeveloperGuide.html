@@ -1883,8 +1883,8 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Conveniently contact people I have worked with in the past</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Request testimonials or keep in touch for networking purposes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Undo commands and revert any changes made</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quickly recover from making a typo</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
@@ -1916,6 +1916,185 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is <code>ResuMaker</code> and the <strong>Actor</strong> is the <code>Student</code>, unless specified otherwise)</p>
+</div>
+<h3 id="add-personal-information-of-the-user" class="discrete">Add Personal Information of the user</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command to set his contact details</p>
+</li>
+<li>
+<p>System prompts user for his mobile number, email address and GitHub username</p>
+</li>
+<li>
+<p>User enters in his contact information</p>
+</li>
+<li>
+<p>System prompts user for a confirmation</p>
+</li>
+<li>
+<p>User confirms his data</p>
+</li>
+<li>
+<p>System saves contact information</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>3a. User enters invalid personal information</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. System prompts user to enter valid contact information</p>
+<div class="paragraph">
+<p>Step 3 repeats as many times as necessary</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="add-a-generic-entry-or-major-entry-in-the-resumaker" class="discrete">Add a generic entry or major entry in the resuMaker</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters command to create a genric entry ( Skills / Awards), or major entry (Experience / Education)</p>
+</li>
+<li>
+<p>System saves the Entry to the disk</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="delete-an-entry-under-a-specific-category" class="discrete">Delete an Entry under a specific category</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User filter the entries using specific tags,
+returning an indexed list of entries (UC04)</p>
+</li>
+<li>
+<p>User delete the corresponding entries in the list by indicating associated index for each entry to be deleted</p>
+</li>
+<li>
+<p>System saves the Entry to the disk</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>*a. User input command using the wrong syntax</p>
+<div class="ulist">
+<ul>
+<li>
+<p>*a1. System prompts the user to re-enter the command</p>
+</li>
+<li>
+<p>*a2. User re-enters the command</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. User inputs an index out of range</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a.1 System prompts for invalid input and asks user to re-enter the command</p>
+</li>
+<li>
+<p>3a.2 return to step 4 for the user to re-enter the command</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="edit-an-entry-under-a-specific-index" class="discrete">edit an Entry under a specific index</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User searches for a set of Entries, using some tags (UC04)</p>
+</li>
+<li>
+<p>System displays an indexed list of Entries matching the search tags (UC04)</p>
+</li>
+<li>
+<p>User enters command to edit Entries, and specifies an index and also the updated information</p>
+</li>
+<li>
+<p>System displays the updated Entry for reference</p>
+</li>
+<li>
+<p>System saves the Entry to the disk</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>*a. User input command using the wrong syntax</p>
+<div class="ulist">
+<ul>
+<li>
+<p>*a1. System prompts the user to re-enter the command</p>
+</li>
+<li>
+<p>*a2. User re-enters the command</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. User inputs an index out of range</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a.1 System prompts for invalid input and asks user to re-enter the command</p>
+</li>
+<li>
+<p>3a.2 return to step 4 for the user to re-enter the command</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <h3 id="add-information-about-a-soc-nus-event-e-g-hack-n-roll-student-exchange-independent-work-module" class="discrete">Add information about a SoC / NUS Event (e.g. Hack N Roll, Student Exchange, Independent Work module)</h3>
 <div class="paragraph">
@@ -2321,4 +2500,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-26 15:16:08 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-02 06:34:48 UTC</div></div></div></body></html>
