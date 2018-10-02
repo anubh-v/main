@@ -15,12 +15,12 @@
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
 <li><a href="#adding-an-entry-code-addentry-code">3.2. Adding an entry: <code>addEntry</code></a></li>
-<li><a href="#adding-a-bullet-point-code-adddescription-code">3.3. Adding a bullet point: <code>addDescription</code></a></li>
-<li><a href="#editing-a-bullet-point-code-editdescription-code">3.4. editing a bullet point: <code>editDescription</code></a></li>
+<li><a href="#adding-a-bullet-point-code-addbullet-code">3.3. Adding a bullet point: <code>addBullet</code></a></li>
+<li><a href="#editing-a-bullet-point-code-editbullet-code">3.4. Editing a bullet point: <code>editBullet</code></a></li>
 <li><a href="#listing-entries-code-listentry-code">3.5. Listing entries : <code>listEntry</code></a></li>
-<li><a href="#viewing-a-particular-entry-code-viewentry-code">3.6. viewing a particular entry : <code>vieWEntry</code></a></li>
+<li><a href="#viewing-a-particular-entry-code-viewentry-code">3.6. Viewing a particular entry : <code>viewEntry</code></a></li>
 <li><a href="#editing-an-entry-code-editentry-code">3.7. Editing an entry : <code>editEntry</code></a></li>
-<li><a href="#deleting-an-entry-code-deleteentry-code">3.8. deleting an entry: <code>deleteEntry</code></a></li>
+<li><a href="#deleting-an-entry-code-deleteentry-code">3.8. Deleting an entry: <code>deleteEntry</code></a></li>
 </ul>
 </li>
 </ul>
@@ -152,7 +152,7 @@ An entry contains description, which can be added using addDescription as a sepa
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-bullet-point-code-adddescription-code"><a class="link" href="#adding-a-bullet-point-code-adddescription-code">3.3. Adding a bullet point: <code>addDescription</code></a></h3>
+<h3 id="adding-a-bullet-point-code-addbullet-code"><a class="link" href="#adding-a-bullet-point-code-addbullet-code">3.3. Adding a bullet point: <code>addBullet</code></a></h3>
 <div class="paragraph">
 <p>Adds a bullet point under the description of an entry in the ResuMaker<br>
 Format: <code>addBullet CONTENTTOADD</code></p>
@@ -163,15 +163,15 @@ Format: <code>addBullet CONTENTTOADD</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addBullet  research design and implement scalable java</code></p>
+<p><code>addBullet implement scalable application for data visualization using java</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-bullet-point-code-editdescription-code"><a class="link" href="#editing-a-bullet-point-code-editdescription-code">3.4. editing a bullet point: <code>editDescription</code></a></h3>
+<h3 id="editing-a-bullet-point-code-editbullet-code"><a class="link" href="#editing-a-bullet-point-code-editbullet-code">3.4. Editing a bullet point: <code>editBullet</code></a></h3>
 <div class="paragraph">
-<p>edits a bullet point under the description of an entry in the resuMaker<br>
+<p>edits a bullet point under the description of an entry in the ResuMaker<br>
 Format: <code>editBullet INDEX EDITTEDCONTENT</code></p>
 </div>
 <div class="paragraph">
@@ -180,7 +180,7 @@ Format: <code>editBullet INDEX EDITTEDCONTENT</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>editBullet 0  research design and implement scalable java application</code></p>
+<p><code>editBullet 0  implement scalable application for data visualization using java</code></p>
 </li>
 </ul>
 </div>
@@ -188,7 +188,7 @@ Format: <code>editBullet INDEX EDITTEDCONTENT</code></p>
 <div class="sect2">
 <h3 id="listing-entries-code-listentry-code"><a class="link" href="#listing-entries-code-listentry-code">3.5. Listing entries : <code>listEntry</code></a></h3>
 <div class="paragraph">
-<p>list particular entries in the resuMaker. Both section and tags are optional - running with no arguments will display all entries.<br>
+<p>list particular entries in the ResuMaker. Both section and tags are optional - running with no arguments will display all entries.<br>
 Format: <code>listEntry [~SECTION] [#TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
@@ -203,9 +203,9 @@ Format: <code>listEntry [~SECTION] [#TAG]&#8230;&#8203;</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-a-particular-entry-code-viewentry-code"><a class="link" href="#viewing-a-particular-entry-code-viewentry-code">3.6. viewing a particular entry : <code>vieWEntry</code></a></h3>
+<h3 id="viewing-a-particular-entry-code-viewentry-code"><a class="link" href="#viewing-a-particular-entry-code-viewentry-code">3.6. Viewing a particular entry : <code>viewEntry</code></a></h3>
 <div class="paragraph">
-<p>views a particular entry in the resuMaker.+
+<p>views a particular entry in the ResuMaker.+
 Format: <code>vieWEntry INDEX</code></p>
 </div>
 <div class="paragraph">
@@ -222,7 +222,7 @@ Format: <code>vieWEntry INDEX</code></p>
 <div class="sect2">
 <h3 id="editing-an-entry-code-editentry-code"><a class="link" href="#editing-an-entry-code-editentry-code">3.7. Editing an entry : <code>editEntry</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing entry in the resuMaker.<br>
+<p>Edits an existing entry in the ResuMaker.<br>
 Format: <code>editEntry INDEX [t/TITLE ] [s/SUBHEADER] [d/DURATION] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
@@ -261,7 +261,7 @@ edits the entry at index 1 by replacing its title as R company and replace all i
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-an-entry-code-deleteentry-code"><a class="link" href="#deleting-an-entry-code-deleteentry-code">3.8. deleting an entry: <code>deleteEntry</code></a></h3>
+<h3 id="deleting-an-entry-code-deleteentry-code"><a class="link" href="#deleting-an-entry-code-deleteentry-code">3.8. Deleting an entry: <code>deleteEntry</code></a></h3>
 <div class="paragraph">
 <p>Finds persons whose names contain any of the given keywords.<br>
 Format: <code>deleteEntry INDEX</code></p>
@@ -590,4 +590,4 @@ e.g. <code>tag rt 10 ~project #web</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-02 10:11:43 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-02 12:02:38 UTC</div></div></div></body></html>
