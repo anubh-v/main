@@ -21,8 +21,20 @@
 <li><a href="#viewing-a-particular-entry-code-viewentry-code">3.6. Viewing a particular entry : <code>viewEntry</code></a></li>
 <li><a href="#editing-an-entry-code-editentry-code">3.7. Editing an entry : <code>editEntry</code></a></li>
 <li><a href="#deleting-an-entry-code-deleteentry-code">3.8. Deleting an entry: <code>deleteEntry</code></a></li>
+<li><a href="#creating-a-soc-nus-event-project-work-experience-skill-code-nus-code">3.9. Creating a SoC / NUS Event (Project / Work Experience / Skill): <code>nus</code></a></li>
+<li><a href="#viewing-soc-awards-code-fetch-awards-code">3.10. Viewing SoC awards: <code>fetch-awards</code></a></li>
+<li><a href="#tag-related-functions-code-tag-code">3.11. Tag related functions: <code>tag</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.12. Listing entered commands : <code>history</code></a></li>
+<li><a href="#viewing-template-code-viewtemplate-code">3.13. Viewing template : <code>viewtemplate</code></a></li>
+<li><a href="#generating-resume-code-make-code">3.14. Generating Resume : <code>make</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.15. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.16. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.17. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.18. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
+<li><a href="#faq">4. FAQ</a></li>
+<li><a href="#command-summary">5. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -30,7 +42,19 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ResuMaker is for <strong>computer Science students looking for a fast and flexble way to generate their resumes</strong>. It is especially <strong>optimized for students at the National University of Singapore&#8217;s School of Computing</strong>. Unlike most resume generation webapps, ResuMaker can tailor your resume to fit the specific requirements of a job.  Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>Do you find the need to maintain multiple versions of your resume?<br>
+Perhaps you find youself reorganising your resumes before making a job application?</p>
+</div>
+<div class="paragraph">
+<p>If so - welcome to ResuMaker: a <strong>fast and flexible resume generator aimed at computer science students</strong></p>
+</div>
+<div class="paragraph">
+<p>Unlike most resume generation webapps, ResuMaker tailors your resume to fit the specific requirements of a job.<br>
+It can also pick up contextual awareness about your world - with out-of-the-box support for the National University of Singapore&#8217;s School of Computing.<br>
+Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started.<br></p>
+</div>
+<div class="paragraph">
+<p>With ResuMaker, let your skills document themselves.</p>
 </div>
 </div>
 </div>
@@ -65,13 +89,13 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>listEntry</strong> ~work #java</code>: lists all resume entries under section work and tagged as java</p>
+<p><strong><code>listEntry</strong> ~work #java</code>: Lists all the Work related Entries tagged with <code>java</code></p>
 </li>
 <li>
-<p><strong><code>addEntry</code></strong><code>~experience</code> <code>#java t/The Source Enterprise s/Java Programmer intern d/ May 2010 - Aug 2010</code>: adds an entry under section experience with assigned title, subheader and duration of internship</p>
+<p><strong><code>addEntry</code></strong><code>~work</code> <code>#java t/The Source Enterprise s/Data Science Intern d/ May 2010 - Aug 2010</code>: Adds a new Entry classified under Work Experiences, with the given title, subheader and duration</p>
 </li>
 <li>
-<p><strong><code>deleteEntry</code></strong><code>3</code> : deletes the 3rd entry shown in the current entry list</p>
+<p><strong><code>deleteEntry</code></strong><code>3</code> : deletes the 3rd Entry shown in the current Entry list</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -266,6 +290,8 @@ edits the entry at index 1 by replacing its title as R company and replace all i
 <p>Finds persons whose names contain any of the given keywords.<br>
 Format: <code>deleteEntry INDEX</code></p>
 </div>
+<div class="sidebarblock">
+<div class="content">
 <div class="ulist">
 <ul>
 <li>
@@ -279,8 +305,8 @@ Format: <code>deleteEntry INDEX</code></p>
 </li>
 </ul>
 </div>
-<div class="sidebarblock">
-<div class="content">
+</div>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -298,9 +324,11 @@ Deletes the 1st entry displayed under education section</p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="creating-a-soc-nus-event-project-work-experience-skill-code-nus-code"><a class="link" href="#creating-a-soc-nus-event-project-work-experience-skill-code-nus-code">3.9. Creating a SoC / NUS Event (Project / Work Experience / Skill): <code>nus</code></a></h3>
 <div class="paragraph">
-<p>=== Creating a SoC / NUS Event (Project / Work Experience / Skill): <code>nus</code>
-Auto-populates a resume Entry based on a matching SoC / NUS Event.
+<p>Auto-populates a resume Entry based on a matching SoC / NUS Event.
 Format: <code>nus EVENT_NAME</code></p>
 </div>
 <div class="admonitionblock tip">
@@ -347,9 +375,9 @@ Slang and acronyms must be correctly configured in application data. ResuMaker s
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>=== Viewing SoC awards: <code>fetch-awards</code></p>
 </div>
+<div class="sect2">
+<h3 id="viewing-soc-awards-code-fetch-awards-code"><a class="link" href="#viewing-soc-awards-code-fetch-awards-code">3.10. Viewing SoC awards: <code>fetch-awards</code></a></h3>
 <div class="paragraph">
 <p>Lists all awards at SoC in a numbered list.
 Format: <code>fetch-awards</code> or <code>fetch-awards INDEX</code></p>
@@ -357,20 +385,21 @@ Format: <code>fetch-awards</code> or <code>fetch-awards INDEX</code></p>
 <div class="paragraph">
 <p>The latter format adds the specified award as a resume Entry.</p>
 </div>
-<div class="paragraph">
-<p>=== Tag related functions: <code>tag</code>
-These are functions to help you manage your tags; namely to view and edit the relevant tags and entries.</p>
 </div>
+<div class="sect2">
+<h3 id="tag-related-functions-code-tag-code"><a class="link" href="#tag-related-functions-code-tag-code">3.11. Tag related functions: <code>tag</code></a></h3>
 <div class="paragraph">
-<p>==== Viewing currently active tags: <code>tag status</code></p>
+<p>These are functions to help you manage your tags; namely to view and edit the relevant tags and entries.</p>
 </div>
+<div class="sect3">
+<h4 id="viewing-currently-active-tags-code-tag-status-code"><a class="link" href="#viewing-currently-active-tags-code-tag-status-code">3.11.1. Viewing currently active tags: <code>tag status</code></a></h4>
 <div class="paragraph">
 <p>Lists all tags currently active, and will be generated in the resume.
 Format: <code>tag status</code> lists all the corresponding tags and categories that will appear in the resume.</p>
 </div>
-<div class="paragraph">
-<p>==== Listing entries under specific tags: <code>tag list</code> or <code>tag ls</code></p>
 </div>
+<div class="sect3">
+<h4 id="listing-entries-under-specific-tags-code-tag-list-code-or-code-tag-ls-code"><a class="link" href="#listing-entries-under-specific-tags-code-tag-list-code-or-code-tag-ls-code">3.11.2. Listing entries under specific tags: <code>tag list</code> or <code>tag ls</code></a></h4>
 <div class="paragraph">
 <p>List all entries under specific tags (space separated).</p>
 </div>
@@ -384,9 +413,9 @@ Format: <code>tag ls</code> list all the tags and the relevant entries for each 
 <div class="paragraph">
 <p>Entries displayed will be accompanied with their relevant entry id.</p>
 </div>
-<div class="paragraph">
-<p>==== Add particular tag to entry: <code>tag add</code></p>
 </div>
+<div class="sect3">
+<h4 id="add-particular-tag-to-entry-code-tag-add-code"><a class="link" href="#add-particular-tag-to-entry-code-tag-add-code">3.11.3. Add particular tag to entry: <code>tag add</code></a></h4>
 <div class="paragraph">
 <p>Add tags (space separated) to particular entry (identified by index).</p>
 </div>
@@ -396,9 +425,9 @@ Format: <code>tag ls</code> list all the tags and the relevant entries for each 
 <div class="paragraph">
 <p>Format: <code>tag add 10 ~work #java</code> add tag <code>#java</code> and category <code>~work</code> to entry 10.</p>
 </div>
-<div class="paragraph">
-<p>==== Remove particular tag from entry: <code>tag remove</code> or <code>tag rm</code></p>
 </div>
+<div class="sect3">
+<h4 id="remove-particular-tag-from-entry-code-tag-remove-code-or-code-tag-rm-code"><a class="link" href="#remove-particular-tag-from-entry-code-tag-remove-code-or-code-tag-rm-code">3.11.4. Remove particular tag from entry: <code>tag remove</code> or <code>tag rm</code></a></h4>
 <div class="paragraph">
 <p>Remove tags (space separated) from a particular entry (identified by index).</p>
 </div>
@@ -411,25 +440,26 @@ Format: <code>tag ls</code> list all the tags and the relevant entries for each 
 <div class="paragraph">
 <p>Format: <code>tag rm 10</code> remove all tags and categories from entry 10.</p>
 </div>
-<div class="paragraph">
-<p>==== Retagging a particular entry: <code>tag retag</code> or <code>tag rt</code></p>
 </div>
+<div class="sect3">
+<h4 id="retagging-a-particular-entry-code-tag-retag-code-or-code-tag-rt-code"><a class="link" href="#retagging-a-particular-entry-code-tag-retag-code-or-code-tag-rt-code">3.11.5. Retagging a particular entry: <code>tag retag</code> or <code>tag rt</code></a></h4>
 <div class="paragraph">
 <p>Remove all current tags and replace it with current tags (space separated).</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>tag rt 1 ~work #java</code> remove all tags and categories from entry 1, adding tag <code>#java</code> and category <code>~work</code> to entry 1.</p>
 </div>
-<div class="paragraph">
-<p>=== Listing entered commands : <code>history</code></p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.12. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
 </div>
-<div class="paragraph">
-<p>=== Viewing template : <code>viewtemplate</code></p>
 </div>
+<div class="sect2">
+<h3 id="viewing-template-code-viewtemplate-code"><a class="link" href="#viewing-template-code-viewtemplate-code">3.13. Viewing template : <code>viewtemplate</code></a></h3>
 <div class="paragraph">
 <p>Gives a preview of the template.<br>
 Format: <code>viewtemplate FILEPATH</code></p>
@@ -459,9 +489,9 @@ Previews the template specified in <code>google.txt</code></p>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>=== Generating Resume : <code>make</code></p>
 </div>
+<div class="sect2">
+<h3 id="generating-resume-code-make-code"><a class="link" href="#generating-resume-code-make-code">3.14. Generating Resume : <code>make</code></a></h3>
 <div class="paragraph">
 <p>Generates a Resume in Markdown format, using either the <em>template</em> with the given file name or a default format.<br>
 Format: <code>make</code> or <code>make TEMPLATE_FILENAME</code></p>
@@ -495,43 +525,48 @@ Generates a Resume based on the 'SEP.txt' <em>template file</em> (which could be
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>=== Clearing all entries : <code>clear</code></p>
 </div>
+<div class="sect2">
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.15. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
-<div class="paragraph">
-<p>=== Exiting the program : <code>exit</code></p>
 </div>
+<div class="sect2">
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.16. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
-<div class="paragraph">
-<p>=== Saving the data</p>
 </div>
+<div class="sect2">
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.17. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
-<div class="paragraph">
-<p>=== Encrypting data files <code>[coming in v2.0]</code></p>
 </div>
+<div class="sect2">
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.18. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
-<div class="paragraph">
-<p>== FAQ</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
 <strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
 </div>
-<div class="paragraph">
-<p>== Command Summary</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -587,7 +622,4 @@ e.g. <code>tag rt 10 ~project #web</code></p>
 </ul>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-02 12:02:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-02 13:56:52 UTC</div></div></div></body></html>
