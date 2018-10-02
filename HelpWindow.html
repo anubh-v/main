@@ -358,6 +358,69 @@ Format: <code>fetch-awards</code> or <code>fetch-awards INDEX</code></p>
 <p>The latter format adds the specified award as a resume Entry.</p>
 </div>
 <div class="paragraph">
+<p>=== Tag related functions: <code>tag</code>
+These are functions to help you manage your tags; namely to view and edit the relevant tags and entries.</p>
+</div>
+<div class="paragraph">
+<p>==== Viewing currently active tags: <code>tag status</code></p>
+</div>
+<div class="paragraph">
+<p>Lists all tags currently active, and will be generated in the resume.
+Format: <code>tag status</code> lists all the corresponding tags and categories that will appear in the resume.</p>
+</div>
+<div class="paragraph">
+<p>==== Listing entries under specific tags: <code>tag list</code> or <code>tag ls</code></p>
+</div>
+<div class="paragraph">
+<p>List all entries under specific tags (space separated).</p>
+</div>
+<div class="paragraph">
+<p>By default, if a tag is not given, all the tags will be displayed.
+Format: <code>tag ls</code> list all the tags and the relevant entries for each tag.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tag ls ~work ~projects #java</code> list all the <code>~work</code> and <code>~project</code> entries tagged with <code>#java</code></p>
+</div>
+<div class="paragraph">
+<p>Entries displayed will be accompanied with their relevant entry id.</p>
+</div>
+<div class="paragraph">
+<p>==== Add particular tag to entry: <code>tag add</code></p>
+</div>
+<div class="paragraph">
+<p>Add tags (space separated) to particular entry (identified by index).</p>
+</div>
+<div class="paragraph">
+<p>Duplicated tags will be ignored</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tag add 10 ~work #java</code> add tag <code>#java</code> and category <code>~work</code> to entry 10.</p>
+</div>
+<div class="paragraph">
+<p>==== Remove particular tag from entry: <code>tag remove</code> or <code>tag rm</code></p>
+</div>
+<div class="paragraph">
+<p>Remove tags (space separated) from a particular entry (identified by index).</p>
+</div>
+<div class="paragraph">
+<p>By default, if no tags given, all tags will be removed from the entry.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tag rm 1 ~work #java</code> remove category <code>~work</code> and tag <code>#java</code> from entry 1.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tag rm 10</code> remove all tags and categories from entry 10.</p>
+</div>
+<div class="paragraph">
+<p>==== Retagging a particular entry: <code>tag retag</code> or <code>tag rt</code></p>
+</div>
+<div class="paragraph">
+<p>Remove all current tags and replace it with current tags (space separated).</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tag rt 1 ~work #java</code> remove all tags and categories from entry 1, adding tag <code>#java</code> and category <code>~work</code> to entry 1.</p>
+</div>
+<div class="paragraph">
 <p>=== Listing entered commands : <code>history</code></p>
 </div>
 <div class="paragraph">
@@ -486,6 +549,21 @@ e.g.<code>select 2</code></p>
 <p><strong>History</strong> : <code>history</code></p>
 </li>
 <li>
+<p><strong>Tag Status</strong>: <code>tag status</code></p>
+</li>
+<li>
+<p><strong>Tag List</strong>: <code>tag ls TAG [MORE_TAGS]</code><br>
+e.g. <code>tag ls ~work #java</code></p>
+</li>
+<li>
+<p><strong>Tag Remove</strong>: <code>tag rm INDEX TAG [MORE_TAGS]</code><br>
+e.g. <code>tag rm 10 ~work #python</code></p>
+</li>
+<li>
+<p><strong>Tag Retag</strong>: <code>tag tg INDEX TAG [MORE_TAGS]</code><br>
+e.g. <code>tag rt 10 ~project #web</code></p>
+</li>
+<li>
 <p><strong>Generate Resume</strong> : <code>make</code></p>
 </li>
 </ul>
@@ -494,4 +572,4 @@ e.g.<code>select 2</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-02 06:34:48 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-02 08:59:13 UTC</div></div></div></body></html>
