@@ -30,9 +30,10 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#tags-and-categories">3.1. Tags and Categories</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#contextual-awareness">3.2. Contextual Awareness</a></li>
+<li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.4. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -620,20 +621,158 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
+<h3 id="contextual-awareness"><a class="link" href="#contextual-awareness">3.2. Contextual Awareness</a></h3>
+<div class="sect3">
+<h4 id="key-terms"><a class="link" href="#key-terms">3.2.1. Key Terms</a></h4>
+<div class="paragraph">
+<p>Here are some terms that are used often when discussing Contexual Awareness.<br>
+Please review their definitions in the Glossary before reading further.<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#event">Events</a></p>
+</li>
+<li>
+<p><a href="#slang">Slang</a></p>
+</li>
+<li>
+<p><a href="#partial-phrase">Partial phrases</a></p>
+</li>
+<li>
+<p><a href="#full-phrase">Full phrases</a></p>
+</li>
+<li>
+<p><a href="#expression">Expression</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="overview"><a class="link" href="#overview">3.2.2. Overview</a></h4>
+<div class="paragraph">
+<p>Contextual Awareness enables ResuMaker to:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create pre-filled ResumeEntries for standard <a href="#event">Events</a>.</p>
+</li>
+<li>
+<p>Understand slang and partial phrases in the user&#8217;s input.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The flowchart below illustrates the overall flow taken by an end-user when working with the Contextual Awareness feature.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AwarenessFlow.png" alt="AwarenessFlow" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The flowchart highlights the 4 separate steps involved in the Contextual Awareness feature:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Providing feedback to the user, as he types in an <code>&lt;expression&gt;</code>.</p>
+</li>
+<li>
+<p>Guessing an Event name, based on the user provided <code>&lt;expression&gt;</code>.</p>
+</li>
+<li>
+<p>Matching the guessed Event name, with an actual Event, as defined in the user provided data.</p>
+</li>
+<li>
+<p>Creating a ResumeEntry for the matched Event.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In this guide, we will discuss Steps 2, and 3.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="guessing-an-event-name-based-on-user-provided-code-expression-code"><a class="link" href="#guessing-an-event-name-based-on-user-provided-code-expression-code">3.2.3. Guessing an Event name, based on user provided <code>&lt;expression&gt;</code></a></h4>
+<div class="paragraph">
+<p>To guess the Event name, we parse the <code>slang</code>, <code>partial phrases</code> and <code>full phrases</code> in the <code>expression</code> to get a <code>possibleEventName</code>.
+This parsing is done by the <code>Awareness</code> class.</p>
+</div>
+<div class="paragraph">
+<p>As shown <a href="#Design-Storage">earlier</a>, an instance of the Awareness class is initialised from user provided XML data, upon startup.</p>
+</div>
+<div class="paragraph">
+<p>The following Figure shows the structure of the Awareness class.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/awarenessStructure.png" alt="awarenessStructure" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>Parsing the <code>slang</code>, <code>partial phrases</code> and <code>full phrases</code> is a 2-step process:</p>
+</div>
+<div class="paragraph">
+<p>First, use the <code>dictionary</code> (see Figure) to replace each <code>slang</code> with its corresponding <code>full phrase</code>.<br>
+After this step, the <code>expression</code> will only contain <code>partial phrases</code> and <code>full phrases</code>.<br>
+Now, replace each <code>partial phrase</code> with its corresponding <code>full phrase</code>.</p>
+</div>
+<div class="paragraph">
+<p>This gives us a string of <code>full phrases</code>, which is our <code>possibleEventName</code>.</p>
+</div>
+<div class="paragraph">
+<p>As an example, suppose our initial <code>expression</code> was: <code>ug research assist</code>.
+In this <code>expression</code>, we have:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A slang (<code>ug</code> - slang for <code>undegraduate</code>)</p>
+</li>
+<li>
+<p>A partial phrase (<code>assist</code> - short for <code>assistant</code>)</p>
+</li>
+<li>
+<p>A full phrase (<code>research</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>After the first step, our expression will be <code>undergraduate research assist</code>.<br>
+After the second step, our expression will be <code>undergraduate research assistant</code><br>
+Thus, our <code>possibleEventName</code> will be <code>undergraduate research assistant</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="matching-the-guessed-event-name-with-an-actual-event-work-in-progress"><a class="link" href="#matching-the-guessed-event-name-with-an-actual-event-work-in-progress">3.2.4. Matching the guessed Event Name, with an actual Event [Work In Progress]</a></h4>
+<div class="paragraph">
+<p>Work in Progress</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-choices"><a class="link" href="#design-choices">3.2.5. Design Choices</a></h4>
+<div class="paragraph">
+<p>Work in Progress</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -664,7 +803,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2547,7 +2686,7 @@ Use case ends.</p>
 </dd>
 <dt class="hdlist1"><a id="event"></a> Event</dt>
 <dd>
-<p>Work Experience, Project</p>
+<p>Work Experience, Project, or Award</p>
 </dd>
 <dt class="hdlist1"><a id="work-experience"></a> Work Experience</dt>
 <dd>
@@ -2592,6 +2731,25 @@ Use case ends.</p>
 <dt class="hdlist1"><a id="tag"></a> Tag</dt>
 <dd>
 <p>A single-word keyword starting with <code>#</code></p>
+</dd>
+<dt class="hdlist1"><a id="slang"></a> Slang</dt>
+<dd>
+<p>A single word that is an alias for a <a href="#full-phrase">full phrase</a>. (e.g. <code>cs</code> is slang for <code>computer science</code>)</p>
+</dd>
+<dt class="hdlist1"><a id="partial-phrase"></a> Partial phrase</dt>
+<dd>
+<p>An incomplete word. (e.g. <code>comp</code>)</p>
+</dd>
+<dt class="hdlist1"><a id="full-phrase"></a> Full phrase</dt>
+<dd>
+<p>Single or multiple complete words. (e.g. <code>computer</code>, <code>computer science</code>)</p>
+</dd>
+<dt class="hdlist1"><a id="expression"></a> Expression</dt>
+<dd>
+<p>A combination of slang, partial phrases or full phrases.
+(e.g. 'computer sci ug research proj')<br>
+In Backus-Naur form, an Expression is defined:<br>
+<code>&lt;expression&gt; ::= &lt;slang&gt; | &lt;partial-phrase&gt; | &lt;full-phrase&gt; | &lt;expression&gt;</code></p>
 </dd>
 </dl>
 </div>
@@ -2743,4 +2901,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-16 02:36:57 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-16 02:42:18 UTC</div></div></div></body></html>
