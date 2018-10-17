@@ -30,10 +30,11 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#tags-and-categories">3.1. Tags and Categories</a></li>
-<li><a href="#contextual-awareness">3.2. Contextual Awareness</a></li>
-<li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.4. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
+<li><a href="#templates">3.2. Templates</a></li>
+<li><a href="#contextual-awareness">3.3. Contextual Awareness</a></li>
+<li><a href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.5. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -621,9 +622,63 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="contextual-awareness"><a class="link" href="#contextual-awareness">3.2. Contextual Awareness</a></h3>
+<h3 id="templates"><a class="link" href="#templates">3.2. Templates</a></h3>
+<div class="paragraph">
+<p>A template specifies the format of the generated resume. It specifies the sections in the resume, and which entries should be included under each section based on a set of tags.</p>
+</div>
 <div class="sect3">
-<h4 id="key-terms"><a class="link" href="#key-terms">3.2.1. Key Terms</a></h4>
+<h4 id="template-object-structure"><a class="link" href="#template-object-structure">3.2.1. Template object structure</a></h4>
+<div class="paragraph">
+<p>A <code>Template</code> object consists of a list of <code>TemplateSection</code>, which consists of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The section heading</p>
+</li>
+<li>
+<p>A <code>Predicate&lt;ResumeEntry&gt;</code> which checks that the entry is of the specified <code>Category</code></p>
+</li>
+<li>
+<p>A <code>Predicate&lt;ResumeEntry&gt;</code> which checks that the entry matches the specified tags</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="template-file"><a class="link" href="#template-file">3.2.2. Template file</a></h4>
+<div class="paragraph">
+<p>Templates are stored as text files, with each line in the following format:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[Category Title]:~[Category Tag]:[Tag]&amp;[Tag] [Tag]...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Work Experience:~work:java&amp;recent python&amp;recent datascience</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Means: include all entries categorized as <code>work</code>, as long as they are tagged with <code>java</code> AND <code>recent</code>, OR <code>python</code> AND <code>recent</code>, OR <code>datascience</code>.
+In other words, the list of tags can be treated as a sum of products form, where a <code>&amp;</code> represents AND and space represents OR.</p>
+</div>
+<div class="paragraph">
+<p>If no tags are specified, all entries with the <code>[Category Tag]</code> will be included.</p>
+</div>
+<div class="paragraph">
+<p>Template files are written by the user and loaded into the application using the <code>loadtemplate</code> command.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="contextual-awareness"><a class="link" href="#contextual-awareness">3.3. Contextual Awareness</a></h3>
+<div class="sect3">
+<h4 id="key-terms"><a class="link" href="#key-terms">3.3.1. Key Terms</a></h4>
 <div class="paragraph">
 <p>Here are some terms that are used often when discussing Contexual Awareness.<br>
 Please review their definitions in the Glossary before reading further.<br></p>
@@ -649,7 +704,7 @@ Please review their definitions in the Glossary before reading further.<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="overview"><a class="link" href="#overview">3.2.2. Overview</a></h4>
+<h4 id="overview"><a class="link" href="#overview">3.3.2. Overview</a></h4>
 <div class="paragraph">
 <p>Contextual Awareness enables ResuMaker to:<br></p>
 </div>
@@ -695,7 +750,7 @@ Please review their definitions in the Glossary before reading further.<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="guessing-an-event-name-based-on-user-provided-code-expression-code"><a class="link" href="#guessing-an-event-name-based-on-user-provided-code-expression-code">3.2.3. Guessing an Event name, based on user provided <code>&lt;expression&gt;</code></a></h4>
+<h4 id="guessing-an-event-name-based-on-user-provided-code-expression-code"><a class="link" href="#guessing-an-event-name-based-on-user-provided-code-expression-code">3.3.3. Guessing an Event name, based on user provided <code>&lt;expression&gt;</code></a></h4>
 <div class="paragraph">
 <p>To guess the Event name, we parse the <code>slang</code>, <code>partial phrases</code> and <code>full phrases</code> in the <code>expression</code> to get a <code>possibleEventName</code>.
 This parsing is done by the <code>Awareness</code> class.</p>
@@ -746,33 +801,33 @@ Thus, our <code>possibleEventName</code> will be <code>undergraduate research as
 </div>
 </div>
 <div class="sect3">
-<h4 id="matching-the-guessed-event-name-with-an-actual-event-work-in-progress"><a class="link" href="#matching-the-guessed-event-name-with-an-actual-event-work-in-progress">3.2.4. Matching the guessed Event Name, with an actual Event [Work In Progress]</a></h4>
+<h4 id="matching-the-guessed-event-name-with-an-actual-event-work-in-progress"><a class="link" href="#matching-the-guessed-event-name-with-an-actual-event-work-in-progress">3.3.4. Matching the guessed Event Name, with an actual Event [Work In Progress]</a></h4>
 <div class="paragraph">
 <p>Work in Progress</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-choices"><a class="link" href="#design-choices">3.2.5. Design Choices</a></h4>
+<h4 id="design-choices"><a class="link" href="#design-choices">3.3.5. Design Choices</a></h4>
 <div class="paragraph">
 <p>Work in Progress</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -803,7 +858,7 @@ Thus, our <code>possibleEventName</code> will be <code>undergraduate research as
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2901,4 +2956,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-16 16:05:51 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 04:11:53 UTC</div></div></div></body></html>
