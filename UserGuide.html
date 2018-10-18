@@ -25,7 +25,7 @@
 <li><a href="#viewing-soc-awards-code-fetch-awards-code">3.10. Viewing SoC awards: <code>fetch-awards</code></a></li>
 <li><a href="#tags">3.11. Tag related functions: <code>tag</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code">3.12. Listing entered commands : <code>history</code></a></li>
-<li><a href="#viewing-template-code-viewtemplate-code">3.13. Viewing template : <code>viewtemplate</code></a></li>
+<li><a href="#loading-template-code-loadtemplate-code">3.13. Loading template : <code>loadtemplate</code></a></li>
 <li><a href="#generating-resume-code-make-code">3.14. Generating Resume : <code>make</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code">3.15. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.16. Exiting the program : <code>exit</code></a></li>
@@ -459,10 +459,10 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-template-code-viewtemplate-code"><a class="link" href="#viewing-template-code-viewtemplate-code">3.13. Viewing template : <code>viewtemplate</code></a></h3>
+<h3 id="loading-template-code-loadtemplate-code"><a class="link" href="#loading-template-code-loadtemplate-code">3.13. Loading template : <code>loadtemplate</code></a></h3>
 <div class="paragraph">
-<p>Gives a preview of the template.<br>
-Format: <code>viewtemplate FILEPATH</code></p>
+<p>Loads a template from a text file into the application.<br>
+Format: <code>loadtemplate FILEPATH</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -470,8 +470,8 @@ Format: <code>viewtemplate FILEPATH</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>viewtemplate google.txt</code><br>
-Previews the template specified in <code>google.txt</code></p>
+<p><code>loadtemplate google.txt</code><br>
+Loads the template specified in <code>google.txt</code></p>
 </li>
 </ul>
 </div>
@@ -493,22 +493,7 @@ Previews the template specified in <code>google.txt</code></p>
 <div class="sect2">
 <h3 id="generating-resume-code-make-code"><a class="link" href="#generating-resume-code-make-code">3.14. Generating Resume : <code>make</code></a></h3>
 <div class="paragraph">
-<p>Generates a Resume in Markdown format, using either the <em>template</em> with the given file name or a default format.<br>
-Format: <code>make</code> or <code>make TEMPLATE_FILENAME</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The user can supply the name of a <em>template file</em> they created themselves or a SoC-focused preset <em>template</em> supplied by the program.</p>
-</div>
-</td>
-</tr>
-</table>
+<p>Generates a Resume in Markdown format, using the <em>template</em> currently loaded in the application.</p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -518,10 +503,6 @@ Format: <code>make</code> or <code>make TEMPLATE_FILENAME</code></p>
 <li>
 <p><code>make</code><br>
 Generates a Resume based on the default format using saved entries.</p>
-</li>
-<li>
-<p><code>make SEP.txt</code><br>
-Generates a Resume based on the 'SEP.txt' <em>template file</em> (which could be user created or a preset) using saved entries.</p>
 </li>
 </ul>
 </div>
@@ -622,4 +603,4 @@ e.g. <code>tag rt 10 ~project #web</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-17 15:24:35 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-18 01:33:11 UTC</div></div></div></body></html>
