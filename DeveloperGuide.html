@@ -31,11 +31,12 @@
 <ul class="sectlevel2">
 <li><a href="#tags-and-categories">3.1. Tags and Categories</a></li>
 <li><a href="#templates">3.2. Templates</a></li>
-<li><a href="#resume-generation">3.3. Resume Generation</a></li>
-<li><a href="#contextual-awareness">3.4. Contextual Awareness</a></li>
-<li><a href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
+<li><a href="#entry-management">3.3. Entry Management</a></li>
+<li><a href="#resume-generation">3.4. Resume Generation</a></li>
+<li><a href="#contextual-awareness">3.5. Contextual Awareness</a></li>
+<li><a href="#proposed-data-encryption">3.6. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -677,9 +678,84 @@ In other words, the list of tags can be treated as a sum of products form, where
 </div>
 </div>
 <div class="sect2">
-<h3 id="resume-generation"><a class="link" href="#resume-generation">3.3. Resume Generation</a></h3>
+<h3 id="entry-management"><a class="link" href="#entry-management">3.3. Entry Management</a></h3>
+<div class="paragraph">
+<p>This section describes the implementation of features related to managing entries in ResuMaker, and explains the underlying classes and supporting data structures.</p>
+</div>
 <div class="sect3">
-<h4 id="the-resume-object"><a class="link" href="#the-resume-object">3.3.1. The Resume Object</a></h4>
+<h4 id="construct-entry-related-classes"><a class="link" href="#construct-entry-related-classes">3.3.1. Construct Entry Related Classes</a></h4>
+<div class="paragraph">
+<p>Below is the class diagram of classes under the package <code>seedu.address.model.entry</code>, which lays the foundation for the implementation of <a href="#entryManagement">Entry Management</a></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/classDiagramForEntry.png" alt="classDiagramForEntry" width="800">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Current Implementation</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>As shown in the diagram, all data of an added entry in ResuMaker is encapsulated as a class <code>ResumeEntry</code>, which is composed of four other classes: namely one <code>Category</code>, one <code>EntryInfo</code>, one EntryDescription and multiple instances of <code>Tag</code>.</p>
+</li>
+<li>
+<p>ResuMaker extends a <code>Taggable</code> interface which allows manipulation of tags associated with itself.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Design Consideration</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>Taggable</code> Interface<br>
+Provides an additional abstraction layer for any class that needS to access methods that <code>ResumeEntry</code> overrides to implement <code>Taggable</code>. This enforces Interface Segregation Principle in which none related classes have limited knowledge about <code>ResumeEntry</code>.</p>
+</li>
+<li>
+<p>Encapsulation of <code>EntryInfo</code><br></p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Instead of lumping <code>title</code>, <code>subtitle</code> and <code>duration</code> in <code>ResumeEntry</code>, encapsulating the three into <code>EntryInfo</code> provides another layer of abstraction.</p>
+</li>
+<li>
+<p>Not all entries have EntryInfo, a <a href="#minorEntry">minor entry</a> does not contain title, subtitle or duration. <code>EntryInfo</code> helps to differentiate <a href="#minorEntry">minor entry</a> from <a href="#majorEntry">major entry</a> using <code>isMinorEntry()</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Encapsulation Using <code>EntryDescription</code><br></p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>As opposed to representing an entry description as a <code>String</code> field in <code>ResumeEntry</code>, encapsulating it in <code>EntryDescription</code> provides another layer of abstraction.</p>
+</li>
+<li>
+<p><code>EntryDescription</code> contains <code>List&lt;String&gt;</code> that allows for easy modification of a specific segment of the desciption of a particular entry, i.e. allows users to edit a particular line of description of a particular entry.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-bullet-description-work-in-progress"><a class="link" href="#edit-bullet-description-work-in-progress">3.3.2. Edit Bullet Description (work in progress)</a></h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="resume-generation"><a class="link" href="#resume-generation">3.4. Resume Generation</a></h3>
+<div class="sect3">
+<h4 id="the-resume-object"><a class="link" href="#the-resume-object">3.4.1. The Resume Object</a></h4>
 <div class="paragraph">
 <p>The <code>Resume</code> object contains a list of <code>ResumeSections</code>,
 each comprising a title and various <code>ResumeEntries</code> associated with it
@@ -691,7 +767,7 @@ to convert the object into another format, such as HTML.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="markdown-conversion"><a class="link" href="#markdown-conversion">3.3.2. Markdown Conversion</a></h4>
+<h4 id="markdown-conversion"><a class="link" href="#markdown-conversion">3.4.2. Markdown Conversion</a></h4>
 <div class="paragraph">
 <p>To transform this abstract representation of the Resume into concrete text,
 a <code>MarkdownConverter</code> utility class is first used to progressively convert each level of the Resume
@@ -703,9 +779,9 @@ A file with the name stipulated by the user is then created and the String is wr
 </div>
 </div>
 <div class="sect2">
-<h3 id="contextual-awareness"><a class="link" href="#contextual-awareness">3.4. Contextual Awareness</a></h3>
+<h3 id="contextual-awareness"><a class="link" href="#contextual-awareness">3.5. Contextual Awareness</a></h3>
 <div class="sect3">
-<h4 id="key-terms"><a class="link" href="#key-terms">3.4.1. Key Terms</a></h4>
+<h4 id="key-terms"><a class="link" href="#key-terms">3.5.1. Key Terms</a></h4>
 <div class="paragraph">
 <p>Here are some terms that are used often when discussing Contexual Awareness.<br>
 Please review their definitions in the Glossary before reading further.<br></p>
@@ -731,7 +807,7 @@ Please review their definitions in the Glossary before reading further.<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="overview"><a class="link" href="#overview">3.4.2. Overview</a></h4>
+<h4 id="overview"><a class="link" href="#overview">3.5.2. Overview</a></h4>
 <div class="paragraph">
 <p>Contextual Awareness enables ResuMaker to:<br></p>
 </div>
@@ -777,7 +853,7 @@ Please review their definitions in the Glossary before reading further.<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="guessing-an-event-name-based-on-user-provided-code-expression-code"><a class="link" href="#guessing-an-event-name-based-on-user-provided-code-expression-code">3.4.3. Guessing an Event name, based on user provided <code>&lt;expression&gt;</code></a></h4>
+<h4 id="guessing-an-event-name-based-on-user-provided-code-expression-code"><a class="link" href="#guessing-an-event-name-based-on-user-provided-code-expression-code">3.5.3. Guessing an Event name, based on user provided <code>&lt;expression&gt;</code></a></h4>
 <div class="paragraph">
 <p>To guess the Event name, we parse the <code>slang</code>, <code>partial phrases</code> and <code>full phrases</code> in the <code>expression</code> to get a <code>possibleEventName</code>.
 This parsing is done by the <code>Awareness</code> class.</p>
@@ -828,33 +904,33 @@ Thus, our <code>possibleEventName</code> will be <code>undergraduate research as
 </div>
 </div>
 <div class="sect3">
-<h4 id="matching-the-guessed-event-name-with-an-actual-event-work-in-progress"><a class="link" href="#matching-the-guessed-event-name-with-an-actual-event-work-in-progress">3.4.4. Matching the guessed Event Name, with an actual Event [Work In Progress]</a></h4>
+<h4 id="matching-the-guessed-event-name-with-an-actual-event-work-in-progress"><a class="link" href="#matching-the-guessed-event-name-with-an-actual-event-work-in-progress">3.5.4. Matching the guessed Event Name, with an actual Event [Work In Progress]</a></h4>
 <div class="paragraph">
 <p>Work in Progress</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-choices"><a class="link" href="#design-choices">3.4.5. Design Choices</a></h4>
+<h4 id="design-choices"><a class="link" href="#design-choices">3.5.5. Design Choices</a></h4>
 <div class="paragraph">
 <p>Work in Progress</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.6. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -885,7 +961,7 @@ Thus, our <code>possibleEventName</code> will be <code>undergraduate research as
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2833,6 +2909,20 @@ Use case ends.</p>
 In Backus-Naur form, an Expression is defined:<br>
 <code>&lt;expression&gt; ::= &lt;slang&gt; | &lt;partial-phrase&gt; | &lt;full-phrase&gt; | &lt;expression&gt;</code></p>
 </dd>
+<dt class="hdlist1"><a id="entryManagement"></a> Entry Management</dt>
+<dd>
+<p>A set of features related to managing entries. Namely:
+<code>addEntry</code>, <code>deleteEntry</code>, <code>addBullet</code>, <code>deleteBullet</code>.</p>
+</dd>
+<dt class="hdlist1"><a id="majorEntry"></a> major entry</dt>
+<dd>
+<p>An entry that contains information such as title, subtitle and duration. It is usually used for education, professional experience, projects, etc.
+For example, to add a particular major entry, execute <code>addEntry ~work #java t/The Source Enterprise s/Java Programmer intern d/ May 2010 - Aug 2010</code>.</p>
+</dd>
+<dt class="hdlist1"><a id="minorEntry"></a> minor entry</dt>
+<dd>
+<p>An entry that does not contain entry information such as title, subtitle and duration. It is usually created for content like awards or certification. For example, to add a particular minor entry, one can execute <code>addEntry ~awards #java</code></p>
+</dd>
 </dl>
 </div>
 </div>
@@ -2983,4 +3073,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-19 03:09:30 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-19 03:15:31 UTC</div></div></div></body></html>
