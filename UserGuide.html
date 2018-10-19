@@ -15,22 +15,23 @@
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
 <li><a href="#adding-an-entry-code-addentry-code">3.2. Adding an entry: <code>addEntry</code></a></li>
-<li><a href="#adding-a-bullet-point-code-addbullet-code">3.3. Adding a bullet point: <code>addBullet</code></a></li>
-<li><a href="#editing-a-bullet-point-code-editbullet-code">3.4. Editing a bullet point: <code>editBullet</code></a></li>
-<li><a href="#listing-entries-code-listentry-code">3.5. Listing entries : <code>listEntry</code></a></li>
-<li><a href="#viewing-a-particular-entry-code-viewentry-code">3.6. Viewing a particular entry : <code>viewEntry</code></a></li>
-<li><a href="#editing-an-entry-code-editentry-code">3.7. Editing an entry : <code>editEntry</code></a></li>
+<li><a href="#listing-entries-code-listentry-code">3.3. Listing entries : <code>listEntry</code></a></li>
+<li><a href="#adding-a-bullet-point-to-an-entry-code-addbullet-code">3.4. Adding a bullet point to an entry: <code>addBullet</code></a></li>
+<li><a href="#viewing-a-particular-entry-code-expandentry-code">3.5. Viewing a particular entry : <code>expandEntry</code></a></li>
+<li><a href="#editing-an-entry-code-editentry-code">3.6. Editing an entry : <code>editEntry</code></a></li>
+<li><a href="#editing-a-bullet-point-code-editbullet-code">3.7. Editing a bullet point: <code>editBullet</code></a></li>
 <li><a href="#deleting-an-entry-code-deleteentry-code">3.8. Deleting an entry: <code>deleteEntry</code></a></li>
-<li><a href="#creating-a-soc-nus-event-project-work-experience-skill-code-nus-code">3.9. Creating a SoC / NUS Event (Project / Work Experience / Skill): <code>nus</code></a></li>
-<li><a href="#viewing-soc-awards-code-fetch-awards-code">3.10. Viewing SoC awards: <code>fetch-awards</code></a></li>
-<li><a href="#tags">3.11. Tag related functions: <code>tag</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.12. Listing entered commands : <code>history</code></a></li>
-<li><a href="#loading-template-code-loadtemplate-code">3.13. Loading template : <code>loadtemplate</code></a></li>
-<li><a href="#generating-resume-code-make-code">3.14. Generating Resume : <code>make</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.15. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.16. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.17. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.18. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#deleting-a-bullet-code-deletebullet-code">3.9. Deleting a bullet: <code>deleteBullet</code></a></li>
+<li><a href="#creating-a-soc-nus-event-project-work-experience-skill-code-nus-code">3.10. Creating a SoC / NUS Event (Project / Work Experience / Skill): <code>nus</code></a></li>
+<li><a href="#viewing-soc-awards-code-fetch-awards-code">3.11. Viewing SoC awards: <code>fetch-awards</code></a></li>
+<li><a href="#tags">3.12. Tag related functions: <code>tag</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.13. Listing entered commands : <code>history</code></a></li>
+<li><a href="#loading-template-code-loadtemplate-code">3.14. Loading template : <code>loadtemplate</code></a></li>
+<li><a href="#generating-resume-code-make-code">3.15. Generating Resume : <code>make</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.16. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.17. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.18. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.19. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -70,16 +71,23 @@ Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#82
 <p>Download the latest <code>resumaker.jar</code> <a href="https://github.com/CS2103-AY1819S1-W17-1/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
+<p>Copy the file to the folder you want to use as the home folder for your Entry Book.</p>
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
+<div class="paragraph">
+<p>Below is a sample user interface</p>
+</div>
+</li>
+</ol>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
 </div>
 </div>
-</li>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
@@ -121,16 +129,16 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>addEntry ~SECTION #TAGNAME t/TITLE, [s/SUBHEADER]</code>, <code>SECTION</code>, <code>TAGNAME</code>, <code>TITLE</code>  are parameters which can be used as <code>addEntry t/The Source Enterprise</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>addEntry ~SECTION, [t/TITLE], [s/SUBHEADER], [d/DURATION], [#TAGNAME]&#8230;&#8203;</code>, <code>SECTION</code>, <code>TAGNAME</code> and <code>TITLE</code>  are parameters which can be used as <code>addEntry ~work #INTERNSHIP t/The Source Enterprise s/Software Engineering Intern d/Jan 2012 - June 2012</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>t/TITLE [s/SUBHEADER]</code> can be used as <code>t/The Source Enterprise</code> or as <code>t/The Source Enterprise s/Java programmer</code>.</p>
+<p>Items in square brackets are optional e.g <code>~SECTION [t/TITLE] [s/SUBHEADER]</code> can be used as <code>~EDUCATION t/The Source Enterprise</code> or as <code>~work t/The Source Enterprise s/Java programmer</code> or <code>~work</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[#TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>#JAVA</code>, <code>#Software Engineering</code>, <code>#AI</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>t/TITLE s/SUBHEADER</code>, <code>s/SUBHEADER T/TITLE</code> is also acceptable.</p>
+<p>Parameters can be in any order e.g. if the command specifies <code>[t/TITLE] [s/SUBHEADER]</code>, <code>[s/SUBHEADER] [t/TITLE]</code> is also acceptable.</p>
 </li>
 </ul>
 </div>
@@ -139,14 +147,15 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect2">
 <h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
 <div class="paragraph">
-<p>Format: <code>help</code></p>
+<p>Views a list of all commands available.
+Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="adding-an-entry-code-addentry-code"><a class="link" href="#adding-an-entry-code-addentry-code">3.2. Adding an entry: <code>addEntry</code></a></h3>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>addEntry ~SECTION [#TAG]&#8230;&#8203; t/TITLE [s/SUBHEADER] d/DURATION</code></p>
+<p>Adds an entry to ResuMaker.<br>
+Format: <code>addEntry ~SECTION , [t/TITLE], [s/SUBHEADER], [d/DURATION] [#TAGNAME]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -155,8 +164,10 @@ Format: <code>addEntry ~SECTION [#TAG]&#8230;&#8203; t/TITLE [s/SUBHEADER] d/DUR
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-An entry can have any number of tags (including 0)
-An entry contains description, which can be added using addDescription as a separate command
+An entry need not have associated title, subheader and duration.
+An entry can have any number of tags (including 0).
+An entry contains description, which can be added using addDescription as a separate command.
+All parameter input from the user must be alphanumeric and can be separated by space, with the exception of <code>DURATION</code> which allows special character <code>-</code>.
 </td>
 </tr>
 </table>
@@ -167,7 +178,7 @@ An entry contains description, which can be added using addDescription as a sepa
 <div class="ulist">
 <ul>
 <li>
-<p><code>addEntry ~experience #java t/The Source Enterprise s/Java Programmer intern d/ May 2010 - Aug 2010</code></p>
+<p><code>addEntry ~work #java t/The Source Enterprise s/Java Programmer intern d/ May 2010 - Aug 2010</code></p>
 </li>
 <li>
 <p><code>addEntry ~awards #java</code></p>
@@ -176,61 +187,79 @@ An entry contains description, which can be added using addDescription as a sepa
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-bullet-point-code-addbullet-code"><a class="link" href="#adding-a-bullet-point-code-addbullet-code">3.3. Adding a bullet point: <code>addBullet</code></a></h3>
+<h3 id="listing-entries-code-listentry-code"><a class="link" href="#listing-entries-code-listentry-code">3.3. Listing entries : <code>listEntry</code></a></h3>
 <div class="paragraph">
-<p>Adds a bullet point under the description of an entry in the ResuMaker<br>
-Format: <code>addBullet CONTENTTOADD</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>addBullet implement scalable application for data visualization using java</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="editing-a-bullet-point-code-editbullet-code"><a class="link" href="#editing-a-bullet-point-code-editbullet-code">3.4. Editing a bullet point: <code>editBullet</code></a></h3>
-<div class="paragraph">
-<p>edits a bullet point under the description of an entry in the ResuMaker<br>
-Format: <code>editBullet INDEX EDITTEDCONTENT</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>editBullet 0  implement scalable application for data visualization using java</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="listing-entries-code-listentry-code"><a class="link" href="#listing-entries-code-listentry-code">3.5. Listing entries : <code>listEntry</code></a></h3>
-<div class="paragraph">
-<p>list particular entries in the ResuMaker. Both section and tags are optional - running with no arguments will display all entries.<br>
+<p>lists filtered entries in the ResuMaker according to their sections and tags.
 Format: <code>listEntry [~SECTION] [#TAG]&#8230;&#8203;</code></p>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Both section and tags are optional - running with no arguments will display all entries</p>
+</li>
+<li>
+<p>Note that the description of each entry will be hidden<br></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>listEntry ~education java</code></p>
+<p><code>listEntry</code><br>
+listing all entries.</p>
+</li>
+<li>
+<p><code>listEntry ~education #java</code><br>
+listing all entries under education category and tagged as java.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-a-particular-entry-code-viewentry-code"><a class="link" href="#viewing-a-particular-entry-code-viewentry-code">3.6. Viewing a particular entry : <code>viewEntry</code></a></h3>
+<h3 id="adding-a-bullet-point-to-an-entry-code-addbullet-code"><a class="link" href="#adding-a-bullet-point-to-an-entry-code-addbullet-code">3.4. Adding a bullet point to an entry: <code>addBullet</code></a></h3>
 <div class="paragraph">
-<p>views a particular entry in the ResuMaker.+
-Format: <code>vieWEntry INDEX</code></p>
+<p>Adds a bullet point to the end of the description of an entry at index ENTRYINDEX in ResuMaker.<br>
+Format: <code>addBullet ENTRYINDEX CONTENTTOADD</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listEntry</code><br>
+<code>addBullet 1 attain Best Financial Hack Award</code><br>
+adds a bullet point at the end of the description of 1st entry.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-a-particular-entry-code-expandentry-code"><a class="link" href="#viewing-a-particular-entry-code-expandentry-code">3.5. Viewing a particular entry : <code>expandEntry</code></a></h3>
+<div class="paragraph">
+<p>expands detailed description of an entry in the ResuMaker at a specified index<br>
+Format: <code>expandEntry INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>INDEX</code> refers to the index of the displayed entry list from executing <code>listEntry</code></p>
+</li>
+<li>
+<p>Detailed description will be displayed as an indexed list of all bulleted description in that entry</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -238,16 +267,19 @@ Format: <code>vieWEntry INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>viewEntry 2</code></p>
+<p><code>expandEntry 2</code></p>
+</li>
+<li>
+<p><code>expandEntry 0</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-an-entry-code-editentry-code"><a class="link" href="#editing-an-entry-code-editentry-code">3.7. Editing an entry : <code>editEntry</code></a></h3>
+<h3 id="editing-an-entry-code-editentry-code"><a class="link" href="#editing-an-entry-code-editentry-code">3.6. Editing an entry : <code>editEntry</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing entry in the ResuMaker.<br>
-Format: <code>editEntry INDEX [t/TITLE ] [s/SUBHEADER] [d/DURATION] [t/TAG]&#8230;&#8203;</code></p>
+<p>Edits non-decription fields of an existing entry in the ResuMaker.<br>
+Format: <code>editEntry INDEX [t/TITLE ] [s/SUBHEADER] [d/DURATION] [#TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -263,23 +295,65 @@ Format: <code>editEntry INDEX [t/TITLE ] [s/SUBHEADER] [d/DURATION] [t/TAG]&#823
 <p>Existing values will be updated to the input values.</p>
 </li>
 <li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
+<p>When editing tags, the existing tags of the entry will be removed i.e adding of tags is not cumulative.</p>
 </li>
 <li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
+<p>You can remove all the entry&#8217;s tags by typing <code>#</code> without specifying any tags after it.</p>
+</li>
+<li>
+<p>This command does not allow</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>`editEntry 1 t/ R company t/ C` +
-edits the entry at index 1 by replacing its title as R company and replace all its tags by C</p>
+<p><code>editEntry 1 t/R company  #JAVA</code><br>
+edits the entry at index 1 by replacing its title as R company and replace all its tags by JAVA.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-bullet-point-code-editbullet-code"><a class="link" href="#editing-a-bullet-point-code-editbullet-code">3.7. Editing a bullet point: <code>editBullet</code></a></h3>
+<div class="paragraph">
+<p>edits a bulleted description of an entry in ResuMaker. INDEX refers to the index of a particular bulleted description.<br>
+Format: <code>editBullet ENTRYINDEX BULLETINDEX EDITTEDCONTENT</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Before executing this command, the user needs to execute <code>expandEntry</code></p>
+</li>
+<li>
+<p><code>ENTRYINDEX</code> refers to the index number shown in the displayed entry list</p>
+</li>
+<li>
+<p><code>BULLETINDEX</code> refers to the index number shown of a particular bulleted description the displayed Entry</p>
+</li>
+<li>
+<p>Both parameters <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>expandEntry</code><br>
+<code>editBullet 0 0 implement scalable application for data visualization using java</code><br>
+edits the entry at index 0 by replacing its bulleted description at index 0 by "implement scalable application for data visualization using java".</p>
 </li>
 </ul>
 </div>
@@ -287,7 +361,7 @@ edits the entry at index 1 by replacing its title as R company and replace all i
 <div class="sect2">
 <h3 id="deleting-an-entry-code-deleteentry-code"><a class="link" href="#deleting-an-entry-code-deleteentry-code">3.8. Deleting an entry: <code>deleteEntry</code></a></h3>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
+<p>deletes an entry at specified index.<br>
 Format: <code>deleteEntry INDEX</code></p>
 </div>
 <div class="sidebarblock">
@@ -295,13 +369,10 @@ Format: <code>deleteEntry INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
+<p>The <code>INDEX</code> refers to the index number shown in the displayed entry list.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed person list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>The <code>INDEX</code> <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 </ul>
 </div>
@@ -313,20 +384,64 @@ Format: <code>deleteEntry INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd entry in the address book.</p>
+<p><code>listEntry</code><br>
+<code>deleteEntry 2</code><br>
+Deletes the 2nd entry in ResuMaker.</p>
 </li>
 <li>
-<p><code>list ~education</code><br>
-<code>delete 1</code><br>
-Deletes the 1st entry displayed under education section</p>
+<p><code>listEntry ~education</code><br>
+<code>deleteEntry 1</code><br>
+Deletes the 1st entry displayed under education section.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="creating-a-soc-nus-event-project-work-experience-skill-code-nus-code"><a class="link" href="#creating-a-soc-nus-event-project-work-experience-skill-code-nus-code">3.9. Creating a SoC / NUS Event (Project / Work Experience / Skill): <code>nus</code></a></h3>
+<h3 id="deleting-a-bullet-code-deletebullet-code"><a class="link" href="#deleting-a-bullet-code-deletebullet-code">3.9. Deleting a bullet: <code>deleteBullet</code></a></h3>
+<div class="paragraph">
+<p>deletes a bullet at specified index of a particular entry.<br>
+Format: <code>deleteBullet ENTRYINDEX BULLETINDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Before executing this command, the user needs to execute <code>expandEntry</code></p>
+</li>
+<li>
+<p><code>ENTRYINDEX</code> refers to the index number shown in the displayed entry list</p>
+</li>
+<li>
+<p><code>BULLETINDEX</code> refers to the index number shown of a particular bulleted description the displayed Entry</p>
+</li>
+<li>
+<p>Both parameters <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>expandEntry</code><br>
+<code>deleteBullet 2 1</code><br>
+Deletes the 1st bullet of the 2nd entry in ResuMaker.</p>
+</li>
+<li>
+<p><code>listEntry ~education</code><br>
+<code>deleteBullet 1 1</code><br>
+Deletes the 1st bullet of the 1st entry displayed under education section of ResuMaker.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-a-soc-nus-event-project-work-experience-skill-code-nus-code"><a class="link" href="#creating-a-soc-nus-event-project-work-experience-skill-code-nus-code">3.10. Creating a SoC / NUS Event (Project / Work Experience / Skill): <code>nus</code></a></h3>
 <div class="paragraph">
 <p>Auto-populates a resume Entry based on a matching SoC / NUS Event.
 Format: <code>nus EVENT_NAME</code></p>
@@ -377,7 +492,7 @@ Slang and acronyms must be correctly configured in application data. ResuMaker s
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-soc-awards-code-fetch-awards-code"><a class="link" href="#viewing-soc-awards-code-fetch-awards-code">3.10. Viewing SoC awards: <code>fetch-awards</code></a></h3>
+<h3 id="viewing-soc-awards-code-fetch-awards-code"><a class="link" href="#viewing-soc-awards-code-fetch-awards-code">3.11. Viewing SoC awards: <code>fetch-awards</code></a></h3>
 <div class="paragraph">
 <p>Lists all awards at SoC in a numbered list.
 Format: <code>fetch-awards</code> or <code>fetch-awards INDEX</code></p>
@@ -387,19 +502,19 @@ Format: <code>fetch-awards</code> or <code>fetch-awards INDEX</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="tags"><a class="link" href="#tags">3.11. Tag related functions: <code>tag</code></a></h3>
+<h3 id="tags"><a class="link" href="#tags">3.12. Tag related functions: <code>tag</code></a></h3>
 <div class="paragraph">
 <p>These are functions to help you manage your tags; namely to view and edit the relevant tags and entries.</p>
 </div>
 <div class="sect3">
-<h4 id="viewing-currently-active-tags-code-tag-status-code"><a class="link" href="#viewing-currently-active-tags-code-tag-status-code">3.11.1. Viewing currently active tags: <code>tag status</code></a></h4>
+<h4 id="viewing-currently-active-tags-code-tag-status-code"><a class="link" href="#viewing-currently-active-tags-code-tag-status-code">3.12.1. Viewing currently active tags: <code>tag status</code></a></h4>
 <div class="paragraph">
 <p>Lists all tags currently active, and will be generated in the resume.
 Format: <code>tag status</code> lists all the corresponding tags and categories that will appear in the resume.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-entries-under-specific-tags-code-tag-list-code-or-code-tag-ls-code"><a class="link" href="#listing-entries-under-specific-tags-code-tag-list-code-or-code-tag-ls-code">3.11.2. Listing entries under specific tags: <code>tag list</code> or <code>tag ls</code></a></h4>
+<h4 id="listing-entries-under-specific-tags-code-tag-list-code-or-code-tag-ls-code"><a class="link" href="#listing-entries-under-specific-tags-code-tag-list-code-or-code-tag-ls-code">3.12.2. Listing entries under specific tags: <code>tag list</code> or <code>tag ls</code></a></h4>
 <div class="paragraph">
 <p>List all entries under specific tags (space separated).</p>
 </div>
@@ -415,7 +530,7 @@ Format: <code>tag ls</code> list all the tags and the relevant entries for each 
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-particular-tag-to-entry-code-tag-add-code"><a class="link" href="#add-particular-tag-to-entry-code-tag-add-code">3.11.3. Add particular tag to entry: <code>tag add</code></a></h4>
+<h4 id="add-particular-tag-to-entry-code-tag-add-code"><a class="link" href="#add-particular-tag-to-entry-code-tag-add-code">3.12.3. Add particular tag to entry: <code>tag add</code></a></h4>
 <div class="paragraph">
 <p>Add tags (space separated) to particular entry (identified by index).</p>
 </div>
@@ -427,7 +542,7 @@ Format: <code>tag ls</code> list all the tags and the relevant entries for each 
 </div>
 </div>
 <div class="sect3">
-<h4 id="remove-particular-tag-from-entry-code-tag-remove-code-or-code-tag-rm-code"><a class="link" href="#remove-particular-tag-from-entry-code-tag-remove-code-or-code-tag-rm-code">3.11.4. Remove particular tag from entry: <code>tag remove</code> or <code>tag rm</code></a></h4>
+<h4 id="remove-particular-tag-from-entry-code-tag-remove-code-or-code-tag-rm-code"><a class="link" href="#remove-particular-tag-from-entry-code-tag-remove-code-or-code-tag-rm-code">3.12.4. Remove particular tag from entry: <code>tag remove</code> or <code>tag rm</code></a></h4>
 <div class="paragraph">
 <p>Remove tags (space separated) from a particular entry (identified by index).</p>
 </div>
@@ -442,7 +557,7 @@ Format: <code>tag ls</code> list all the tags and the relevant entries for each 
 </div>
 </div>
 <div class="sect3">
-<h4 id="retagging-a-particular-entry-code-tag-retag-code-or-code-tag-rt-code"><a class="link" href="#retagging-a-particular-entry-code-tag-retag-code-or-code-tag-rt-code">3.11.5. Retagging a particular entry: <code>tag retag</code> or <code>tag rt</code></a></h4>
+<h4 id="retagging-a-particular-entry-code-tag-retag-code-or-code-tag-rt-code"><a class="link" href="#retagging-a-particular-entry-code-tag-retag-code-or-code-tag-rt-code">3.12.5. Retagging a particular entry: <code>tag retag</code> or <code>tag rt</code></a></h4>
 <div class="paragraph">
 <p>Remove all current tags and replace it with current tags (space separated).</p>
 </div>
@@ -452,14 +567,14 @@ Format: <code>tag ls</code> list all the tags and the relevant entries for each 
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.12. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.13. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="loading-template-code-loadtemplate-code"><a class="link" href="#loading-template-code-loadtemplate-code">3.13. Loading template : <code>loadtemplate</code></a></h3>
+<h3 id="loading-template-code-loadtemplate-code"><a class="link" href="#loading-template-code-loadtemplate-code">3.14. Loading template : <code>loadtemplate</code></a></h3>
 <div class="paragraph">
 <p>Loads a template from a text file into the application.<br>
 Format: <code>loadtemplate FILEPATH</code></p>
@@ -491,7 +606,7 @@ Loads the template specified in <code>google.txt</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="generating-resume-code-make-code"><a class="link" href="#generating-resume-code-make-code">3.14. Generating Resume : <code>make</code></a></h3>
+<h3 id="generating-resume-code-make-code"><a class="link" href="#generating-resume-code-make-code">3.15. Generating Resume : <code>make</code></a></h3>
 <div class="paragraph">
 <p>Generates a Resume file in Markdown format with the given name, using the <em>template</em> currently loaded in the application.</p>
 </div>
@@ -508,28 +623,28 @@ Generates a file named sep.md, containing a Resume which lists entries as design
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.15. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.16. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
+<p>Clears all entries from the entry book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.16. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.17. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.17. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.18. Saving the data</a></h3>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
+<p>Entry book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.18. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.19. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -541,7 +656,7 @@ There is no need to save manually.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Entry Book folder.</p>
 </div>
 </div>
 </div>
@@ -551,29 +666,49 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><strong>Help</strong> : <code>help</code></p>
+</li>
+<li>
+<p><strong>Add Entry</strong> <code>addEntry ~SECTION , [t/TITLE], [s/SUBHEADER], [d/DURATION] [#TAGNAME]…</code><br>
+e.g. <code>addEntry ~work #java t/The Source Enterprise s/Java Programmer intern d/ May 2010 - Aug 2010</code></p>
+</li>
+<li>
+<p><strong>Add Bullet</strong> <code>addBullet INDEX CONTENTTOADD</code><br>
+e.g. <code>addBullet 0 attain Best Financial Hack Award</code></p>
+</li>
+<li>
+<p><strong>List Entry</strong> : <code>listEntry [~SECTION] [#TAG]…</code><br>
+e.g. <code>listEntry ~education java</code></p>
+</li>
+<li>
+<p><strong>Expand Entry</strong> : <code>expandEntry INDEX</code><br>
+e.g. <code>expandEntry 2</code></p>
+</li>
+<li>
+<p><strong>Edit Entry</strong> : <code>editEntry INDEX [t/TITLE ] [s/SUBHEADER] [d/DURATION] [#TAG]…</code><br>
+e.g. <code>editEntry 1 t/R company #JAVA</code></p>
+</li>
+<li>
+<p><strong>Edit Bullet</strong> : <code>editBullet ENTRYINDEX BULLETINDEX EDITTEDCONTENT</code><br>
+e.g. <code>editBullet 0 0 implement scalable application for data visualization using java</code></p>
+</li>
+<li>
+<p><strong>Delete Entry</strong> : <code>eleteEntry INDEX</code><br>
+e.g. <code>deleteEntry 2</code></p>
+</li>
+<li>
+<p><strong>Delete Bullet</strong> : <code>deleteBullet ENTRYINDEX BULLETINDEX</code><br>
+e.g. <code>deleteBullet 2 2</code></p>
+</li>
+<li>
+<p><strong>Add Nus Entry</strong> : <code>nus EVENT_NAME</code><br>
+e.g. <code>nus hack n roll</code></p>
+</li>
+<li>
+<p><strong>View Soc Awards</strong> : <code>fetch-awards</code> or <code>fetch-awards INDEX</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code></p>
-</li>
-<li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
-</li>
-<li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
-</li>
-<li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
-</li>
-<li>
-<p><strong>List</strong> : <code>list</code></p>
-</li>
-<li>
-<p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
 <p><strong>Select</strong> : <code>select INDEX</code><br>
@@ -603,4 +738,4 @@ e.g. <code>tag rt 10 ~project #web</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-19 03:00:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-19 03:09:30 UTC</div></div></div></body></html>
