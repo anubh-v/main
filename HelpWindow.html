@@ -26,7 +26,7 @@
 <li><a href="#viewing-soc-awards-code-fetch-awards-code">3.11. Viewing SoC awards: <code>fetch-awards</code></a></li>
 <li><a href="#tags">3.12. Managing Tags: <code>tag</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code">3.13. Listing entered commands : <code>history</code></a></li>
-<li><a href="#loading-template-code-loadtemplate-code">3.14. Loading template : <code>loadtemplate</code></a></li>
+<li><a href="#using-templates-to-specify-resume-formats">3.14. Using templates to specify resume formats</a></li>
 <li><a href="#generating-resume-code-make-code">3.15. Generating Resume : <code>make</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code">3.16. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.17. Exiting the program : <code>exit</code></a></li>
@@ -580,9 +580,28 @@ Format: <code>tag ls</code> list all the tags and the relevant entries for each 
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="loading-template-code-loadtemplate-code"><a class="link" href="#loading-template-code-loadtemplate-code">3.14. Loading template : <code>loadtemplate</code></a></h3>
+<h3 id="using-templates-to-specify-resume-formats"><a class="link" href="#using-templates-to-specify-resume-formats">3.14. Using templates to specify resume formats</a></h3>
+<div class="paragraph">
+<p>Templates are stored as text files and parsed and loaded into the application using the <code>loadtemplate</code> command.</p>
+</div>
+<div class="sect3">
+<h4 id="loading-template-code-loadtemplate-code"><a class="link" href="#loading-template-code-loadtemplate-code">3.14.1. Loading template : <code>loadtemplate</code></a></h4>
 <div class="paragraph">
 <p>Loads a template from a text file into the application.<br>
 Format: <code>loadtemplate FILEPATH</code></p>
@@ -598,19 +617,54 @@ Loads the template specified in <code>google.txt</code></p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
 </div>
-</td>
-</tr>
-</table>
+<div class="sect3">
+<h4 id="writing-template-files"><a class="link" href="#writing-template-files">3.14.2. Writing template files</a></h4>
+<div class="paragraph">
+<p>Templates are written by the user as text files, consisting of lines of the following format:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[Category Heading]:[~Category Tag]:[Tag Groups]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Each line specifies a category, starting with the title to be displayed, its corresponding category tag, and tags used to filter entries.</p>
+</div>
+<div class="paragraph">
+<p>An entry is included if it is tagged with that category, and fulfils any of the groups of tags, separated by a space.
+Each group contains tags separated by an ampersand (&amp;),
+and an entry must contain all tags in a group to fulfil the group.</p>
+</div>
+<div class="paragraph">
+<p>For example, the following template file:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Work Experience:~work:
+Education:~education:uni training&amp;cs
+Projects:~projects:software&amp;java&amp;recent</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Will result in the resume being generated as follows:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Work Experience</strong><br>
+(all work entries regardless of tags)</p>
+</div>
+<div class="paragraph">
+<p><strong>Education</strong><br>
+(education entries tagged with <code>uni</code>, or both <code>training</code> and <code>cs</code>)</p>
+</div>
+<div class="paragraph">
+<p><strong>Projects</strong><br>
+(project entries tagged with <code>software</code>, <code>java</code> and <code>recent</code>)</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -753,4 +807,4 @@ e.g. <code>loadtemplate google.txt</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-23 12:35:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-23 14:35:09 UTC</div></div></div></body></html>
