@@ -15,9 +15,9 @@
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
 <li><a href="#adding-an-entry-code-addentry-code">3.2. Adding an entry: <code>addEntry</code></a></li>
-<li><a href="#listing-entries-code-listentry-code">3.3. Listing entries : <code>listEntry</code></a></li>
+<li><a href="#listing-entries-code-listentry-code-br">3.3. Listing entries : <code>listEntry</code><br></a></li>
 <li><a href="#adding-a-bullet-point-to-an-entry-code-addbullet-code">3.4. Adding a bullet point to an entry: <code>addBullet</code></a></li>
-<li><a href="#viewing-a-particular-entry-code-expandentry-code">3.5. Viewing a particular entry : <code>expandEntry</code></a></li>
+<li><a href="#viewing-a-particular-entry-code-selectentry-code">3.5. Viewing a particular entry : <code>selectEntry</code></a></li>
 <li><a href="#editing-an-entry-code-editentry-code">3.6. Editing an entry : <code>editEntry</code></a></li>
 <li><a href="#editing-a-bullet-point-code-editbullet-code">3.7. Editing a bullet point: <code>editBullet</code></a></li>
 <li><a href="#deleting-an-entry-code-deleteentry-code">3.8. Deleting an entry: <code>deleteEntry</code></a></li>
@@ -43,11 +43,13 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Do you find the need to maintain multiple versions of your resume?<br>
-Perhaps you find youself reorganising your resumes before making a job application?</p>
+<p>Do you find the need to maintain multiple versions of your resume?</p>
 </div>
 <div class="paragraph">
-<p>If so - welcome to ResuMaker: a <strong>fast and flexible resume generator aimed at computer science students</strong></p>
+<p>Perhaps you find youself reorganising your resumes before making a job application?</p>
+</div>
+<div class="paragraph">
+<p>If so - welcome to ResuMaker: a <strong>fast and flexible resume generator aimed at computer science students</strong>.</p>
 </div>
 <div class="paragraph">
 <p>Unlike most resume generation webapps, ResuMaker tailors your resume to fit the specific requirements of a job.<br>
@@ -74,13 +76,10 @@ Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#82
 <p>Download the latest <code>resumaker.jar</code> <a href="https://github.com/CS2103-AY1819S1-W17-1/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Entry Book.</p>
+<p>Copy the file to the folder you want to use as the home folder for ResuMaker.</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
-<div class="paragraph">
-<p>Here is a sample of what the user interface should look like:</p>
-</div>
+<p>Double-click the file to start the app. The graphical user interface should appear in a few seconds.</p>
 </li>
 </ol>
 </div>
@@ -88,6 +87,9 @@ Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#82
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
 </div>
+</div>
+<div class="paragraph">
+<p>_ Fig1. A typical user&#8217;s screen, immediately after application startup. _</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="5">
@@ -153,7 +155,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect2">
 <h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
 <div class="paragraph">
-<p>Views a list of all commands available.
+<p>Displays a list of all commands available.<br>
 Format: <code>help</code></p>
 </div>
 </div>
@@ -193,9 +195,9 @@ All parameter input from the user must be alphanumeric and can be separated by s
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entries-code-listentry-code"><a class="link" href="#listing-entries-code-listentry-code">3.3. Listing entries : <code>listEntry</code></a></h3>
+<h3 id="listing-entries-code-listentry-code-br"><a class="link" href="#listing-entries-code-listentry-code-br">3.3. Listing entries : <code>listEntry</code><br></a></h3>
 <div class="paragraph">
-<p>lists filtered entries in the ResuMaker according to their sections and tags.
+<p>Lists the entries in ResuMaker, filtered according to their sections and tags.
 Format: <code>listEntry [~SECTION] [#TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
@@ -248,10 +250,10 @@ adds a bullet point at the end of the description of 1st entry.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-a-particular-entry-code-expandentry-code"><a class="link" href="#viewing-a-particular-entry-code-expandentry-code">3.5. Viewing a particular entry : <code>expandEntry</code></a></h3>
+<h3 id="viewing-a-particular-entry-code-selectentry-code"><a class="link" href="#viewing-a-particular-entry-code-selectentry-code">3.5. Viewing a particular entry : <code>selectEntry</code></a></h3>
 <div class="paragraph">
-<p>expands detailed description of an entry in the ResuMaker at a specified index<br>
-Format: <code>expandEntry INDEX</code></p>
+<p>Displays detailed description of the entry in ResuMaker at the specified index on the panel display.<br>
+Format: <code>selectEntry INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -273,10 +275,10 @@ Format: <code>expandEntry INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>expandEntry 2</code></p>
+<p><code>selectEntry 2</code></p>
 </li>
 <li>
-<p><code>expandEntry 0</code></p>
+<p><code>selectEntry 0</code></p>
 </li>
 </ul>
 </div>
@@ -284,7 +286,7 @@ Format: <code>expandEntry INDEX</code></p>
 <div class="sect2">
 <h3 id="editing-an-entry-code-editentry-code"><a class="link" href="#editing-an-entry-code-editentry-code">3.6. Editing an entry : <code>editEntry</code></a></h3>
 <div class="paragraph">
-<p>Edits non-decription fields of an existing entry in the ResuMaker.<br>
+<p>Edits non-description fields of an existing entry in ResuMaker, i.e title, sub-header, duration, and tags of an entry.<br>
 Format: <code>editEntry INDEX [t/TITLE ] [s/SUBHEADER] [d/DURATION] [#TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
@@ -307,7 +309,7 @@ Format: <code>editEntry INDEX [t/TITLE ] [s/SUBHEADER] [d/DURATION] [#TAG]&#8230
 <p>You can remove all the entry&#8217;s tags by typing <code>#</code> without specifying any tags after it.</p>
 </li>
 <li>
-<p>This command does not allow editing description of the entry, to do so, execute <code>editBullet</code>.</p>
+<p>This command does not allow editing description of the entry; to do so, use the <code>editBullet</code> command.</p>
 </li>
 </ul>
 </div>
@@ -328,21 +330,24 @@ edits the entry at index 1 by replacing its title as R company and replace all i
 <div class="sect2">
 <h3 id="editing-a-bullet-point-code-editbullet-code"><a class="link" href="#editing-a-bullet-point-code-editbullet-code">3.7. Editing a bullet point: <code>editBullet</code></a></h3>
 <div class="paragraph">
-<p>edits a bullet description of an entry in ResuMaker. INDEX refers to the index of a particular bullet description.<br>
-Format: <code>editBullet ENTRYINDEX BULLETINDEX EDITTEDCONTENT</code></p>
+<p>Edits a bullet description of an entry in ResuMaker. INDEX refers to the index of a particular bullet description.<br>
+Format: <code>editBullet ENTRYINDEX BULLETINDEX EDITEDCONTENT</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Before executing this command, the user needs to execute <code>expandEntry</code></p>
+<p>Before executing this command, the user needs to execute <code>selectEntry</code></p>
 </li>
 <li>
 <p><code>ENTRYINDEX</code> refers to the index number shown in the displayed entry list</p>
 </li>
 <li>
 <p><code>BULLETINDEX</code> refers to the index number shown of a particular bulleted description the displayed Entry</p>
+</li>
+<li>
+<p><code>EDITEDCONTENT</code> refers to new content that the user wants to replace the old one with</p>
 </li>
 <li>
 <p>Both parameters <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
@@ -357,9 +362,9 @@ Format: <code>editBullet ENTRYINDEX BULLETINDEX EDITTEDCONTENT</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>expandEntry</code><br>
-<code>editBullet 0 0 implement scalable application for data visualization using java</code><br>
-edits the entry at index 0 by replacing its bulleted description at index 0 by "implement scalable application for data visualization using java".</p>
+<p><code>selectEntry</code><br>
+<code>editBullet 1 1 implement scalable application for data visualization using java</code><br>
+edits the entry at index 1 by replacing its bullet description at index 1 by "implement scalable application for data visualization using java".</p>
 </li>
 </ul>
 </div>
@@ -367,7 +372,7 @@ edits the entry at index 0 by replacing its bulleted description at index 0 by "
 <div class="sect2">
 <h3 id="deleting-an-entry-code-deleteentry-code"><a class="link" href="#deleting-an-entry-code-deleteentry-code">3.8. Deleting an entry: <code>deleteEntry</code></a></h3>
 <div class="paragraph">
-<p>deletes an entry at specified index.<br>
+<p>Deletes the entry at the specified index.<br>
 Format: <code>deleteEntry INDEX</code></p>
 </div>
 <div class="sidebarblock">
@@ -405,7 +410,7 @@ Deletes the 1st entry displayed under education section.</p>
 <div class="sect2">
 <h3 id="deleting-a-bullet-code-deletebullet-code"><a class="link" href="#deleting-a-bullet-code-deletebullet-code">3.9. Deleting a bullet: <code>deleteBullet</code></a></h3>
 <div class="paragraph">
-<p>deletes a bullet at specified index of a particular entry.<br>
+<p>Deletes the bullet of a particular entry at the specified index. <br>
 Format: <code>deleteBullet ENTRYINDEX BULLETINDEX</code></p>
 </div>
 <div class="sidebarblock">
@@ -413,7 +418,7 @@ Format: <code>deleteBullet ENTRYINDEX BULLETINDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Before executing this command, the user needs to execute <code>expandEntry</code></p>
+<p>Before executing this command, the user needs to execute <code>selectEntry</code></p>
 </li>
 <li>
 <p><code>ENTRYINDEX</code> refers to the index number shown in the displayed entry list</p>
@@ -435,13 +440,13 @@ Format: <code>deleteBullet ENTRYINDEX BULLETINDEX</code></p>
 <ul>
 <li>
 <p><code>listEntry</code><br>
-<code>expandEntry</code><br>
+<code>selectEntry</code><br>
 <code>deleteBullet 2 1</code><br>
 Deletes the 1st bullet of the 2nd entry in ResuMaker.</p>
 </li>
 <li>
 <p><code>listEntry ~education</code><br>
-<code>expandEntry</code><br>
+<code>selectEntry</code><br>
 <code>deleteBullet 1 1</code><br>
 Deletes the 1st bullet of the 1st entry displayed under education section of ResuMaker.</p>
 </li>
@@ -451,7 +456,7 @@ Deletes the 1st bullet of the 1st entry displayed under education section of Res
 <div class="sect2">
 <h3 id="creating-a-soc-nus-event-project-work-experience-skill-code-nus-code"><a class="link" href="#creating-a-soc-nus-event-project-work-experience-skill-code-nus-code">3.10. Creating a SoC / NUS Event (Project / Work Experience / Skill): <code>nus</code></a></h3>
 <div class="paragraph">
-<p>Auto-populates a resume Entry based on a matching SoC / NUS Event.
+<p>Auto-populates a resume Entry based on a matching SoC / NUS Event.<br>
 Format: <code>nus EVENT_NAME</code></p>
 </div>
 <div class="admonitionblock tip">
@@ -502,7 +507,7 @@ Slang and acronyms must be correctly configured in application data. ResuMaker s
 <div class="sect2">
 <h3 id="viewing-soc-awards-code-fetch-awards-code"><a class="link" href="#viewing-soc-awards-code-fetch-awards-code">3.11. Viewing SoC awards: <code>fetch-awards</code></a></h3>
 <div class="paragraph">
-<p>Lists all awards at SoC in a numbered list.
+<p>Lists all awards at SoC in a numbered list.<br>
 Format: <code>fetch-awards</code> or <code>fetch-awards INDEX</code></p>
 </div>
 <div class="paragraph">
@@ -517,7 +522,7 @@ Format: <code>fetch-awards</code> or <code>fetch-awards INDEX</code></p>
 <div class="sect3">
 <h4 id="viewing-currently-active-tags-code-tag-status-code"><a class="link" href="#viewing-currently-active-tags-code-tag-status-code">3.12.1. Viewing currently active tags: <code>tag status</code></a></h4>
 <div class="paragraph">
-<p>Lists all tags currently active, and will be generated in the resume.
+<p>Lists all the tags currently active, and which will be included in the generated resume.<br>
 Format: <code>tag status</code> lists all the corresponding tags and categories that will appear in the resume.</p>
 </div>
 </div>
@@ -527,7 +532,7 @@ Format: <code>tag status</code> lists all the corresponding tags and categories 
 <p>List all entries under specific tags (space separated).</p>
 </div>
 <div class="paragraph">
-<p>By default, if a tag is not given, all the tags will be displayed.
+<p>By default, if a tag is not given, all the tags will be displayed.<br>
 Format: <code>tag ls</code> list all the tags and the relevant entries for each tag.</p>
 </div>
 <div class="paragraph">
@@ -687,7 +692,7 @@ Generates a file named sep.md, containing a Resume which lists entries as design
 <div class="sect2">
 <h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.16. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
-<p>Clears all entries from the entry book.<br>
+<p>Clears all entries from ResuMaker.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
@@ -701,7 +706,7 @@ Format: <code>exit</code></p>
 <div class="sect2">
 <h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.18. Saving the data</a></h3>
 <div class="paragraph">
-<p>Entry book data are saved in the hard disk automatically after any command that changes the data.<br>
+<p>ResuMaker data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
@@ -718,7 +723,7 @@ There is no need to save manually.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Entry Book folder.</p>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ResuMaker.</p>
 </div>
 </div>
 </div>
@@ -731,59 +736,60 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Help</strong> : <code>help</code></p>
+<p><strong>Add Bullet</strong> <code>addBullet INDEX CONTENTTOADD</code><br>
+e.g. <code>addBullet 0 attain Best Financial Hack Award</code></p>
 </li>
 <li>
 <p><strong>Add Entry</strong> <code>addEntry ~SECTION , [t/TITLE], [s/SUBHEADER], [d/DURATION] [#TAGNAME]…</code><br>
 e.g. <code>addEntry ~work #java t/The Source Enterprise s/Java Programmer intern d/ May 2010 - Aug 2010</code></p>
 </li>
 <li>
-<p><strong>Add Bullet</strong> <code>addBullet INDEX CONTENTTOADD</code><br>
-e.g. <code>addBullet 0 attain Best Financial Hack Award</code></p>
+<p><strong>Add Nus Entry</strong> : <code>nus EVENT_NAME</code><br>
+e.g. <code>nus hack n roll</code></p>
 </li>
 <li>
-<p><strong>List Entry</strong> : <code>listEntry [~SECTION] [#TAG]…</code><br>
-e.g. <code>listEntry ~education java</code></p>
-</li>
-<li>
-<p><strong>Expand Entry</strong> : <code>expandEntry INDEX</code><br>
-e.g. <code>expandEntry 2</code></p>
-</li>
-<li>
-<p><strong>Edit Entry</strong> : <code>editEntry INDEX [t/TITLE ] [s/SUBHEADER] [d/DURATION] [#TAG]…</code><br>
-e.g. <code>editEntry 1 t/R company #JAVA</code></p>
-</li>
-<li>
-<p><strong>Edit Bullet</strong> : <code>editBullet ENTRYINDEX BULLETINDEX EDITTEDCONTENT</code><br>
-e.g. <code>editBullet 0 0 implement scalable application for data visualization using java</code></p>
-</li>
-<li>
-<p><strong>Delete Entry</strong> : <code>deleteEntry INDEX</code><br>
-e.g. <code>deleteEntry 2</code></p>
+<p><strong>Clear</strong> : <code>clear</code></p>
 </li>
 <li>
 <p><strong>Delete Bullet</strong> : <code>deleteBullet ENTRYINDEX BULLETINDEX</code><br>
 e.g. <code>deleteBullet 2 2</code></p>
 </li>
 <li>
-<p><strong>Add Nus Entry</strong> : <code>nus EVENT_NAME</code><br>
-e.g. <code>nus hack n roll</code></p>
+<p><strong>Delete Entry</strong> : <code>deleteEntry INDEX</code><br>
+e.g. <code>deleteEntry 2</code></p>
 </li>
 <li>
-<p><strong>View Soc Awards</strong> : <code>fetch-awards</code> or <code>fetch-awards INDEX</code></p>
+<p><strong>Edit Bullet</strong> : <code>editBullet ENTRYINDEX BULLETINDEX EDITTEDCONTENT</code><br>
+e.g. <code>editBullet 0 0 implement scalable application for data visualization using java</code></p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
+<p><strong>Edit Entry</strong> : <code>editEntry INDEX [t/TITLE ] [s/SUBHEADER] [d/DURATION] [#TAG]…</code><br>
+e.g. <code>editEntry 1 t/R company #JAVA</code></p>
 </li>
 <li>
-<p><strong>Select</strong> : <code>select INDEX</code><br>
-e.g.<code>select 2</code></p>
+<p><strong>Expand Entry</strong> : <code>selectEntry INDEX</code><br>
+e.g. <code>selectEntry 2</code></p>
+</li>
+<li>
+<p><strong>Generate Resume</strong> : <code>make FILENAME</code></p>
+</li>
+<li>
+<p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
 <p><strong>History</strong> : <code>history</code></p>
 </li>
 <li>
-<p><strong>Tag Status</strong>: <code>tag status</code></p>
+<p><strong>List Entry</strong> : <code>listEntry [~SECTION] [#TAG]…</code><br>
+e.g. <code>listEntry ~education java</code></p>
+</li>
+<li>
+<p><strong>Load Template</strong>: <code>loadtemplate FILEPATH</code><br>
+e.g. <code>loadtemplate google.txt</code></p>
+</li>
+<li>
+<p><strong>Select</strong> : <code>select INDEX</code><br>
+e.g.<code>select 2</code></p>
 </li>
 <li>
 <p><strong>Tag List</strong>: <code>tag ls TAG [MORE_TAGS]</code><br>
@@ -798,13 +804,12 @@ e.g. <code>tag rm 10 ~work #python</code></p>
 e.g. <code>tag rt 10 ~project #web</code></p>
 </li>
 <li>
-<p><strong>Load Template</strong>: <code>loadtemplate FILEPATH</code><br>
-e.g. <code>loadtemplate google.txt</code></p>
+<p><strong>Tag Status</strong>: <code>tag status</code></p>
 </li>
 <li>
-<p><strong>Generate Resume</strong> : <code>make FILENAME</code></p>
+<p><strong>View Soc Awards</strong> : <code>fetch-awards</code> or <code>fetch-awards INDEX</code></p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-23 15:39:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-23 15:41:10 UTC</div></div></div></body></html>
