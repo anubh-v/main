@@ -24,7 +24,7 @@
 <li><a href="#deleting-a-bullet-code-deletebullet-code">3.9. Deleting a bullet: <code>deleteBullet</code></a></li>
 <li><a href="#creating-a-soc-nus-event-project-work-experience-skill-code-nus-code">3.10. Creating a SoC / NUS Event (Project / Work Experience / Skill): <code>nus</code></a></li>
 <li><a href="#viewing-soc-awards-code-fetch-awards-code">3.11. Viewing SoC awards: <code>fetch-awards</code></a></li>
-<li><a href="#tags">3.12. Managing tag related functions</a></li>
+<li><a href="#tags">3.12. Managing Tags</a></li>
 <li><a href="#listing-entered-commands-code-history-code">3.13. Listing entered commands : <code>history</code></a></li>
 <li><a href="#using-templates-to-specify-resume-formats">3.14. Using templates to specify resume formats</a></li>
 <li><a href="#generating-resume-code-make-code">3.15. Generating Resume : <code>make</code></a></li>
@@ -515,15 +515,17 @@ Format: <code>fetch-awards</code> or <code>fetch-awards INDEX</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="tags"><a class="link" href="#tags">3.12. Managing tag related functions</a></h3>
+<h3 id="tags"><a class="link" href="#tags">3.12. Managing Tags</a></h3>
 <div class="paragraph">
 <p>These are functions to help you manage your tags; namely to view and edit the relevant tags and entries.</p>
 </div>
 <div class="sect3">
 <h4 id="viewing-currently-active-tags-code-tag-status-code"><a class="link" href="#viewing-currently-active-tags-code-tag-status-code">3.12.1. Viewing currently active tags: <code>tag status</code></a></h4>
 <div class="paragraph">
-<p>Lists all the tags currently active, and which will be included in the generated resume.<br>
-Format: <code>tag status</code> lists all the corresponding tags and categories that will appear in the resume.</p>
+<p>Lists all the tags currently active, and which will be included in the generated resume. This will effectively list out all the tags active in the current loaded template.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tag status</code> lists all the corresponding tags and categories that will appear in the resume.</p>
 </div>
 </div>
 <div class="sect3">
@@ -532,8 +534,10 @@ Format: <code>tag status</code> lists all the corresponding tags and categories 
 <p>List all entries under specific tags (space separated).</p>
 </div>
 <div class="paragraph">
-<p>By default, if a tag is not given, all the tags will be displayed.<br>
-Format: <code>tag ls</code> list all the tags and the relevant entries for each tag.</p>
+<p>By default, if a tag is not given, all the tags will be displayed.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tag ls</code> list all the tags and the relevant entries for each tag.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>tag ls ~work ~projects #java</code> list all the <code>~work</code> and <code>~project</code> entries tagged with <code>#java</code></p>
@@ -812,4 +816,4 @@ e.g. <code>tag rt 10 ~project #web</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-24 11:15:18 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-24 11:16:29 UTC</div></div></div></body></html>
