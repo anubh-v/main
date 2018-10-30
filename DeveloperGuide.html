@@ -1006,8 +1006,65 @@ Thus, our <code>possibleEventName</code> will be <code>undergraduate research as
 </div>
 <div class="sect3">
 <h4 id="design-choices"><a class="link" href="#design-choices">4.5.5. Design Choices</a></h4>
+<div class="sect4">
+<h5 id="contextcommand"><a class="link" href="#contextcommand">ContextCommand</a></h5>
 <div class="paragraph">
-<p>Work in Progress</p>
+<p>The ContextCommand is constructed by passing it a CommandSupplier.
+This construction is done by ContextCommandParser.
+When it is time to <code>execute</code> the ContextCommand, the CommandSupplier supplies the relevant command.</p>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ContextCommand can be decoupled from specific commands like AddCommand.</p>
+</li>
+<li>
+<p>ContextCommand can be <em>extended</em> to perform any type of Command, by passing the relevant CommandSupplier.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alternatives:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create different types of ContextCommands for different purpose: i.e. ContextAddCommand, ContextFindCommand, etc</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The alternative may be equally valid.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="awareness-class"><a class="link" href="#awareness-class">Awareness class</a></h5>
+<div class="paragraph">
+<p>The Awareness class is constructed by passing it a Dictionary containing slang - full phrase mappings.</p>
+</div>
+<div class="paragraph">
+<p>Alternatives:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create the Dictionary instance within the constructor of Awareness, rather than accepting it.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Increased testability as the dependancy (Dictionary object) <em>can be controlled</em> since it is passed into the constructor.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -3168,4 +3225,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 15:28:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 15:49:31 UTC</div></div></div></body></html>
