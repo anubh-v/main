@@ -630,19 +630,52 @@ Loads the template specified in <code>google.txt</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>[Category Heading]:[~Category Tag]:[Tag Groups]</pre>
+<pre>[Category Heading]:~[Category Tag]:[Tag Groups]</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Each line specifies a category, starting with the title to be displayed, its corresponding category tag, and tags used to filter entries.</p>
+<p>Each line specifies a category, starting with the title to be displayed, its corresponding category tag, and tags used to filter entries.
+Each <code>Tag Group</code> contains one <code>Tag</code>, or several separated by ampersands (&amp;). Tag groups are separated by spaces.
+For example, the following formats would all be valid as <code>[Tag Groups]</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>* [Tag] [Tag] [Tag]
+* [Tag]&amp;[Tag]
+* [Tag] [Tag]&amp;[Tag]&amp;[Tag]
+* (no tags)</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>An entry is included if it is tagged with that category, and fulfils any of the groups of tags, separated by a space.
-Each group contains tags separated by an ampersand (&amp;),
-and an entry must contain all tags in a group to fulfil the group.</p>
+<p>An entry is included if it is tagged with that category, and fulfills any of the groups of tags.
+It must contain all tags in a group to fulfil the group.</p>
 </div>
 <div class="paragraph">
-<p>For example, the following template file:</p>
+<p>For example, the following category,</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Work Experience:~work:java&amp;recent python&amp;recent&amp;significant datascience</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>means to include any entry categorized as <code>work</code>, as long as it fulfills any of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>tagged with <code>java</code> and <code>recent</code></p>
+</li>
+<li>
+<p>tagged with <code>python</code> and <code>recent</code> and <code>significant</code></p>
+</li>
+<li>
+<p>tagged with <code>datascience</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As an example, the following template file:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -809,4 +842,4 @@ e.g. <code>tag rt 10 ~project #web</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 15:49:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 15:58:08 UTC</div></div></div></body></html>
