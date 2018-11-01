@@ -10,7 +10,13 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>ResuMaker is a fast and flexible resume generator, optimised for students in the School of Computing. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+</div>
+<div class="paragraph">
+<p>ResuMaker simplifies the process of writing resumes.
+Instead of having to rewrite your resume every time you want to apply for a new job, ResuMaker allows users to easily maintain a record of entries describing their past experiences such as work, education, or side projects,
+each of which can have tags applied. Whenever one needs to apply for a new job, they simply have to specify a template file, which states which tags should be included.
+The application can then generate a resume in Markdown format displaying all the relevant entries, without any manual organizing on the user&#8217;s part.</p>
 </div>
 </div>
 </div>
@@ -20,26 +26,21 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>the ability to use templates to specify resume formats</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: This allows the user to use template text files to specify how the resume will be generated, in terms of the ordering and title of sections, and which entries will appear under each section based on its tags.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This feature enables one of the core value propositions of our product, which is to be able to easily generate resumes for different contexts. While the application will hold all of the user&#8217;s entries and experiences,
+templates allow the user to customize the generated resume for specific purposes, or depending on which company they are applying to.</p>
 </li>
 <li>
 <p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
 </li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
-</li>
 </ul>
 </div>
-</li>
-<li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
 </li>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
@@ -137,9 +138,109 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="using-templates-to-specify-resume-formats"><a class="link" href="#using-templates-to-specify-resume-formats">Using templates to specify resume formats</a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>Templates are stored as text files and parsed and loaded into the application using the <code>loadtemplate</code> command.
+They should be saved in the same directory as the <code>resumaker.jar</code> file.</p>
+</div>
+<div class="sect3">
+<h4 id="loading-template-code-loadtemplate-code"><a class="link" href="#loading-template-code-loadtemplate-code">Loading template : <code>loadtemplate</code></a></h4>
+<div class="paragraph">
+<p>Loads a template from a text file into the application.<br>
+Format: <code>loadtemplate FILEPATH</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>loadtemplate google.txt</code><br>
+Loads the template specified in <code>google.txt</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="writing-template-files"><a class="link" href="#writing-template-files">Writing template files</a></h4>
+<div class="paragraph">
+<p>Templates are written by the user as text files, consisting of lines of the following format:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[Category Heading]:~[Category Tag]:[Tag Groups]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Each line specifies a category, starting with the title to be displayed, its corresponding category tag, and tags used to filter entries.
+Each <code>Tag Group</code> contains one <code>Tag</code>, or several separated by ampersands (&amp;). Tag groups are separated by spaces.
+For example, the following formats would all be valid as <code>[Tag Groups]</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>* [Tag] [Tag] [Tag]
+* [Tag]&amp;[Tag]
+* [Tag] [Tag]&amp;[Tag]&amp;[Tag]
+* (no tags)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An entry is included if it is tagged with that category, and fulfills any of the groups of tags.
+It must contain all tags in a group to fulfil the group.</p>
+</div>
+<div class="paragraph">
+<p>For example, the following category,</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Work Experience:~work:java&amp;recent python&amp;recent&amp;significant datascience</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>means to include any entry categorized as <code>work</code>, as long as it fulfills any of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>tagged with <code>java</code> and <code>recent</code></p>
+</li>
+<li>
+<p>tagged with <code>python</code> and <code>recent</code> and <code>significant</code></p>
+</li>
+<li>
+<p>tagged with <code>datascience</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As an example, the following template file:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Work Experience:~work:
+Education:~education:uni training&amp;cs
+Projects:~projects:software&amp;java&amp;recent</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Will result in the resume being generated as follows:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Work Experience</strong><br>
+(all work entries regardless of tags)</p>
+</div>
+<div class="paragraph">
+<p><strong>Education</strong><br>
+(education entries tagged with <code>uni</code>, or both <code>training</code> and <code>cs</code>)</p>
+</div>
+<div class="paragraph">
+<p><strong>Projects</strong><br>
+(project entries tagged with <code>software</code>, <code>java</code> and <code>recent</code>)</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -158,19 +259,64 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
+<h3 id="templates"><a class="link" href="#templates">Templates</a></h3>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p>A template specifies the format of the generated resume. It specifies the sections in the resume, and which entries should be included under each section based on a set of tags.</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
+<div class="sect3">
+<h4 id="template-object-structure"><a class="link" href="#template-object-structure">Template object structure</a></h4>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p>The diagram below shows the structure of a <code>Template</code> object. A <code>Template</code> contains an <code>ArrayList</code> of <code>TemplateSection</code>,
+where each contains a title to be displayed and two predicates for filtering entries based on their category and tags.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Template_UML.png" alt="Template UML" width="500">
+</div>
+<div class="title">Figure 1. Template object UML class diagram</div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 15:44:09 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="template-file"><a class="link" href="#template-file">Template file</a></h4>
+<div class="paragraph">
+<p>Templates are stored as text files, with each line in the following format:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[Category Heading]:~[Category Tag]:[Tag Groups]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The list of tags in <code>[Tag Groups]</code> can be treated as a sum of products form, where a <code>&amp;</code> represents AND and space represents OR.
+If no tags are specified, all entries with the <code>[Category Tag]</code> will be included.</p>
+</div>
+<div class="paragraph">
+<p>Template files are written by the user and loaded into the application using the <code>loadtemplate</code> command.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="template-loading-sequence"><a class="link" href="#template-loading-sequence">Template loading sequence</a></h4>
+<div class="paragraph">
+<p>The diagram below shows how the components interact when the user attempts to load a template using the <code>loadtemplate template1.txt</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Template_SD1.png" alt="Template SD1" width="800">
+</div>
+<div class="title">Figure 2. Component interactions for loadtemplate template1.txt command (part 1)</div>
+</div>
+<div class="paragraph">
+<p>The diagram below shows how <code>EventsCenter</code> reacts, raising a <code>TemplateLoadRequestedEvent</code> which prompts <code>Storage</code> to attempt to load the template from file.
+If the loading was successful, it the text file will be parsed into a <code>Template</code> object, and passed into the <code>TemplateLoadedEvent</code>. This event will be handled in the <code>Model</code>, which will store the <code>Template</code> retrieved from the event.
+Otherwise, a <code>TemplateLoadingExceptionEvent</code> will be raised and handled by <code>Model</code> as well.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Template_SD2.png" alt="Template SD2" width="800">
+</div>
+<div class="title">Figure 3. Component interactions for loadtemplate template1.txt command (part 2)</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 21:18:31 UTC</div></div></div></body></html>

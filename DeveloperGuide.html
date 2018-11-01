@@ -726,20 +726,14 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="sect3">
 <h4 id="template-object-structure"><a class="link" href="#template-object-structure">4.2.1. Template object structure</a></h4>
 <div class="paragraph">
-<p>A <code>Template</code> object consists of a list of <code>TemplateSection</code>, which consists of:</p>
+<p>The diagram below shows the structure of a <code>Template</code> object. A <code>Template</code> contains an <code>ArrayList</code> of <code>TemplateSection</code>,
+where each contains a title to be displayed and two predicates for filtering entries based on their category and tags.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>The section heading</p>
-</li>
-<li>
-<p>A <code>Predicate&lt;ResumeEntry&gt;</code> which checks that the entry is of the specified <code>Category</code></p>
-</li>
-<li>
-<p>A <code>Predicate&lt;ResumeEntry&gt;</code> which checks that the entry matches the specified tags</p>
-</li>
-</ul>
+<div class="imageblock">
+<div class="content">
+<img src="images/Template_UML.png" alt="Template UML" width="500">
+</div>
+<div class="title">Figure 12. Template object UML class diagram</div>
 </div>
 </div>
 <div class="sect3">
@@ -761,20 +755,7 @@ If no tags are specified, all entries with the <code>[Category Tag]</code> will 
 </div>
 </div>
 <div class="sect3">
-<h4 id="template-objects"><a class="link" href="#template-objects">4.2.3. Template objects</a></h4>
-<div class="paragraph">
-<p>The diagram below shows the structure of a <code>Template</code> object. A <code>Template</code> contains an <code>ArrayList</code> of <code>TemplateSection</code>,
-where each section contains a title and two predicates for filtering entries based on their category and tags.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/Template_UML.png" alt="Template UML" width="500">
-</div>
-<div class="title">Figure 12. Template object UML class diagram</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="template-loading-sequence"><a class="link" href="#template-loading-sequence">4.2.4. Template loading sequence</a></h4>
+<h4 id="template-loading-sequence"><a class="link" href="#template-loading-sequence">4.2.3. Template loading sequence</a></h4>
 <div class="paragraph">
 <p>The diagram below shows how the components interact when the user attempts to load a template using the <code>loadtemplate template1.txt</code> command.</p>
 </div>
@@ -3250,4 +3231,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 15:44:09 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 21:18:31 UTC</div></div></div></body></html>
