@@ -10,7 +10,22 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>ResuMaker is a fast and flexible resume generator optimised for
+students of the School of Computing at the National University of Singapore (NUS SOC),
+and can help customise one&#8217;s resumes for specific jobs or requirements.</p>
+</div>
+<div class="paragraph">
+<p>ResuMaker allows a user to store entries of information relevant to their career.
+These entries can be about work experience, personal skills, education history or anything else they would want in a resume.
+To facilitate easy browsing and management, entries each belong to a category and can have tags added to them.<br>
+When a resume is needed for, for instance, a job application, the user prepares a template file
+which dictates the sections they want in the resume and lists the tags which decide which entries should be shown.
+The user can then generate a resume file which will display entries previously stored in the ResuMaker
+that match the criteria specified in the template. This resume file is created in markdown,
+a commonly used file format that can then easily be converted to other formats like Word or PDF documents by a variety of other tools.</p>
+</div>
+<div class="paragraph">
+<p><em>[DIAGRAM SHOWING WORKFLOW]</em></p>
 </div>
 </div>
 </div>
@@ -20,26 +35,28 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: Added <strong>the ability to generate a resume and save it to a file</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>This feature uses the specifications of a given template to filter and organise the entries stored in ResuMaker
+into a visually appealing resume file, saved in the markdown format for easy conversion to other commonly used document formats.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>This enhancement makes use of various components across ResuMaker and was also designed to be modular enough
+to allow for easy extension. For instance, the use of markdown to format the text of the resume was designed
+such that it would be easy to change the layout of the resume (such as changing the font size of its section headers
+or adding other content to the resume) or even switch to a different file format altogether.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>An <a href="https://github.com/Steppschuh/Java-Markdown-Generator">external library</a> was used to handle the
+generation of markdown text in a more organised way rather than manipulating the text directly.
+While this functionality was important, it is not essential to the feature - generating the markdown text of the resume
+could have been done without it, although it would have either taken more work to develop the functionality separately
+or been much messier.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
 </li>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
@@ -53,20 +70,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
+<p>Designed a <a href="https://github.com/CS2103-AY1819S1-W17-1/main/issues/62">neat, organised format</a> for managing development issues for use by the project team.</p>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Coordinated API design between team members across components and features to ensure smooth integration.</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Reviewed test coverage and quality.</p>
 </li>
 </ul>
 </div>
@@ -76,7 +86,9 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Fixed writing style issues in the
+<a href="https://github.com/CS2103-AY1819S1-W17-1/main/commit/f59e486c11887eb49c214738fb989161d591ba49">User Guide</a> and
+<a href="https://github.com/CS2103-AY1819S1-W17-1/main/commit/e3509a0af98fce9277896e5d03338ff1c20f72e1">Developer Guide</a>.</p>
 </li>
 </ul>
 </div>
@@ -86,16 +98,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>Reviewed pull requests (with non-trivial review comments):
+<a href="https://github.com/CS2103-AY1819S1-W17-1/main/pull/119">#119</a>,
+<a href="https://github.com/CS2103-AY1819S1-W17-1/main/pull/152">#152</a>,
+<a href="https://github.com/CS2103-AY1819S1-W17-1/main/pull/163">#163</a></p>
 </li>
 </ul>
 </div>
@@ -105,10 +111,8 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Integrated a third party library to the project to generate markdown text:
+<a href="https://github.com/CS2103-AY1819S1-W17-1/main/pull/33">#33</a>, <a href="https://github.com/CS2103-AY1819S1-W17-1/main/pull/112">#112</a>.</p>
 </li>
 </ul>
 </div>
@@ -117,9 +121,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -136,12 +137,6 @@
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">Encrypting data files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -157,12 +152,6 @@
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -173,4 +162,4 @@
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 11:36:33 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 15:44:09 UTC</div></div></div></body></html>
