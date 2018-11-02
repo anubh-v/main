@@ -709,7 +709,22 @@ Projects:~projects:software&amp;java&amp;recent</pre>
 <div class="sect2">
 <h3 id="generating-resume-code-make-code"><a class="link" href="#generating-resume-code-make-code">3.14. Generating Resume : <code>make</code></a></h3>
 <div class="paragraph">
-<p>Generates a Resume file in Markdown format with the given name, using the <em>template</em> currently loaded in the application.</p>
+<p>Generates a Resume file with the given name, using the <em>template</em> currently loaded in the application.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>By default, the file will be saved in the same folder as the application.
+You can also specify a more complicated filepath if you want the file to be saved to a specific folder.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -718,7 +733,26 @@ Projects:~projects:software&amp;java&amp;recent</pre>
 <ul>
 <li>
 <p><code>make sep.md</code><br>
-Generates a file named sep.md, containing a Resume which lists entries as designated by the currently loaded template.</p>
+Generates a file named sep.md in the same folder as the application,
+containing a Resume which lists entries as designated by the currently loaded template.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>ResuMaker generates your resume files in the <em>markdown</em> format, which is commonly used around the web.
+Since you will likely need your resume in a different format such as a Word document or a PDF file,
+here are some of the many tools out there that can help you convert your resume:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.writage.com/">Writage</a>, which allows you to edit and convert markdown files in Microsoft Word.</p>
+</li>
+<li>
+<p><a href="https://pandoc.org/">Pandoc</a>, which converts markdown files to a variety of formats like PDF.</p>
+</li>
+<li>
+<p><a href="https://dillinger.io/">Dillinger</a>, which lets you edit markdown files and convert them to HTML.</p>
 </li>
 </ul>
 </div>
@@ -843,4 +877,4 @@ e.g. <code>tag rt 10 ~project #web</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 21:18:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-02 01:14:33 UTC</div></div></div></body></html>
