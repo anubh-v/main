@@ -10,7 +10,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>ResuMaker is a fast, flexible and customizable resume generator aimed at computer science professionals. On top of the Command Line Interface where most of the user interaction take place, it also provides users with an intuitive and user friendly Graphic User Interface.</p>
 </div>
 </div>
 </div>
@@ -20,53 +20,47 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: Responsive Display of Expanded Entry</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: It allows for the responsive display of the bullet description of an entry whenever a user edits the description of that particular entry.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This is a useful feature as it provides a timely feedback to the user about the latest description of an entry that has been modified. Without this responsive feaure, the user may mistakenly feed in the wrong description to an entry without knowing it or he would have to manually select the edited entry to disclose its description.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Credits: Let me acknowledge the se-edu/addressbook-level4 team in which their overall architecture design lays the foundation for the implementation of this enhancement and also for their idea on event driven design which is central to making the expanded entry display responsive.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>:  [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
+<p>Morphing AddressBook 4 to ResuMaker</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Set up of Model Component Class Structure for ResumeEntry</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
+<p>Enhancements to existing features: (to be updated)</p>
+</li>
+<li>
+<p>Test Handling</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Addition of utility class such as EntryBuilder to facilitate unit testing of Model related classes</p>
 </li>
 </ul>
 </div>
@@ -76,7 +70,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Modified Command Format section under the feature section of the User Guide</p>
 </li>
 </ul>
 </div>
@@ -86,29 +80,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>PRs reviewed (with non-trivial review comments)</p>
 </li>
 </ul>
 </div>
@@ -117,9 +89,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -136,12 +105,6 @@
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">Encrypting data files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -158,19 +121,135 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
+<h3 id="entry-management"><a class="link" href="#entry-management">Entry Management</a></h3>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p>This section describes the implementation of features related to managing entries in ResuMaker, and explains the underlying classes and supporting data structures.</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
+<div class="sect3">
+<h4 id="construct-entry-related-classes"><a class="link" href="#construct-entry-related-classes">Construct Entry Related Classes</a></h4>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p>Below is the class diagram of classes under the package <code>seedu.address.model.entry</code>, which lays the foundation for the implementation of <a href="#entryManagement">Entry Management</a></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/classDiagramForEntry.png" alt="classDiagramForEntry" width="800">
+</div>
+<div class="title">Figure 1. Class diagram for entry related classes</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Current Implementation</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>As shown in the diagram, all data of an added entry in ResuMaker is encapsulated as a class <code>ResumeEntry</code>, which is composed of four other classes: namely one <code>Category</code>, one <code>EntryInfo</code>, one <code>EntryDescription</code> and multiple instances of <code>Tag</code>.</p>
+</li>
+<li>
+<p>ResuMaker extends a <code>Taggable</code> interface which allows manipulation of tags associated with itself.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Design Consideration</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>Taggable</code> Interface<br>
+Provides an additional abstraction layer for any class that needs to access methods that <code>ResumeEntry</code> overrides to implement <code>Taggable</code>. This enforces Interface Segregation Principle in which unrelated classes have limited knowledge about <code>ResumeEntry</code>.</p>
+</li>
+<li>
+<p>Encapsulation of <code>EntryInfo</code><br></p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Instead of lumping <code>title</code>, <code>subtitle</code> and <code>duration</code> in <code>ResumeEntry</code>, encapsulating the three into <code>EntryInfo</code> provides another layer of abstraction.</p>
+</li>
+<li>
+<p>Not all entries have the three information, a <a href="#minorEntry">minor entry</a> does not contain title, subtitle or duration. <code>EntryInfo</code> helps to differentiate <a href="#minorEntry">minor entry</a> from <a href="#majorEntry">major entry</a> using <code>isMinorEntry()</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Encapsulation using <code>EntryDescription</code><br></p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>As opposed to putting an entry description as a <code>String</code> field in <code>ResumeEntry</code>, encapsulating it in <code>EntryDescription</code> provides another layer of abstraction.</p>
+</li>
+<li>
+<p><code>EntryDescription</code> contains <code>List&lt;String&gt;</code> that allows for easy modification of a specific segment of the description of a particular entry, i.e. allows users to edit a particular line of description in that entry.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-02 01:14:33 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="responsive-display-of-expanded-entry"><a class="link" href="#responsive-display-of-expanded-entry">Responsive Display of Expanded Entry</a></h4>
+<div class="paragraph">
+<p>This enhancement enables the Graphic User Interface to display the description of an entry responsively to any modification of an entry.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Current Implementation<br></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The high level interaction between different components follows the same workflow as any other commands.<br>
+Diagram(part a) below illustrates the high level interaction between different components when an <code>addBullet</code> or <code>editBullet</code> command is executed.</p>
+</li>
+<li>
+<p>A noteworthy point is that it makes use of event driven design to allow UI to respond to Logic.
+<code>EventCenter</code> acts as the receiver of the three events raised by Logic and sends them to the respective handlers of these events.
+For <code>addBullet</code> command, the handlers of events raised are UI and Storage. Please refer to diagram(part b) below for more detail.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SequenceDiagramAddBullet_1.png" alt="SequenceDiagramAddBullet 1" width="800">
+</div>
+<div class="title">Figure 2. Sequence diagram for adding a bullet description to an entry (part a)</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SequenceDiagramAddBullet_2.png" alt="SequenceDiagramAddBullet 2" width="800">
+</div>
+<div class="title">Figure 3. Sequence diagram for adding a bullet description to an entry (part b)</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Design Consideration</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Minimizing the amount of code to be added by tapping on the existing utility<br>
+Given how well-established event driven approach is, it will be more convenient to adopt it to minimize the addition of lines of code.
+Taking the alternative would mean extra code to be added to establish some form of reference of UI in Logic.</p>
+</li>
+<li>
+<p>Decoupling between Logic and UI<br>
+Rather than asking Logic to interact directly with UI to request for changes in UI, which increases coupling between the two, <code>EventCenter</code> acts as the
+"middle man" to minimize coupling.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-02 02:06:38 UTC</div></div></div></body></html>

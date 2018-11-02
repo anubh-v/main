@@ -792,6 +792,7 @@ Otherwise, a <code>TemplateLoadingExceptionEvent</code> will be raised and handl
 <div class="content">
 <img src="images/classDiagramForEntry.png" alt="classDiagramForEntry" width="800">
 </div>
+<div class="title">Figure 15. Class diagram for entry related classes</div>
 </div>
 <div class="ulist">
 <ul>
@@ -800,7 +801,7 @@ Otherwise, a <code>TemplateLoadingExceptionEvent</code> will be raised and handl
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>As shown in the diagram, all data of an added entry in ResuMaker is encapsulated as a class <code>ResumeEntry</code>, which is composed of four other classes: namely one <code>Category</code>, one <code>EntryInfo</code>, one EntryDescription and multiple instances of <code>Tag</code>.</p>
+<p>As shown in the diagram, all data of an added entry in ResuMaker is encapsulated as a class <code>ResumeEntry</code>, which is composed of four other classes: namely one <code>Category</code>, one <code>EntryInfo</code>, one <code>EntryDescription</code> and multiple instances of <code>Tag</code>.</p>
 </li>
 <li>
 <p>ResuMaker extends a <code>Taggable</code> interface which allows manipulation of tags associated with itself.</p>
@@ -814,7 +815,7 @@ Otherwise, a <code>TemplateLoadingExceptionEvent</code> will be raised and handl
 <ol class="loweralpha" type="a">
 <li>
 <p><code>Taggable</code> Interface<br>
-Provides an additional abstraction layer for any class that needS to access methods that <code>ResumeEntry</code> overrides to implement <code>Taggable</code>. This enforces Interface Segregation Principle in which none related classes have limited knowledge about <code>ResumeEntry</code>.</p>
+Provides an additional abstraction layer for any class that needs to access methods that <code>ResumeEntry</code> overrides to implement <code>Taggable</code>. This enforces Interface Segregation Principle in which unrelated classes have limited knowledge about <code>ResumeEntry</code>.</p>
 </li>
 <li>
 <p>Encapsulation of <code>EntryInfo</code><br></p>
@@ -824,20 +825,20 @@ Provides an additional abstraction layer for any class that needS to access meth
 <p>Instead of lumping <code>title</code>, <code>subtitle</code> and <code>duration</code> in <code>ResumeEntry</code>, encapsulating the three into <code>EntryInfo</code> provides another layer of abstraction.</p>
 </li>
 <li>
-<p>Not all entries have EntryInfo, a <a href="#minorEntry">minor entry</a> does not contain title, subtitle or duration. <code>EntryInfo</code> helps to differentiate <a href="#minorEntry">minor entry</a> from <a href="#majorEntry">major entry</a> using <code>isMinorEntry()</code>.</p>
+<p>Not all entries have the three information, a <a href="#minorEntry">minor entry</a> does not contain title, subtitle or duration. <code>EntryInfo</code> helps to differentiate <a href="#minorEntry">minor entry</a> from <a href="#majorEntry">major entry</a> using <code>isMinorEntry()</code>.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Encapsulation Using <code>EntryDescription</code><br></p>
+<p>Encapsulation using <code>EntryDescription</code><br></p>
 <div class="olist lowerroman">
 <ol class="lowerroman" type="i">
 <li>
-<p>As opposed to representing an entry description as a <code>String</code> field in <code>ResumeEntry</code>, encapsulating it in <code>EntryDescription</code> provides another layer of abstraction.</p>
+<p>As opposed to putting an entry description as a <code>String</code> field in <code>ResumeEntry</code>, encapsulating it in <code>EntryDescription</code> provides another layer of abstraction.</p>
 </li>
 <li>
-<p><code>EntryDescription</code> contains <code>List&lt;String&gt;</code> that allows for easy modification of a specific segment of the desciption of a particular entry, i.e. allows users to edit a particular line of description of a particular entry.</p>
+<p><code>EntryDescription</code> contains <code>List&lt;String&gt;</code> that allows for easy modification of a specific segment of the description of a particular entry, i.e. allows users to edit a particular line of description in that entry.</p>
 </li>
 </ol>
 </div>
@@ -849,8 +850,63 @@ Provides an additional abstraction layer for any class that needS to access meth
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-bullet-description-work-in-progress"><a class="link" href="#edit-bullet-description-work-in-progress">4.3.2. Edit Bullet Description (work in progress)</a></h4>
-
+<h4 id="responsive-display-of-expanded-entry"><a class="link" href="#responsive-display-of-expanded-entry">4.3.2. Responsive Display of Expanded Entry</a></h4>
+<div class="paragraph">
+<p>This enhancement enables the Graphic User Interface to display the description of an entry responsively to any modification of an entry.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Current Implementation<br></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The high level interaction between different components follows the same workflow as any other commands.<br>
+Diagram(part a) below illustrates the high level interaction between different components when an <code>addBullet</code> or <code>editBullet</code> command is executed.</p>
+</li>
+<li>
+<p>A noteworthy point is that it makes use of event driven design to allow UI to respond to Logic.
+<code>EventCenter</code> acts as the receiver of the three events raised by Logic and sends them to the respective handlers of these events.
+For <code>addBullet</code> command, the handlers of events raised are UI and Storage. Please refer to diagram(part b) below for more detail.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SequenceDiagramAddBullet_1.png" alt="SequenceDiagramAddBullet 1" width="800">
+</div>
+<div class="title">Figure 16. Sequence diagram for adding a bullet description to an entry (part a)</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SequenceDiagramAddBullet_2.png" alt="SequenceDiagramAddBullet 2" width="800">
+</div>
+<div class="title">Figure 17. Sequence diagram for adding a bullet description to an entry (part b)</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Design Consideration</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Minimizing the amount of code to be added by tapping on the existing utility<br>
+Given how well-established event driven approach is, it will be more convenient to adopt it to minimize the addition of lines of code.
+Taking the alternative would mean extra code to be added to establish some form of reference of UI in Logic.</p>
+</li>
+<li>
+<p>Decoupling between Logic and UI<br>
+Rather than asking Logic to interact directly with UI to request for changes in UI, which increases coupling between the two, <code>EventCenter</code> acts as the
+"middle man" to minimize coupling.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1226,7 +1282,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 15. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 18. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -3272,4 +3328,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-02 01:14:33 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-02 02:06:38 UTC</div></div></div></body></html>
