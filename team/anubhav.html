@@ -20,26 +20,26 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: Added support for contextual awareness</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: allows the user to <strong>communicate with the application via slang</strong>. The application&#8217;s ability to understand slang is quite configurable. Moreover, the user can choose to <strong>auto-populate resume entries for events that have standard information</strong>, such as university modules or programmes.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This feature improves the product significantly because it allows users to control the application using language that is more convenient for them.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>Highlights: This enhancement is built to be configurable - the user can add on to the set of slang that is understood by the application.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Credits: ResuMaker was a team effort. The project would not be possible without the great effort displayed by the <a href="../AboutUs.html">group</a>.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancement</strong>:</p>
 </li>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
@@ -53,20 +53,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
+<p>Coordinated with members to complete project milestones on time.</p>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Added some third-party tools to our project repository.</p>
 </li>
 </ul>
 </div>
@@ -76,7 +66,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Wrote the introductory blurb for User Guide and Developer Guide</p>
+</li>
+<li>
+<p>Reviewed documentation related PRs</p>
 </li>
 </ul>
 </div>
@@ -91,12 +84,6 @@
 <li>
 <p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
 </li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
 </ul>
 </div>
 </li>
@@ -105,10 +92,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Integrated some Github plugins into the team repo</p>
 </li>
 </ul>
 </div>
@@ -117,9 +101,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -132,45 +113,50 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_Given below are sections I contributed to the User Guide.</p>
+<p class="tableblock">== Introduction</p>
+<p class="tableblock">Do you find the need to maintain multiple versions of your resume?</p>
+<p class="tableblock">Perhaps you find youself reorganising your resumes before making a job application?</p>
+<p class="tableblock">If so - welcome to ResuMaker: a <strong>fast and flexible resume generator aimed at computer science students</strong>.</p>
+<p class="tableblock">Unlike most resume generation webapps, ResuMaker tailors your resume to fit the specific requirements of a job.<br>
+It can also pick up contextual awareness about your world - with out-of-the-box support for the National University of Singapore&#8217;s School of Computing.<br>
+Interested? Jump to the <a href="#Quick Start">[Quick Start]</a> to get started.<br></p>
+<p class="tableblock">With ResuMaker, <em>let your skills document themselves.</em>
+=== Creating a Contextual Event (Project / Work Experience / Skill): <code>nus</code>
+There are times when we just don&#8217;t want to manually enter every piece of required information into a computer programme.
+After all, shouldn&#8217;t some things <em>just be common knowledge?</em></p>
+<p class="tableblock">With ResuMaker, you can auto-populate resume Entries if ResuMaker already knows about them!
+We call such Entries <em>Contextual Events</em>.</p>
+<p class="tableblock">Format: <code>nus EVENT_NAME</code></p>
+<p class="tableblock">[TIP]
+The <code>EVENT_NAME</code> can be a combination of an  Event&#8217;s <strong>full name</strong> (Mathematics and Computer Science Double Degree Programme), <strong>acronyms</strong> (math - cs ddp), or even
+<strong>partially matching phrases</strong> (math - comp sci double deg prog)</p>
+<p class="tableblock">Examples:</p>
+<p class="tableblock">* <code>nus cs2103t</code><br>
+Creates a Project Entry for <code>CS2103T</code> - A rigorous software engineering module at NUS.
+* <code>nus ta ma1101r</code> OR <code>nus teaching asst ma1101r</code><br>
+Creates a Work Experience Entry for <code>Teaching Assistant MA1101R</code>
+* <code>nus `computing cl exco</code><br>
+Creates a Nonacademics Entry for an Executive Commitee position in the Computing Club.</p>
+<p class="tableblock">[NOTE]
+Slang and acronyms must be correctly configured in application data. In future releases, ResuMaker will ship with NUS / SOC specific slang and acronyms.</p>
+<p class="tableblock">== Contributions to the Developer Guide</p></td>
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>|_Given below are sections I contributed to the Developer Guide.</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
-<div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">=== [Proposed] Data Encryption</p>
+<p class="tableblock"><em>{Explain here how the data encryption feature will be implemented}</em></p></td>
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-02 02:13:35 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-02 02:44:37 UTC</div></div></div></body></html>
