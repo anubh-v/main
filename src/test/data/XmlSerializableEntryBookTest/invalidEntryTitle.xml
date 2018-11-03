@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!-- Entrybook save file which contains the same ResumeEntry values as in TypicalEntrys#getTypicalEntryBook() -->
+<!-- The entry here contains an invalid title, as defined by the EntryInfo class -->
 <entrybook>
 <entry category="work">
     <entryInfo title="" subheader="software engineering intern" duration="2010 - 2013"/>
