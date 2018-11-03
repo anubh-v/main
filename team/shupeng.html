@@ -10,7 +10,10 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>This portfolio showcases my contributions for a software engineering team project for our software engineering module. In a period of 6 weeks, we were tasked to implement a command line interface (CLI) based application targeted at a specific group of users.</p>
+</div>
+<div class="paragraph">
+<p>Our project, ResuMaker, is a fast and flexible resume generator, optimised for students in the School of Computing. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLo.</p>
 </div>
 </div>
 </div>
@@ -20,26 +23,34 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>tag management system</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: This enhancement allows the user to use tags to identify resume entries to include in the display or resume output.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This enhancement allows ResuMaker to achieve one of its highlights: ability to selectively include specific entries to include in the resume creation process.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: This enhancement will be needed for many of the other features, therefore many implementation details have to be considered to cater for the various different usages of the tags in the application.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancement</strong>: added commands to alter existing tags of entries
+Instead of having to reinsert entries, addition tag management functions have been implement to add, remove and replace tags. This will streamline the process of managing existing resume entries giving users more control over</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: This enhancement allows the user to alter tags of existing entries</p>
+</li>
+<li>
+<p>Justification: This enhancement streamlines the tag management process, instead of having to reinsert entries, users can make use of the functions to alter the tags instead.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
@@ -137,9 +148,63 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="tags"><a class="link" href="#tags">Managing Tags</a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>These are functions to help you manage your tags; namely to view and edit the relevant tags and entries.</p>
+</div>
+<div class="sect3">
+<h4 id="listing-entries-under-specific-tags-code-tag-list-code-or-code-tag-ls-code"><a class="link" href="#listing-entries-under-specific-tags-code-tag-list-code-or-code-tag-ls-code">Listing entries under specific tags: <code>tag list</code> or <code>tag ls</code></a></h4>
+<div class="paragraph">
+<p>List all entries under specific tags (space separated).</p>
+</div>
+<div class="paragraph">
+<p>By default, if a tag is not given, all entries will be displayed.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tag ls</code> will display all entries in ResuMaker.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tag ls ~work #java</code> list all the <code>~work</code> entries tagged with <code>#java</code></p>
+</div>
+<div class="paragraph">
+<p>All entries displayed will be accompanied with their relevant entry id, to be used when editing.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-particular-tag-to-entry-code-tag-add-code-coming-in-v1-4"><a class="link" href="#add-particular-tag-to-entry-code-tag-add-code-coming-in-v1-4">Add particular tag to entry: <code>tag add</code> [Coming in v1.4]</a></h4>
+<div class="paragraph">
+<p>Add tags (space separated) to particular entry (identified by index).</p>
+</div>
+<div class="paragraph">
+<p>Duplicate tags will be ignored</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tag add 10 ~work #java</code> add tag <code>#java</code> and category <code>~work</code> to entry 10.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="remove-particular-tag-from-entry-code-tag-remove-code-or-code-tag-rm-code-coming-in-v1-4"><a class="link" href="#remove-particular-tag-from-entry-code-tag-remove-code-or-code-tag-rm-code-coming-in-v1-4">Remove particular tag from entry: <code>tag remove</code> or <code>tag rm</code> [Coming in v1.4]</a></h4>
+<div class="paragraph">
+<p>Remove tags (space separated) from a particular entry (identified by index).</p>
+</div>
+<div class="paragraph">
+<p>By default, if no tags given, all tags will be removed from the entry.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tag rm 1 ~work #java</code> remove category <code>~work</code> and tag <code>#java</code> from entry 1.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tag rm 10</code> remove all tags and categories from entry 10.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="retagging-a-particular-entry-code-tag-retag-code-or-code-tag-rt-code-coming-in-v1-4"><a class="link" href="#retagging-a-particular-entry-code-tag-retag-code-or-code-tag-rt-code-coming-in-v1-4">Retagging a particular entry: <code>tag retag</code> or <code>tag rt</code> [Coming in v1.4]</a></h4>
+<div class="paragraph">
+<p>Remove all current tags and replace them with given tags (space separated).</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tag rt 1 ~work #java</code> remove all tags and categories from entry 1, adding tag <code>#java</code> and category <code>~work</code> to entry 1.</p>
+</div>
 </div>
 </div>
 </div>
@@ -158,9 +223,182 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
+<h3 id="tags-and-categories"><a class="link" href="#tags-and-categories">Tags and Categories</a></h3>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p>Tags and categories are single-word keywords tied to individual entries. Each <code>ResumeEntry</code> can be classified under one <code>Category</code>, but can be associated with multiple <code>Tag</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="categories"><a class="link" href="#categories">Categories</a></h4>
+<div class="paragraph">
+<p>Category related functions are mainly contained in the <code>seedu.address.model.category</code> package, which includes the <code>Category</code> class and its relevant <code>CategoryManager</code>. <code>CategoryManager</code> is used by the <code>ModelManager</code> (<code>seedu.address.model.ModelManager</code>) to filter the list of entries by categories.</p>
+</div>
+<div class="paragraph">
+<p>Filtering can be done by passing the relevant <code>Predicate&lt;ResumeEntry&gt;</code> into <code>CategoryManager</code> through <code>CategoryManger.setPredicate()</code>. The relevant filtered list can be obtained by subsequently calling <code>CategoryManager.getList()</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="categorymanager"><a class="link" href="#categorymanager">CategoryManager</a></h4>
+<div class="paragraph">
+<p>To use <code>CategoryManager</code> to filter out relevant entries, there are a few main functions to keep in mind:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>setList(List&lt;ResumeEntry&gt; entries)</code>: sets the source list of entries to filter</p>
+</li>
+<li>
+<p><code>getList()</code>: returns <code>unmodifiableObservableList&lt;ResumeEntry&gt;</code> of relevant entries</p>
+</li>
+<li>
+<p><code>setPredicate(Predicate&lt;ResumeEntry&gt; predicate)</code>: sets the filtering criteria for the list of entries</p>
+</li>
+<li>
+<p><code>mkPredicate(Predicate&lt;ResumeEntry&gt; predicate, String category)</code>: returns a predicate that builds onto the given predicate to filter by given category as well</p>
+</li>
+<li>
+<p><code>mkPredicate(String category)</code>: return a predicate that filters entries by the category</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="example-filtering-entries-to-be-written-to-resume"><a class="link" href="#example-filtering-entries-to-be-written-to-resume">Example: Filtering entries to be written to resume</a></h5>
+<div class="paragraph">
+<p><code>CategoryManager</code> can be used to extract out the relevant resume entries to be included in the specific sections of the resume.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The full list obtained from <code>Model.filteredList</code> will be passed into the <code>CategoryManger</code> through <code>CategoryManager.setList()</code></p>
+</li>
+<li>
+<p>Based on the filters on different sections of the template, a specific <code>Predicate&lt;ResumeEntry&gt;</code> will be created for that section</p>
+</li>
+<li>
+<p>The <code>Predicate&lt;ResumeEntry&gt;</code> created will be passed into the <code>CategoryManager</code> through <code>CategoryManager.setPredicate()</code></p>
+</li>
+<li>
+<p>The list of entries to be printed will be retrieved through <code>CategoryManager.getList()</code></p>
+</li>
+<li>
+<p>If there is further filtering to be done on tags, the same set of steps will be done on <code>TagManager</code></p>
+</li>
+<li>
+<p>The flow of the program is illustrated in the digram below</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/categoryManager_example_template.png" alt="categoryManager example template">
+</div>
+<div class="title">Figure 1. Program flow for filtering out entries for resume generation</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="predicates"><a class="link" href="#predicates">Predicates</a></h4>
+<div class="paragraph">
+<p>The <code>CategoryManager</code> was written to help developers filter out desired predicates easily. As such, the <code>CategoryManager.mkPredicate()</code> is written to return a <code>Predicate&lt;ResumeEntry&gt;</code> which can be passed into other functions for the filtering process, be it for display or resume generation process.</p>
+</div>
+<div class="paragraph">
+<p>There are two general forms of the function, <code>mkPredicate&lt;String category&gt;</code> and <code>mkPredicate(Predicate&lt;ResumeEntry&gt; entries, String category)</code>.</p>
+</div>
+<div class="paragraph">
+<p>The first form of the function returns a predicate which returns true if the <code>ResumeEntry.getCategory().cateName == category</code>. In short, it will filter out entries of a particular category.</p>
+</div>
+<div class="paragraph">
+<p>The second form of the function (<code>mkPredicate(Predicate&lt;ResumeEntry&gt; predicate, String category)</code>) extends the existing predicate and implement the category checking process on top of it. For the new predicate to return true, the <code>ResumeEntry</code> must fulfill the first <code>Predicate&lt;ResumeEntry&gt;</code> and also be of a particular specified category.</p>
+</div>
+<div class="sect4">
+<h5 id="example-filtering-entries-using-both-tags-and-category"><a class="link" href="#example-filtering-entries-using-both-tags-and-category">Example: Filtering entries using both tags and category</a></h5>
+<div class="paragraph">
+<p>This function is used to implement more complex filters, for example, when entries needs to be filtered by both tags and categories in <code>tag ls</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <code>Predicate&lt;ResumeEntry&gt;</code> will be generated by the command using <code>CategoryManager.mkPredicate()</code></p>
+</li>
+<li>
+<p>This predicate is then passed along to <code>TagManager.mkPredicate()</code> to be extended to include tag filtering</p>
+</li>
+<li>
+<p>The combined predicate is passed to <code>Model.filteredList</code> for the display to be updated</p>
+</li>
+<li>
+<p>The flow of the program is illustrated in the digram below</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/categoryManager_example_taglist.png" alt="categoryManager example taglist">
+</div>
+<div class="title">Figure 2. Program flow for filtering out entries for both tag and category</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design considerations</a></h4>
+<div class="paragraph">
+<p>There are 2 main ways to implement entries filtering: within <code>CategoryManager</code> itself or using <code>CategoryManager</code> to generate <code>Predicate&lt;ResumeEntry&gt;</code> to be used for filtering. Below are some evaluation as to why and when each of the methods may be relevant.</p>
+</div>
+<div class="sect4">
+<h5 id="alternative-1-handles-all-the-entries-filtering-within-categorymanager"><a class="link" href="#alternative-1-handles-all-the-entries-filtering-within-categorymanager">Alternative 1: Handles all the entries filtering within CategoryManager</a></h5>
+<div class="paragraph">
+<p>This is implemented through <code>setList()</code>, <code>setPredicate()</code> and <code>getList()</code>. The full list of entries is passed in, and the filtered list of entries is returned. This will typically be used in the filtering of the entries in the resume generation process.</p>
+</div>
+<div class="paragraph">
+<p>This method is much cleaner, encapsulating all the filtering process within <code>CategoryManger</code>. But if we are sticking to the current implementation of displaying the UI from a <code>FilteredList&lt;ResumeEntry&gt;</code>, this approach may not be appropriate, hence, the second alternative implementation, which gracefully handles this case.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>setList(List&lt;ResumeEntry&gt;)</code> to set the full list of entries to filter from</p>
+</li>
+<li>
+<p><code>setPredicate(mkPredicate(category))</code> to filter list based on category</p>
+</li>
+<li>
+<p><code>getList()</code> to return list of filtered entries</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="alternative-2-using-categorymanager-to-build-the-desired-predicate"><a class="link" href="#alternative-2-using-categorymanager-to-build-the-desired-predicate">Alternative 2: Using CategoryManager to build the desired Predicate</a></h5>
+<div class="paragraph">
+<p>This is implemented through <code>mkPredicate()</code>. The function is used to build upon a given <code>Predicate&lt;ResumeEntry&gt;</code>. which can be passed into <code>ModelManager.updateFilteredEntryBook()</code> to filter the displayed list of entries in the UI.</p>
+</div>
+<div class="paragraph">
+<p>This method allow us to utilize the original UI mechanism for updating the displaying using a predicate, instead of having to alter the list of entries over and over again.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Predicate&lt;ResumeEntry&gt;</code> obtained that does some preliminary filtering (e.g. filtering based on tags)</p>
+</li>
+<li>
+<p><code>mkPredicate(predicate, category)</code> extends the original predicate to further filter by category</p>
+</li>
+<li>
+<p><code>ModelManager.updateFilteredEntryList(predicate)</code> to update view of displayed entries</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h5>
+<div class="paragraph">
+<p>Currently, a mixture of these functions are implemented. This allows the developers to use <code>CategoryManager</code> in both manner, whichever method they deem more appropriate.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -173,4 +411,4 @@
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-02 14:20:32 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-03 05:57:06 UTC</div></div></div></body></html>
