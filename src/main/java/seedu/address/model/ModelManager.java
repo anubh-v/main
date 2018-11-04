@@ -72,7 +72,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     public ModelManager() {
-        this(new AddressBook(), new EntryBook(), new UserPrefs(), SampleDataUtil.getSampleAwareness());
+        this(new AddressBook(), new EntryBook(), new UserPrefs(), new Awareness());
     }
 
     @Override
