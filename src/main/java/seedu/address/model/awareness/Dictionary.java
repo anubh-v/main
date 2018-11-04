@@ -155,4 +155,21 @@ public class Dictionary {
         return expression.split(SPACE);
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Dictionary)) { // instanceof handles nulls
+            return false;
+        }
+
+        Dictionary otherDictionary = (Dictionary) other;
+
+        return mappings.equals(otherDictionary.mappings)
+                       && allFullPhrases.equals(otherDictionary.allFullPhrases);
+
+    }
+
 }

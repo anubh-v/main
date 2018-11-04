@@ -1,5 +1,7 @@
 package seedu.address.model.awareness;
 
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Rule;
@@ -93,4 +95,19 @@ public class DictionaryTest {
 
 
 
+    @Test
+    public void equals() throws Exception {
+
+        Dictionary dictionary = new Dictionary();
+        dictionary.registerMapping("cs", "computer science");
+
+        Dictionary otherDictionary = new Dictionary();
+
+        // identical object --> true
+        assertTrue(dictionary.equals(dictionary));
+
+        // Dictionary with different mappings --> false
+        assertFalse(dictionary.equals(otherDictionary));
+
+    }
 }
