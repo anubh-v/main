@@ -17,11 +17,12 @@ import seedu.address.commons.exceptions.IllegalValueException;
 /** This class manages mappings between slang and full phrases */
 public class Dictionary {
 
-    private static final String SPACE = " ";
     public static final String MESSAGE_SLANG_CONSTRAINTS = "Slang cannot be empty, only whitespace, more than 1 word"
-                                                            + " or a duplicate of existing slang.";
+                                                           + " or a duplicate of existing slang.";
 
     public static final String MESSAGE_FULLPHRASE_CONSTRAINTS = "Full phrases cannot be empty, or only whitespace";
+
+    private static final String SPACE = " ";
 
     private final Map<String, String> mappings;
     private final TreeSet<String> allFullPhrases;
