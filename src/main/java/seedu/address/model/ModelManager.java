@@ -51,9 +51,10 @@ public class ModelManager extends ComponentManager implements Model {
     private final CategoryManager categoryManager;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given entrybook, userPrefs and awareness object
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyEntryBook entryBook, UserPrefs userPrefs) {
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyEntryBook entryBook, UserPrefs userPrefs,
+                        Awareness awareness) {
         super();
         requireAllNonNull(addressBook, userPrefs);
 
@@ -62,7 +63,7 @@ public class ModelManager extends ComponentManager implements Model {
         versionedAddressBook = new VersionedAddressBook(addressBook);
         filteredPersons = new FilteredList<>(versionedAddressBook.getPersonList());
         loadedTemplate = Optional.empty();
-        awareness = SampleDataUtil.getSampleAwareness();
+        this.awareness = awareness;
         versionedEntryBook = new VersionedEntryBook(entryBook);
         filteredEntries = new FilteredList<>(versionedEntryBook.getEntryList());
 
@@ -71,7 +72,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     public ModelManager() {
-        this(new AddressBook(), new EntryBook(), new UserPrefs());
+        this(new AddressBook(), new EntryBook(), new UserPrefs(), SampleDataUtil.getSampleAwareness());
     }
 
     @Override
