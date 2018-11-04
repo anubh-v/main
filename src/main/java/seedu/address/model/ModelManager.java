@@ -30,7 +30,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.resume.Resume;
 import seedu.address.model.tag.TagManager;
 import seedu.address.model.template.Template;
-import seedu.address.model.util.SampleDataUtil;
 
 /**
  * Represents the in-memory model of the address book data.
