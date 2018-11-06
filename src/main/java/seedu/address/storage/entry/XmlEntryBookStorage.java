@@ -8,14 +8,13 @@ import java.nio.file.Path;
 import java.util.Optional;
 import java.util.logging.Logger;
 
+import javax.xml.bind.JAXBException;
+
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.XmlUtil;
 import seedu.address.model.ReadOnlyEntryBook;
-import seedu.address.storage.XmlFileStorage;
-
-import javax.xml.bind.JAXBException;
 
 /**
  * A class to access entrybook data stored as an xml file on the hard disk.
