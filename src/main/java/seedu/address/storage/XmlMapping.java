@@ -21,28 +21,26 @@ public class XmlMapping {
     @XmlElement
     private String fullPhrase;
 
-    @XmlElementWrapper(name = "allSlang")
-    @XmlElement(name = "slang")
-    private HashSet<String> slangSet;
+    private HashSet<String> slang;
 
     /* JAXB requires a default constructor */
     public XmlMapping() {}
 
     public XmlMapping(String fullPhrase, HashSet<String> slangSet) {
         this.fullPhrase = fullPhrase;
-        this.slangSet = slangSet;
+        this.slang = slangSet;
     }
 
     public String getFullPhrase() {
         return fullPhrase;
     }
 
-    public HashSet<String> getSlangSet() {
-        return slangSet;
+    public HashSet<String> getSlang() {
+        return slang;
     }
 
     @Override
     public String toString() {
-        return fullPhrase + "[" + slangSet + "]";
+        return fullPhrase + "[" + slang + "]";
     }
 }
