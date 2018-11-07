@@ -22,7 +22,6 @@ import seedu.address.commons.events.model.ResumeSaveEvent;
 import seedu.address.commons.events.model.TemplateLoadRequestedEvent;
 import seedu.address.commons.events.storage.TemplateLoadedEvent;
 import seedu.address.commons.events.storage.TemplateLoadingExceptionEvent;
-import seedu.address.commons.events.ui.NewResultAvailableEvent;
 import seedu.address.model.awareness.Awareness;
 import seedu.address.model.category.CategoryManager;
 import seedu.address.model.entry.ResumeEntry;
@@ -30,7 +29,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.resume.Resume;
 import seedu.address.model.tag.TagManager;
 import seedu.address.model.template.Template;
-import seedu.address.model.util.SampleDataUtil;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -51,9 +49,10 @@ public class ModelManager extends ComponentManager implements Model {
     private final CategoryManager categoryManager;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given entrybook, userPrefs and awareness object
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyEntryBook entryBook, UserPrefs userPrefs) {
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyEntryBook entryBook, UserPrefs userPrefs,
+                        Awareness awareness) {
         super();
         requireAllNonNull(addressBook, userPrefs);
 
@@ -62,7 +61,7 @@ public class ModelManager extends ComponentManager implements Model {
         versionedAddressBook = new VersionedAddressBook(addressBook);
         filteredPersons = new FilteredList<>(versionedAddressBook.getPersonList());
         loadedTemplate = Optional.empty();
-        awareness = SampleDataUtil.getSampleAwareness();
+        this.awareness = awareness;
         versionedEntryBook = new VersionedEntryBook(entryBook);
         filteredEntries = new FilteredList<>(versionedEntryBook.getEntryList());
 
@@ -71,7 +70,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     public ModelManager() {
-        this(new AddressBook(), new EntryBook(), new UserPrefs());
+        this(new AddressBook(), new EntryBook(), new UserPrefs(), new Awareness());
     }
 
     @Override
@@ -123,6 +122,12 @@ public class ModelManager extends ComponentManager implements Model {
     public void deletePerson(Person target) {
         versionedAddressBook.removePerson(target);
         indicateAddressBookChanged();
+    }
+
+    @Override
+    public void deleteEntry(ResumeEntry target) {
+        versionedEntryBook.removeEntry(target);
+        indicateEntryBookChanged();
     }
 
     @Override
@@ -316,6 +321,5 @@ public class ModelManager extends ComponentManager implements Model {
         logger.info(LogsCenter.getEventHandlingLogMessage(event, "Exception when attempting to load template from "
                 + event.filepath.toString()));
         loadedTemplate = Optional.empty();
-        raise(new NewResultAvailableEvent("Failed to load template"));
     }
 }

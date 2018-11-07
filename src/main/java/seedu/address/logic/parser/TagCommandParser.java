@@ -8,6 +8,8 @@ import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.TagCommand;
 import seedu.address.logic.commands.TagListCommand;
+import seedu.address.logic.commands.TagRetagCommand;
+import seedu.address.logic.commands.TagRmCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -15,7 +17,9 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class TagCommandParser implements Parser<TagCommand> {
     public static final String MESSAGE_USAGE = TagCommand.MESSAGE_USAGE
-        + "- " + TagCommand.COMMAND_WORD + " " + TagListCommand.COMMAND_WORD + " help";
+        + "- " + TagCommand.COMMAND_WORD + " " + TagListCommand.COMMAND_WORD + " help"
+        + "- " + TagCommand.COMMAND_WORD + " " + TagRmCommand.COMMAND_WORD + " help \n"
+        + "- " + TagCommand.COMMAND_WORD + " " + TagRetagCommand.COMMAND_WORD + " help";
 
     /**
      * Used for initial separation of command word and args.
@@ -41,6 +45,14 @@ public class TagCommandParser implements Parser<TagCommand> {
         case TagListCommand.COMMAND_WORD:
         case TagListCommand.COMMAND_WORD2:
             return new TagListCommandParser().parse(arguments);
+
+        case TagRmCommand.COMMAND_WORD:
+        case TagRmCommand.COMMAND_WORD2:
+            return new TagRmCommandParser().parse(arguments);
+
+        case TagRetagCommand.COMMAND_WORD:
+        case TagRetagCommand.COMMAND_WORD2:
+            return new TagRetagCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
