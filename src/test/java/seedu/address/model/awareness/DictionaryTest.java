@@ -109,5 +109,9 @@ public class DictionaryTest {
         // Dictionary with different mappings --> false
         assertFalse(dictionary.equals(otherDictionary));
 
+        // Dictionary with same mappings --> true
+        otherDictionary.registerMapping("cs", "computer science");
+        assertTrue(dictionary.equals(dictionary));
+
     }
 }
