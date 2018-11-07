@@ -2,9 +2,7 @@ package seedu.address.storage;
 
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.TreeSet;
+import java.util.*;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlElement;
@@ -13,6 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.util.XmlUtil;
 import seedu.address.model.awareness.Awareness;
+import seedu.address.storage.entry.XmlAdaptedResumeEntry;
 
 /**
  * This class is used to de-serialize XML data into an in-memory Awareness object.
@@ -23,6 +22,9 @@ public class XmlSerializableAwareness {
 
     @XmlElement (name = "dictionary")
     private LinkedList<XmlMapping> mappings;
+
+    @XmlElement
+    private List<XmlAdaptedContextEntry> context;
 
     /* Default constructor is needed for the JAXB library to work */
     public XmlSerializableAwareness() {
@@ -64,7 +66,7 @@ public class XmlSerializableAwareness {
             String currentFullPhrase = map.getFullPhrase();
             allEventNames.add(currentFullPhrase);
 
-            for (String eachSlang : map.getSlangSet()) {
+            for (String eachSlang : map.getSlang()) {
                 dictionary.put(eachSlang, currentFullPhrase);
             }
         }
