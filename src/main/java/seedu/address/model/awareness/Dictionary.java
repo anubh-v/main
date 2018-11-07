@@ -3,7 +3,6 @@ package seedu.address.model.awareness;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.commons.util.StringUtil.isEmptyString;
-import static seedu.address.model.awareness.Awareness.isOnlyWhitespace;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,16 +42,17 @@ public class Dictionary {
 
         requireAllNonNull(slang, fullPhrase);
 
-        String trimmedSlang = slang.trim();
-        String trimmedFullPhrase = fullPhrase.trim();
-
-        if (!isValidSlang(trimmedSlang)) {
+        if (!isValidSlang(slang)) {
             throw new IllegalValueException(MESSAGE_SLANG_CONSTRAINTS);
         }
 
-        if (!isValidFullPhrase(trimmedFullPhrase)) {
+        if (!isValidFullPhrase(fullPhrase)) {
             throw new IllegalValueException(MESSAGE_FULLPHRASE_CONSTRAINTS);
         }
+
+        // remove trailing whitespace before creating the mapping
+        String trimmedSlang = slang.trim();
+        String trimmedFullPhrase = fullPhrase.trim();
 
         mappings.put(trimmedSlang, trimmedFullPhrase);
         registerFullPhrase(trimmedFullPhrase);
@@ -67,13 +67,13 @@ public class Dictionary {
 
         requireNonNull(fullPhrase);
 
-        String trimmedFullPhrase = fullPhrase;
-
         if (!isValidFullPhrase(fullPhrase)) {
             throw new IllegalValueException(MESSAGE_FULLPHRASE_CONSTRAINTS);
         }
 
-        Arrays.stream(tokenize(fullPhrase))
+        String trimmedFullPhrase = fullPhrase.trim();
+
+        Arrays.stream(tokenize(trimmedFullPhrase))
               .forEach(spaceDelimitedFullPhrase -> allFullPhrases.add(spaceDelimitedFullPhrase));
 
 
@@ -141,14 +141,22 @@ public class Dictionary {
      * @return true iff the given string can be considered a valid slang in this application.
      */
     private boolean isValidSlang(String slang) {
-        return !isEmptyString(slang) && !isOnlyWhitespace(slang)
-                                     && !mappings.containsKey(slang.trim())
-                                     && (slang.split(SPACE).length == 1);
+
+        String trimmedSlang = slang.trim();
+
+        return !isEmptyString(trimmedSlang) && !mappings.containsKey(trimmedSlang)
+                                            && isOneWord(trimmedSlang);
 
     }
 
     private boolean isValidFullPhrase(String fullPhrase) {
-        return !isEmptyString(fullPhrase) && !isOnlyWhitespace(fullPhrase);
+        String trimmedFullPhrase = fullPhrase.trim();
+        return !isEmptyString(fullPhrase);
+    }
+
+    /* Precondition: Input string has no trailing whitespaces */
+    private boolean isOneWord(String trimmedString) {
+        return trimmedString.split(SPACE).length == 1;
     }
 
     private String[] tokenize(String expression) {
