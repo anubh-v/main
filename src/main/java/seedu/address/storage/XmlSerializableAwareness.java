@@ -2,7 +2,10 @@ package seedu.address.storage;
 
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.TreeSet;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlElement;
@@ -11,7 +14,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.util.XmlUtil;
 import seedu.address.model.awareness.Awareness;
-import seedu.address.storage.entry.XmlAdaptedResumeEntry;
 
 /**
  * This class is used to de-serialize XML data into an in-memory Awareness object.
@@ -20,7 +22,7 @@ import seedu.address.storage.entry.XmlAdaptedResumeEntry;
 @XmlRootElement(name = "awareness")
 public class XmlSerializableAwareness {
 
-    @XmlElement (name = "dictionary")
+    @XmlElement (name = "mapping")
     private LinkedList<XmlMapping> mappings;
 
     @XmlElement
