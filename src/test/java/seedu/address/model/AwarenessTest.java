@@ -1,7 +1,7 @@
 package seedu.address.model;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertEquals;
 
 import java.util.TreeMap;
 
@@ -36,22 +36,25 @@ public class AwarenessTest {
         Dictionary emptyDictionary = new Dictionary();
 
         TreeMap<String, ResumeEntry> sampleNameToEntryMappings = SampleDataUtil.makeNameToEntryMappings();
-        TreeMap<String, ResumeEntry> emptyNameToEntrMappings = new TreeMap<String, ResumeEntry>();
+        TreeMap<String, ResumeEntry> emptyNameToEntryMappings = new TreeMap<String, ResumeEntry>();
 
-        // same mappings in both dictionary and treemap --> true
         Awareness sampleAwareness = SampleDataUtil.getSampleAwareness();
         Awareness sampleAwarenessDuplicate = new Awareness(sampleDictionary, sampleNameToEntryMappings);
 
-        assertTrue(sampleAwareness.equals(sampleAwarenessDuplicate));
+        // same object --> true
+        assertEquals(sampleAwareness, sampleAwareness);
+
+        // same mappings in both dictionary and treemap --> true
+        assertEquals(sampleAwareness, sampleAwarenessDuplicate);
+
+        // not an instance of Awareness --> false
+        assertNotEquals(sampleAwareness, "a string");
 
         // different mappings in dictionary, same mappings in treemap --> false
-
-        assertFalse(sampleAwareness.equals(new Awareness(emptyDictionary, sampleNameToEntryMappings)));
+        assertNotEquals(sampleAwareness, new Awareness(emptyDictionary, sampleNameToEntryMappings));
 
         // same mappings in dictionary, different mappings treemap --> false
-
-        assertFalse(sampleAwareness.equals(new Awareness(sampleDictionary, emptyNameToEntrMappings)));
-
+        assertNotEquals(sampleAwareness, new Awareness(sampleDictionary, emptyNameToEntryMappings));
 
     }
 
