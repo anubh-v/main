@@ -58,6 +58,14 @@ public class Dictionary {
         registerFullPhrase(trimmedFullPhrase);
     }
 
+    public void registerMultipleMapping(String[] slangSet, String fullPhrase) throws IllegalValueException {
+        requireNonNull(slangSet);
+
+        for (String eachSlang : slangSet) {
+            registerMapping(eachSlang, fullPhrase);
+        }
+    }
+
     /**
      * Registers a new full phrase in the set of full phrases tracked in the Dictionary.
      * @param fullPhrase
