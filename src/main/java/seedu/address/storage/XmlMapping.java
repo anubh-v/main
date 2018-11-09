@@ -21,6 +21,7 @@ public class XmlMapping {
     @XmlElement
     private String fullPhrase;
 
+    @XmlElement
     private HashSet<String> slang;
 
     /* JAXB requires a default constructor */
