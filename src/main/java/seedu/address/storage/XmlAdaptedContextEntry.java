@@ -12,6 +12,11 @@ import seedu.address.storage.entry.XmlAdaptedResumeEntry;
 
 public class XmlAdaptedContextEntry {
 
+    public static final String MESSAGE_EVENTNAME_REQUIREMENT = "Every contextual entry must have an event name.";
+    public static final String MESSAGE_EVENTNAME_CONSTRAINT = "An event name cannot be an empty string or only "
+                                                               + "whitespace.";
+    public static final String MESSAGE_ENTRY_REQUIREMENT = "Each contextual entry must have an entry element.";
+
     @XmlAttribute
     private String eventName;
 
@@ -20,11 +25,11 @@ public class XmlAdaptedContextEntry {
 
     public String getEventName() throws IllegalValueException {
         if (eventName == null) {
-            throw new IllegalValueException("Every contextual entry must have an event name element.");
+            throw new IllegalValueException(MESSAGE_EVENTNAME_REQUIREMENT);
         }
 
         if (isEmptyString(eventName) || isOnlyWhiteSpace(eventName)) {
-            throw new IllegalValueException("An event name cannot be an empty string or only whitespace.");
+            throw new IllegalValueException(MESSAGE_EVENTNAME_CONSTRAINT);
         }
 
         return eventName;
@@ -32,7 +37,7 @@ public class XmlAdaptedContextEntry {
 
     public ResumeEntry getEntry() throws IllegalValueException {
         if (entry == null) {
-            throw new IllegalValueException("Each contextual entry must have an entry element.");
+            throw new IllegalValueException(MESSAGE_ENTRY_REQUIREMENT);
         }
 
         return entry.toModelType();
