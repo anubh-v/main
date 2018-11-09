@@ -58,6 +58,13 @@ public class Dictionary {
         registerFullPhrase(trimmedFullPhrase);
     }
 
+    /**
+     * Registers multiple slang with a single full phrase.
+     *
+     * @param slangSet the string array containing all slang to register.
+     * @param fullPhrase
+     * @throws IllegalValueException if the full phrase, or any one of the slang is invalid.
+     */
     public void registerMultipleMapping(String[] slangSet, String fullPhrase) throws IllegalValueException {
         requireNonNull(slangSet);
 
