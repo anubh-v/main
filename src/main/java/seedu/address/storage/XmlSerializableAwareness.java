@@ -2,18 +2,21 @@ package seedu.address.storage;
 
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.TreeSet;
+import java.util.TreeMap;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.XmlUtil;
 import seedu.address.model.awareness.Awareness;
+import seedu.address.model.awareness.Dictionary;
+import seedu.address.model.entry.ResumeEntry;
 
 /**
  * This class is used to de-serialize XML data into an in-memory Awareness object.
@@ -56,24 +59,32 @@ public class XmlSerializableAwareness {
 
     /**
      * Uses the data in this XmlSerializableAwareness object to generate an instance of Awareness.
-     * TODO: Add validation in this method, to check that the user-defined XML data is valid.
      *
      * @return an instance of Awareness, representing the data held by this XmlSerializableAwareness object
      */
-    public Awareness toModelType() {
-        HashMap<String, String> dictionary = new HashMap<String, String>();
-        TreeSet<String> allEventNames = new TreeSet<String>();
+    public Awareness toModelType() throws IllegalValueException {
+
+        Dictionary dictionary = new Dictionary();
+        TreeMap<String, ResumeEntry> nameToEntryMappings = new TreeMap<String, ResumeEntry>();
 
         for (XmlMapping map : mappings) {
             String currentFullPhrase = map.getFullPhrase();
-            allEventNames.add(currentFullPhrase);
+            HashSet<String> slangSet = map.getSlang();
 
-            for (String eachSlang : map.getSlang()) {
-                dictionary.put(eachSlang, currentFullPhrase);
+            dictionary.registerFullPhrase(currentFullPhrase);
+
+            if (slangSet == null) {
+                // current full phrase is not associated with any slang
+                continue;
+            }
+
+            for (String eachSlang : slangSet) {
+                dictionary.registerMapping(eachSlang, currentFullPhrase);
             }
         }
 
-        return new Awareness(dictionary, allEventNames);
+        // wip construct and return a new Awareness object
+        return new Awareness();
     }
 
     @Override
