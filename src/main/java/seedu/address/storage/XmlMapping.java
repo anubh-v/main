@@ -1,15 +1,15 @@
 package seedu.address.storage;
 
-import seedu.address.commons.exceptions.IllegalValueException;
+import static seedu.address.commons.util.StringUtil.isEmptyString;
+import static seedu.address.commons.util.StringUtil.isOnlyWhiteSpace;
 
 import java.util.HashSet;
 
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import static seedu.address.commons.util.StringUtil.isEmptyString;
-import static seedu.address.commons.util.StringUtil.isOnlyWhiteSpace;
+import seedu.address.commons.exceptions.IllegalValueException;
+
 
 /**
  *  This class holds a full phrase and, optionally, a set of slang corresponding to this full phrase.
@@ -24,7 +24,7 @@ import static seedu.address.commons.util.StringUtil.isOnlyWhiteSpace;
 public class XmlMapping {
 
     public static final String MESSAGE_FULLPHRASE_REQUIREMENT = "Each mapping must have a full phrase.";
-    public static final String MESSAGE_FULLPHRASE_CONSTRAINT = "Full phrase cannot be empty string, or only whitespace.";
+    public static final String MESSAGE_FULLPHRASE_CONSTRAINT = "Fullphrase cannot be empty string, or only whitespace.";
 
     @XmlElement
     private String fullPhrase;
@@ -52,7 +52,7 @@ public class XmlMapping {
 
         /* it is ok for slang to be null --> simply means there is no slang associated with the full phrase in this
            mapping */
-        
+
         return slang;
     }
 
