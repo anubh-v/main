@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *  This class holds a full phrase and a set of slang corresponding to this full phrase.
- *  Thus, one instance of this class defines a mapping between a full phrase and its set of slang.
+ *  This class holds a full phrase and, optionally, a set of slang corresponding to this full phrase.
  *  For example, a full phrase could be "computer science" and the set of slang would be {"cs", "compsci"}.
+ *  Note that it is ok for a full phrase to be associated with no slang.
  *
  *  It is meant to be JAXB friendly - i.e. meant to be used to des-serialize mappings held in XML, into a Java object
  *  representation.
