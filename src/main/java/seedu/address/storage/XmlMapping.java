@@ -26,11 +26,6 @@ public class XmlMapping {
     /* JAXB requires a default constructor */
     public XmlMapping() {}
 
-    public XmlMapping(String fullPhrase, HashSet<String> slangSet) {
-        this.fullPhrase = fullPhrase;
-        this.slang = slangSet;
-    }
-
     public String getFullPhrase() {
         return fullPhrase;
     }
