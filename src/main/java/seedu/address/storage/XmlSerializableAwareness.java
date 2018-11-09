@@ -28,8 +28,8 @@ public class XmlSerializableAwareness {
     @XmlElement (name = "mapping")
     private LinkedList<XmlMapping> mappings;
 
-    @XmlElement
-    private List<XmlAdaptedContextEntry> context;
+    @XmlElement (name = "context-entry")
+    private List<XmlAdaptedContextEntry> contextEntries;
 
     /* Default constructor is needed for the JAXB library to work */
     public XmlSerializableAwareness() {
