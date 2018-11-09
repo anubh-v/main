@@ -1,10 +1,8 @@
 package seedu.address.model.util;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -127,7 +125,7 @@ public class SampleDataUtil {
             dictionary.registerFullPhrase("programme");
             dictionary.registerFullPhrase("club");
 
-        } catch (IllegalValueException willNotOccur ){
+        } catch (IllegalValueException willNotOccur) {
 
             // the sample mappings will not throw this exception
         }
