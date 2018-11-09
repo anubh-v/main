@@ -1,18 +1,11 @@
 package seedu.address.model.awareness;
 
-import static java.util.Objects.requireNonNull;
-
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Optional;
 import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 import seedu.address.model.entry.ResumeEntry;
-import seedu.address.model.util.SampleDataUtil;
 
 /**
  * This class represents all the Awareness information held by the application.
@@ -22,8 +15,6 @@ import seedu.address.model.util.SampleDataUtil;
  *     - A tree set of all full phrases.
  */
 public class Awareness {
-
-    private static final String SPACE = " ";
 
     /** The dictionary manages the mappings between slang and full phrases. */
     private final Dictionary dictionary;
