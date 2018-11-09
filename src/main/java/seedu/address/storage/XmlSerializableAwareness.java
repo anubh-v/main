@@ -85,7 +85,7 @@ public class XmlSerializableAwareness {
         return new Awareness();
     }
 
-    /* Precondition: contextEntries is not null */
+    /** Precondition: contextEntries is not null */
     private void processContextEntries(TreeMap<String, ResumeEntry> nameToEntryMappings) throws IllegalValueException {
 
         for (XmlAdaptedContextEntry contextEntry : contextEntries) {
@@ -94,7 +94,7 @@ public class XmlSerializableAwareness {
 
     }
 
-    /* Precondition: mappings is not null */
+    /** Precondition: mappings is not null */
     private void processMappings(Dictionary dictionary) throws IllegalValueException {
 
         for (XmlMapping map : mappings) {
