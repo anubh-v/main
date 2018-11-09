@@ -2,8 +2,7 @@ package seedu.address.model.awareness;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Optional;
-import java.util.TreeMap;
+import java.util.*;
 
 import seedu.address.model.entry.ResumeEntry;
 
@@ -17,7 +16,7 @@ import seedu.address.model.entry.ResumeEntry;
 public class Awareness {
 
     /** The dictionary manages the mappings between slang and full phrases. */
-    private final Dictionary dictionary;
+    private Dictionary dictionary;
 
     /** Maps an Event name to a Resume Entry, if any */
     private TreeMap<String, ResumeEntry> nameToEntryMappings;
@@ -33,6 +32,13 @@ public class Awareness {
     /** Constructor to create an empty Awareness object */
     public Awareness() {
         this(new Dictionary(), new TreeMap<String, ResumeEntry>());
+    }
+
+    /** Deprecated constructor. Required because the Awareness storage code still uses this constructor.
+     *  Will be removed very soon.
+     */
+    public Awareness(HashMap<String, String> dictionary, TreeSet<String> allEventNames) {
+        // this constructor has been deprecated. It will be removed very soon.
     }
 
     /**
