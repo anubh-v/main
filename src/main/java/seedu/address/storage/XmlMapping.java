@@ -1,10 +1,15 @@
 package seedu.address.storage;
 
+import seedu.address.commons.exceptions.IllegalValueException;
+
 import java.util.HashSet;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import static seedu.address.commons.util.StringUtil.isEmptyString;
+import static seedu.address.commons.util.StringUtil.isOnlyWhiteSpace;
 
 /**
  *  This class holds a full phrase and, optionally, a set of slang corresponding to this full phrase.
@@ -18,6 +23,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class XmlMapping {
 
+    public static final String MESSAGE_FULLPHRASE_REQUIREMENT = "Each mapping must have a full phrase.";
+    public static final String MESSAGE_FULLPHRASE_CONSTRAINT = "Full phrase cannot be empty string, or only whitespace.";
+
     @XmlElement
     private String fullPhrase;
 
@@ -27,11 +35,24 @@ public class XmlMapping {
     /* JAXB requires a default constructor */
     public XmlMapping() {}
 
-    public String getFullPhrase() {
+    public String getFullPhrase() throws IllegalValueException {
+
+        if (fullPhrase == null) {
+            throw new IllegalValueException(MESSAGE_FULLPHRASE_REQUIREMENT);
+        }
+
+        if (isEmptyString(fullPhrase) || isOnlyWhiteSpace(fullPhrase)) {
+            throw new IllegalValueException(MESSAGE_FULLPHRASE_CONSTRAINT);
+        }
+
         return fullPhrase;
     }
 
     public HashSet<String> getSlang() {
+
+        /* it is ok for slang to be null --> simply means there is no slang associated with the full phrase in this
+           mapping */
+        
         return slang;
     }
 
