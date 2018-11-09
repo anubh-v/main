@@ -51,8 +51,6 @@ public class SampleDataUtil {
                                                   .withTags("software_engineering", "java")
                                                   .build();
 
-    private static final String SPACE = " ";
-
     public static Person[] getSamplePersons() {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
@@ -138,8 +136,7 @@ public class SampleDataUtil {
         Dictionary dictionary = getSampleDictionary();
         TreeMap<String, ResumeEntry> nameToEntryMappings = makeNameToEntryMappings();
 
-        // construct and return new Awareness using the dictionary and nameToEntryMappings
-        return new Awareness();
+        return new Awareness(dictionary, nameToEntryMappings);
     }
 
     /**
