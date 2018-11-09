@@ -25,7 +25,9 @@ import seedu.address.model.entry.ResumeEntry;
 @XmlRootElement(name = "awareness")
 public class XmlSerializableAwareness {
 
-    public static final String MESSAGE_CONTEXTENTRY_REQUIREMENT = "There must be at least one contextual entry specified. ";
+    public static final String MESSAGE_CONTEXTENTRY_REQUIREMENT = "There must be at least one contextual entry "
+                                                                   + "specified. ";
+
     @XmlElement (name = "mapping")
     private LinkedList<XmlMapping> mappings;
 
