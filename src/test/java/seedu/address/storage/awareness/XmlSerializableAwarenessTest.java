@@ -1,19 +1,16 @@
 package seedu.address.storage.awareness;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.commons.util.XmlUtil;
-import seedu.address.model.AddressBook;
-import seedu.address.storage.XmlSerializableAddressBook;
-import seedu.address.storage.XmlSerializableAwareness;
-import seedu.address.testutil.TypicalPersons;
-
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.commons.util.XmlUtil;
+import seedu.address.storage.XmlSerializableAwareness;
+
 
 public class XmlSerializableAwarenessTest {
 
