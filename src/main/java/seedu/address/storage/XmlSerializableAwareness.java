@@ -28,6 +28,9 @@ public class XmlSerializableAwareness {
     public static final String MESSAGE_CONTEXTENTRY_REQUIREMENT = "There must be at least one contextual entry "
                                                                    + "specified. ";
 
+    public static final String MESSAGE_DUPLICATE_EVENTNAME = "The same event name cannot be used for more than one "
+                                                              + "contextual entry.";
+
     @XmlElement (name = "mapping")
     private LinkedList<XmlMapping> mappings;
 
@@ -89,7 +92,16 @@ public class XmlSerializableAwareness {
     private void processContextEntries(TreeMap<String, ResumeEntry> nameToEntryMappings) throws IllegalValueException {
 
         for (XmlAdaptedContextEntry contextEntry : contextEntries) {
-            nameToEntryMappings.put(contextEntry.getEventName(), contextEntry.getEntry());
+
+            String currentEventName = contextEntry.getEventName();
+            ResumeEntry currentEntry = contextEntry.getEntry();
+
+            if (nameToEntryMappings.containsKey(currentEventName)) {
+                // duplicate event names are not allowed
+                throw new IllegalValueException(MESSAGE_DUPLICATE_EVENTNAME);
+            }
+
+            nameToEntryMappings.put(currentEventName, currentEntry);
         }
 
     }
