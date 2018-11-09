@@ -25,6 +25,7 @@ import seedu.address.model.entry.ResumeEntry;
 @XmlRootElement(name = "awareness")
 public class XmlSerializableAwareness {
 
+    public static final String MESSAGE_CONTEXTENTRY_REQUIREMENT = "There must be at least one contextual entry specified. ";
     @XmlElement (name = "mapping")
     private LinkedList<XmlMapping> mappings;
 
@@ -64,8 +65,35 @@ public class XmlSerializableAwareness {
      */
     public Awareness toModelType() throws IllegalValueException {
 
+        if (contextEntries == null) {
+            throw new IllegalValueException(MESSAGE_CONTEXTENTRY_REQUIREMENT);
+        }
+
         Dictionary dictionary = new Dictionary();
         TreeMap<String, ResumeEntry> nameToEntryMappings = new TreeMap<String, ResumeEntry>();
+
+        processContextEntries(nameToEntryMappings);
+
+        // Mappings are optional, and can be left null --> exception does not need to be thrown
+        if (mappings != null) {
+            processMappings(dictionary);
+        }
+
+        // wip - construct and return a new Awareness object
+        return new Awareness();
+    }
+
+    /* Precondition: contextEntries is not null */
+    private void processContextEntries(TreeMap<String, ResumeEntry> nameToEntryMappings) throws IllegalValueException {
+
+        for (XmlAdaptedContextEntry contextEntry : contextEntries) {
+            nameToEntryMappings.put(contextEntry.getEventName(), contextEntry.getEntry());
+        }
+
+    }
+
+    /* Precondition: mappings is not null */
+    private void processMappings(Dictionary dictionary) throws IllegalValueException {
 
         for (XmlMapping map : mappings) {
             String currentFullPhrase = map.getFullPhrase();
@@ -83,8 +111,6 @@ public class XmlSerializableAwareness {
             }
         }
 
-        // wip construct and return a new Awareness object
-        return new Awareness();
     }
 
     @Override
