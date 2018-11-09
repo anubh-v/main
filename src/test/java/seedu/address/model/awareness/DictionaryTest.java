@@ -126,7 +126,7 @@ public class DictionaryTest {
 
         // Expression consisting of multiple full phrases should match the correct possibleEventName
         Assert.assertEquals("financial technology hackathon",
-        dictionary.getPossibleEventName("financial technology hackathon"));
+                                    dictionary.getPossibleEventName("financial technology hackathon"));
 
         // Expression consisting of a single partial phrase should match the correct possibleEventName
         Assert.assertEquals("computer", dictionary.getPossibleEventName("comp"));
@@ -145,7 +145,7 @@ public class DictionaryTest {
 
         // Expression consisting of both partial and full phrases should match correct possibleEventName
         Assert.assertEquals("financial technology research programme",
-        dictionary.getPossibleEventName("financial tech research prog"));
+                                    dictionary.getPossibleEventName("financial tech research prog"));
 
         Assert.assertEquals("double degree programme", dictionary.getPossibleEventName("double deg prog"));
 
