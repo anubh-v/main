@@ -23,6 +23,14 @@ public class XmlAwarenessStorage implements AwarenessStorage {
         this.filePath = filePath;
     }
 
+    /**
+     * Reads awareness data from the specified XML file.
+     *
+     * @return an Optional wrapping the Awareness object created by reading the XML file.
+     * @throws DataConversionException if there was a problem with parsing the XML data, or the XML contains invalid
+     *                                 values.
+     * @throws FileNotFoundException if the file was not found.
+     */
     public Optional<Awareness> readAwarenessData() throws DataConversionException, FileNotFoundException {
 
         requireNonNull(filePath);
