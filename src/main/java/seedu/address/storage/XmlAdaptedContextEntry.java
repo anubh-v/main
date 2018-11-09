@@ -10,6 +10,10 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.entry.ResumeEntry;
 import seedu.address.storage.entry.XmlAdaptedResumeEntry;
 
+/** This class contains an event name and its associated resume entry.
+ *  It is meant to be JAXB friendly - i.e. meant to be used for de-serialisation from XML into a Java object
+ *  representation.
+ */
 public class XmlAdaptedContextEntry {
 
     public static final String MESSAGE_EVENTNAME_REQUIREMENT = "Every contextual entry must have an event name.";
