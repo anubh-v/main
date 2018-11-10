@@ -20,6 +20,10 @@ public class XmlAdaptedEntryDescription {
      */
     public XmlAdaptedEntryDescription() {}
 
+    public XmlAdaptedEntryDescription(List<String> bullets) {
+        this.bullets = bullets;
+    }
+
     /**
      * Converts this jaxb-friendly adapted entry description object into the model's EntryDescription object.
      *
