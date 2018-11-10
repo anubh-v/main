@@ -62,7 +62,7 @@ public class XmlSerializableAwarenessTest {
     @Test
     public void toModelType_missingEventName_throwsIllegalValueException() throws Exception {
         XmlSerializableAwareness dataFromFile =
-        XmlSerializableAwareness.loadDataFromSaveFile(MISSING_EVENTNAME_FILE);
+                XmlSerializableAwareness.loadDataFromSaveFile(MISSING_EVENTNAME_FILE);
 
         thrown.expect(IllegalValueException.class);
         dataFromFile.toModelType();
