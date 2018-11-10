@@ -21,7 +21,19 @@ public class XmlAdaptedEntryInfo {
     @XmlAttribute
     private String duration;
 
+    /**
+     * Default constructor required by JAXB.
+     */
     public XmlAdaptedEntryInfo() {}
+
+    /**
+     * Constructs a {@code XmlAdaptedEntryInfo} with the given details.
+     */
+    public XmlAdaptedEntryInfo(String title, String subheader, String duration) {
+        this.title = title;
+        this.subheader = subheader;
+        this.duration = duration;
+    }
 
     /**
      * Converts this jaxb-friendly adapted entry info object into the model's EntryInfo object
