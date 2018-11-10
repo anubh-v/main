@@ -2,11 +2,12 @@ package seedu.address.storage.entry;
 
 import static org.junit.Assert.assertEquals;
 
+import static seedu.address.testutil.Assert.assertThrows;
+
 import org.junit.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.entry.EntryInfo;
-import seedu.address.testutil.Assert;
 
 public class XmlAdaptedEntryInfoTest {
 
@@ -34,19 +35,21 @@ public class XmlAdaptedEntryInfoTest {
 
         XmlAdaptedEntryInfo entryInfo = new XmlAdaptedEntryInfo(EMPTY_STRING, VALID_SUBHEADER, VALID_DURATION);
         String expectedMessage = EntryInfo.MESSAGE_ENTRYINFO_CONSTRAINTS;
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, entryInfo::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, entryInfo::toModelType);
     }
 
     @Test
     public void toModelType_whitespaceTitle_throwsIllegalValueException() {
-        // wip
+        XmlAdaptedEntryInfo entryInfo = new XmlAdaptedEntryInfo(WHITESPACE, EMPTY_STRING, VALID_DURATION);
+        String expectedMessage = EntryInfo.MESSAGE_ENTRYINFO_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, entryInfo::toModelType);
     }
 
     @Test
     public void toModelType_invalidSymbols_throwsIllegalValueException() {
         XmlAdaptedEntryInfo entryInfo = new XmlAdaptedEntryInfo(INVALID_SYMBOLS, EMPTY_STRING, VALID_DURATION);
         String expectedMessage = EntryInfo.MESSAGE_ENTRYINFO_CONSTRAINTS;
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, entryInfo::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, entryInfo::toModelType);
     }
 
     @Test
@@ -54,18 +57,20 @@ public class XmlAdaptedEntryInfoTest {
 
         XmlAdaptedEntryInfo entryInfo = new XmlAdaptedEntryInfo(VALID_TITLE, EMPTY_STRING, VALID_DURATION);
         String expectedMessage = EntryInfo.MESSAGE_ENTRYINFO_CONSTRAINTS;
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, entryInfo::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, entryInfo::toModelType);
     }
 
     @Test
     public void toModelType_whitespaceSubheader_throwsIllegalValueException() {
-        // wip
+        XmlAdaptedEntryInfo entryInfo = new XmlAdaptedEntryInfo(VALID_TITLE, WHITESPACE, VALID_DURATION);
+        String expectedMessage = EntryInfo.MESSAGE_ENTRYINFO_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, entryInfo::toModelType);
     }
 
     @Test
     public void toModelType_nullDuration_throwsIllegalValueException() {
         XmlAdaptedEntryInfo entryInfo = new XmlAdaptedEntryInfo(VALID_TITLE, EMPTY_STRING, null);
-        Assert.assertThrows(IllegalValueException.class, entryInfo::toModelType);
+        assertThrows(IllegalValueException.class, entryInfo::toModelType);
     }
 
 }
