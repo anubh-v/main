@@ -20,9 +20,15 @@ public class XmlSerializableEntryBookTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "XmlSerializableEntryBookTest");
     private static final Path TYPICAL_ENTRIES_FILE = TEST_DATA_FOLDER.resolve("typicalEntryBook.xml");
-    private static final Path INVALID_ENTRYTITLE_FILE = TEST_DATA_FOLDER.resolve("invalidEntryTitle.xml");
-    private static final Path MISSING_BULLETS_FILE = TEST_DATA_FOLDER.resolve("missingBullets.xml");
+
+    /** Category related test files */
     private static final Path MISSING_CATEGORY_FILE = TEST_DATA_FOLDER.resolve("missingCategory.xml");
+
+    /** EntryInfo related test files */
+    private static final Path INVALID_ENTRYTITLE_FILE = TEST_DATA_FOLDER.resolve("invalidEntryTitle.xml");
+
+    /** EntryDescription related test files */
+    private static final Path MISSING_BULLETS_FILE = TEST_DATA_FOLDER.resolve("missingBullets.xml");
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -34,6 +40,19 @@ public class XmlSerializableEntryBookTest {
         EntryBook entryBookFromFile = dataFromFile.toModelType();
         EntryBook typicalEntryBook = TypicalEntrys.getTypicalEntryBook();
         assertEquals(entryBookFromFile, typicalEntryBook);
+    }
+
+    @Test
+    public void toModelType_missingCategory_failure() throws Exception {
+        XmlSerializableEntryBook dataFromFile = XmlUtil.getDataFromFile(MISSING_CATEGORY_FILE,
+        XmlSerializableEntryBook.class);
+
+        thrown.expect(IllegalValueException.class);
+        thrown.expectMessage(String.format(XmlAdaptedResumeEntry.MISSING_FIELD_MESSAGE_FORMAT,
+        Category.class.getSimpleName()));
+
+        dataFromFile.toModelType();
+
     }
 
     @Test
@@ -55,19 +74,6 @@ public class XmlSerializableEntryBookTest {
 
         thrown.expect(IllegalValueException.class);
         thrown.expectMessage(XmlAdaptedEntryDescription.MESSAGE_MISSING_BULLETS);
-
-        dataFromFile.toModelType();
-
-    }
-
-    @Test
-    public void toModelType_missingCategory_failure() throws Exception {
-        XmlSerializableEntryBook dataFromFile = XmlUtil.getDataFromFile(MISSING_CATEGORY_FILE,
-                XmlSerializableEntryBook.class);
-
-        thrown.expect(IllegalValueException.class);
-        thrown.expectMessage(String.format(XmlAdaptedResumeEntry.MISSING_FIELD_MESSAGE_FORMAT,
-                                                   Category.class.getSimpleName()));
 
         dataFromFile.toModelType();
 
