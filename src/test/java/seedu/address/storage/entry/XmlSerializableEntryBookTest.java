@@ -16,6 +16,8 @@ import seedu.address.model.category.Category;
 import seedu.address.model.entry.EntryInfo;
 import seedu.address.testutil.TypicalEntrys;
 
+/** Integration tests to test overall Entrybook loading. Each XML component is tested individually for more specific
+ * test cases.  */
 public class XmlSerializableEntryBookTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "XmlSerializableEntryBookTest");
