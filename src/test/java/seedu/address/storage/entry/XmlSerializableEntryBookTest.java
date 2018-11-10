@@ -45,7 +45,7 @@ public class XmlSerializableEntryBookTest {
     @Test
     public void toModelType_missingCategory_failure() throws Exception {
         XmlSerializableEntryBook dataFromFile = XmlUtil.getDataFromFile(MISSING_CATEGORY_FILE,
-        XmlSerializableEntryBook.class);
+                XmlSerializableEntryBook.class);
 
         thrown.expect(IllegalValueException.class);
         thrown.expectMessage(String.format(XmlAdaptedResumeEntry.MISSING_FIELD_MESSAGE_FORMAT,
