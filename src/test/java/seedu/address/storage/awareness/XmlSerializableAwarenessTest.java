@@ -20,6 +20,8 @@ public class XmlSerializableAwarenessTest {
     private static final Path EMPTY_EVENTNAME_FILE = TEST_DATA_FOLDER.resolve("emptyEventName.xml");
     private static final Path WHITESPACE_EVENTNAME_FILE = TEST_DATA_FOLDER.resolve("whitespaceEventName.xml");
 
+    private static final Path DUPLICATE_SLANG_FILE = TEST_DATA_FOLDER.resolve("duplicateSlang.xml");
+
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
@@ -59,6 +61,15 @@ public class XmlSerializableAwarenessTest {
     public void toModelType_whitespaceEventName_throwsIllegalValueException() throws Exception {
         XmlSerializableAwareness dataFromFile =
                 XmlSerializableAwareness.loadDataFromSaveFile(WHITESPACE_EVENTNAME_FILE);
+
+        thrown.expect(IllegalValueException.class);
+        dataFromFile.toModelType();
+    }
+
+    @Test
+    public void toModelType_duplicateSlang_throwsIllegalValueException() throws Exception {
+        XmlSerializableAwareness dataFromFile =
+                XmlSerializableAwareness.loadDataFromSaveFile(DUPLICATE_SLANG_FILE);
 
         thrown.expect(IllegalValueException.class);
         dataFromFile.toModelType();
