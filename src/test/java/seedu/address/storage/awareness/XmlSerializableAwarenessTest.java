@@ -28,8 +28,8 @@ public class XmlSerializableAwarenessTest {
 
     @Test
     public void toModelType_missingContextEntryFile_throwsIllegalValueException() throws Exception {
-        XmlSerializableAwareness dataFromFile = XmlUtil.getDataFromFile(MISSING_CONTEXTENTRY_FILE,
-                XmlSerializableAwareness.class);
+        XmlSerializableAwareness dataFromFile =
+                XmlSerializableAwareness.loadDataFromSaveFile(MISSING_CONTEXTENTRY_FILE);
 
         thrown.expect(IllegalValueException.class);
         dataFromFile.toModelType();
@@ -37,8 +37,8 @@ public class XmlSerializableAwarenessTest {
 
     @Test
     public void toModelType_duplicateEventNames_throwsIllegalValueException() throws Exception {
-        XmlSerializableAwareness dataFromFile = XmlUtil.getDataFromFile(DUPLICATE_EVENTNAMES_FILE,
-                XmlSerializableAwareness.class);
+        XmlSerializableAwareness dataFromFile =
+                XmlSerializableAwareness.loadDataFromSaveFile(DUPLICATE_EVENTNAMES_FILE);
 
         thrown.expect(IllegalValueException.class);
         dataFromFile.toModelType();
