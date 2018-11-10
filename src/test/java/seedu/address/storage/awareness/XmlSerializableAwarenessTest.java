@@ -120,7 +120,7 @@ public class XmlSerializableAwarenessTest {
     @Test
     public void toModelType_whitespaceFullPhrase_throwsIllegalValueException() throws Exception {
         XmlSerializableAwareness dataFromFile =
-        XmlSerializableAwareness.loadDataFromSaveFile(WHITESPACE_FULLPHRASE_FILE);
+                XmlSerializableAwareness.loadDataFromSaveFile(WHITESPACE_FULLPHRASE_FILE);
 
         thrown.expect(IllegalValueException.class);
         dataFromFile.toModelType();
