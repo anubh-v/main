@@ -42,10 +42,6 @@ public class XmlSerializableAwareness {
 
     }
 
-    public XmlSerializableAwareness(LinkedList<XmlMapping> mappings) {
-        this.mappings = mappings;
-    }
-
     /**
      * Convert XML data to an instance of XmlSerializableAwareness object.
      *
@@ -126,9 +122,5 @@ public class XmlSerializableAwareness {
         }
 
     }
-
-    @Override
-    public String toString() {
-        return this.mappings.toString();
-    }
+    
 }

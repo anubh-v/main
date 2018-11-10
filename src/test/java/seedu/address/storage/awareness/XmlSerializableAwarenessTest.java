@@ -15,6 +15,8 @@ public class XmlSerializableAwarenessTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "XmlSerializableAwarenessTest");
 
+    private static final Path TYPICAL_AWARENESS_FILE = TEST_DATA_FOLDER("typicalAwareness.xml");
+
     private static final Path MISSING_CONTEXTENTRY_FILE = TEST_DATA_FOLDER.resolve("missingContextEntry.xml");
     private static final Path DUPLICATE_EVENTNAMES_FILE = TEST_DATA_FOLDER.resolve("duplicateEventNames.xml");
     private static final Path EMPTY_EVENTNAME_FILE = TEST_DATA_FOLDER.resolve("emptyEventName.xml");
@@ -27,7 +29,11 @@ public class XmlSerializableAwarenessTest {
 
     @Test
     public void toModelType_typicalAwarenessFile_success() throws Exception {
-      // wip to add positive test case
+        XmlSerializableAwareness dataFromFile =
+                XmlSerializableAwareness.loadDataFromSaveFile(TYPICAL_AWARENESS_FILE);
+
+        // wip to add equals check to assert test success
+        dataFromFile.toModelType();
     }
 
     @Test
