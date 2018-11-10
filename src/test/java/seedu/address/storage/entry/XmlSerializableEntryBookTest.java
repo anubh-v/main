@@ -17,7 +17,8 @@ import seedu.address.model.entry.EntryInfo;
 import seedu.address.testutil.TypicalEntrys;
 
 /** Integration tests to test overall Entrybook loading. Each XML component is tested individually for more specific
- * test cases.  */
+ * test cases.
+ */
 public class XmlSerializableEntryBookTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "XmlSerializableEntryBookTest");
@@ -51,7 +52,7 @@ public class XmlSerializableEntryBookTest {
 
         thrown.expect(IllegalValueException.class);
         thrown.expectMessage(String.format(XmlAdaptedResumeEntry.MISSING_FIELD_MESSAGE_FORMAT,
-        Category.class.getSimpleName()));
+                                     Category.class.getSimpleName()));
 
         dataFromFile.toModelType();
 
