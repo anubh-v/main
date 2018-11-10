@@ -15,14 +15,17 @@ public class XmlSerializableAwarenessTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "XmlSerializableAwarenessTest");
 
-    private static final Path TYPICAL_AWARENESS_FILE = TEST_DATA_FOLDER("typicalAwareness.xml");
+    private static final Path TYPICAL_AWARENESS_FILE = TEST_DATA_FOLDER.resolve("typicalAwareness.xml");
 
     private static final Path MISSING_CONTEXTENTRY_FILE = TEST_DATA_FOLDER.resolve("missingContextEntry.xml");
+    private static final Path MISSING_ENTRY_IN_CONTEXTENTRY_FILE = TEST_DATA_FOLDER.resolve(
+                                                                           "missingEntryWithinContextEntry.xml");
     private static final Path DUPLICATE_EVENTNAMES_FILE = TEST_DATA_FOLDER.resolve("duplicateEventNames.xml");
     private static final Path EMPTY_EVENTNAME_FILE = TEST_DATA_FOLDER.resolve("emptyEventName.xml");
     private static final Path WHITESPACE_EVENTNAME_FILE = TEST_DATA_FOLDER.resolve("whitespaceEventName.xml");
 
     private static final Path DUPLICATE_SLANG_FILE = TEST_DATA_FOLDER.resolve("duplicateSlang.xml");
+
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -40,6 +43,15 @@ public class XmlSerializableAwarenessTest {
     public void toModelType_missingContextEntryFile_throwsIllegalValueException() throws Exception {
         XmlSerializableAwareness dataFromFile =
                 XmlSerializableAwareness.loadDataFromSaveFile(MISSING_CONTEXTENTRY_FILE);
+
+        thrown.expect(IllegalValueException.class);
+        dataFromFile.toModelType();
+    }
+
+    @Test
+    public void toModelType_missingEntryInContextEntryFile_throwsIllegalValueException() throws Exception {
+        XmlSerializableAwareness dataFromFile =
+                XmlSerializableAwareness.loadDataFromSaveFile(MISSING_ENTRY_IN_CONTEXTENTRY_FILE);
 
         thrown.expect(IllegalValueException.class);
         dataFromFile.toModelType();
