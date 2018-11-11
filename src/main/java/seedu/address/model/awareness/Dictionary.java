@@ -77,6 +77,7 @@ public class Dictionary {
 
     /**
      * Registers a new full phrase in the set of full phrases tracked in the Dictionary.
+     * Each space delimited token in the full phrase is tracked individually.
      *
      * @param fullPhrase
      * @throws IllegalValueException
@@ -92,7 +93,7 @@ public class Dictionary {
 
         // any tokens of this full phrase which are already tracked, are not added again.
         Arrays.stream(tokenize(cleanedFullPhrase))
-              .filter(spaceDelimitedFullPhrase -> !allFullPhrases.contains(spaceDelimitedFullPhrase))
+              .filter(spaceDelimitedFullToken-> !allFullPhrases.contains(spaceDelimitedFullToken))
               .forEach(allFullPhrases::add);
 
     }
