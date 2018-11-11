@@ -89,4 +89,15 @@ public class StringUtil {
         requireNonNull(s);
         return s.length() == s.trim().length();
     }
+
+    /**
+     * Returns true iff the given string is a single word.
+     *
+     * @param s must not have any trailing whitespaces.
+     * @return true iff {@code s} is a single word.
+     */
+    public static boolean isOneWord(String s) {
+        checkArgument(hasNoTrailingWhiteSpace(s));
+        return s.split(" ").length == 1;
+    }
 }
