@@ -50,7 +50,10 @@ public class XmlAdaptedResumeEntryDescriptionTest {
 
     @Test
     public void toModelType_nullBulletList_throwsIllegalValueException() {
-        XmlAdaptedEntryDescription entryDescription = new XmlAdaptedEntryDescription(null);
+
+        List<String> bullets = null;
+
+        XmlAdaptedEntryDescription entryDescription = new XmlAdaptedEntryDescription(bullets);
 
         assertThrows(IllegalValueException.class, XmlAdaptedEntryDescription.MESSAGE_MISSING_BULLETS,
                              entryDescription::toModelType);
