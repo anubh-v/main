@@ -171,5 +171,7 @@ public class DictionaryTest {
         // edge cases
         assertEquals("", dictionary.getPossibleEventName(""));
         assertEquals("", dictionary.getPossibleEventName("     "));
+        assertEquals("slang1 slang2", dictionary.getPossibleEventName("slang1   slang2"));
+        assertEquals("slang1 slang2", dictionary.getPossibleEventName("   slang1   slang2  "));
     }
 }
