@@ -115,6 +115,7 @@ public class Dictionary {
         requireNonNull(expression);
 
         return Arrays.stream(tokenize(expression))
+                     .filter(token -> !isEmptyString(token))
                      .map(slang -> getFullPhraseFromSlang(slang))
                      .map(partialPhrase -> getFullPhraseFromPartialPhrase(partialPhrase))
                      .collect(Collectors.joining(SPACE));
