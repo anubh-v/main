@@ -53,19 +53,19 @@ public class AwarenessServiceTest {
 
         ContextUpdateEvent exactMatch = (ContextUpdateEvent) awarenessService.observe("nus ta ma1101r").get();
 
-        ContextUpdateEvent leftTrailingSpaces =
+        ContextUpdateEvent trailingSpacesInput =
                 (ContextUpdateEvent) awarenessService.observe("  nus ta ma1101r").get();
 
-        ContextUpdateEvent rightTrailingSpaces =
+        ContextUpdateEvent leadingSpacesInput =
                 (ContextUpdateEvent) awarenessService.observe("nus ta ma1101r    ").get();
 
-        ContextUpdateEvent bothTrailingSpaces =
+        ContextUpdateEvent paddedSpacesInput =
                (ContextUpdateEvent) awarenessService.observe("   nus ta ma1101r    ").get();
 
         assertEquals(exactMatch.message, expected.message);
-        assertEquals(leftTrailingSpaces.message, expected.message);
-        assertEquals(rightTrailingSpaces.message, expected.message);
-        assertEquals(bothTrailingSpaces.message, expected.message);
+        assertEquals(trailingSpacesInput.message, expected.message);
+        assertEquals(leadingSpacesInput.message, expected.message);
+        assertEquals(paddedSpacesInput.message, expected.message);
 
     }
 
