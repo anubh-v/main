@@ -1,7 +1,4 @@
-package seedu.address.model;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+package seedu.address.model.awareness;
 
 import java.util.TreeMap;
 
@@ -13,6 +10,8 @@ import seedu.address.model.awareness.Awareness;
 import seedu.address.model.awareness.Dictionary;
 import seedu.address.model.entry.ResumeEntry;
 import seedu.address.model.util.SampleDataUtil;
+
+import static org.junit.Assert.*;
 
 public class AwarenessTest {
 
@@ -27,6 +26,39 @@ public class AwarenessTest {
         TreeMap<String, ResumeEntry> nameToEntryMappings = null;
 
         new Awareness(dictionary, nameToEntryMappings);
+    }
+
+    @Test
+    public void getContextualResumeEntry_positiveCases() {
+
+        Awareness awareness = SampleDataUtil.getSampleAwareness();
+
+        // correct event name, where event name consists of a few full phrases --> match
+        String multipleFullPhrases = "teaching assistant ma1101r";
+        assertEquals(awareness.getContextualResumeEntry(multipleFullPhrases).get(), SampleDataUtil.MA1101R_TA);
+
+        // correct event name, where event name is a single full phrase --> match
+        String singleFullPhrase = "cs2103t";
+        assertEquals(awareness.getContextualResumeEntry(singleFullPhrase).get(), SampleDataUtil.NUS_CS2103T);
+
+    }
+
+    @Test
+    public void getContextualResumeEntry_negativeCases() {
+
+        Awareness awareness = SampleDataUtil.getSampleAwareness();
+
+        // incorrect event names --> no match
+        String incorrectEventName = "teching assistant ma1101r";
+        assertFalse(awareness.getContextualResumeEntry(incorrectEventName).isPresent());
+
+        // incomplete event name --> no match
+        String incompleteEventName = "cs2103";
+        assertFalse(awareness.getContextualResumeEntry(incompleteEventName).isPresent());
+
+        // event name given in wrong case --> no match
+        String wrongCaseEventName = "CS2103T";
+        assertFalse(awareness.getContextualResumeEntry(wrongCaseEventName).isPresent());
     }
 
     @Test
