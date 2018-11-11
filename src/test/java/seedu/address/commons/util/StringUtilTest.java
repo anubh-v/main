@@ -6,6 +6,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.FileNotFoundException;
+import java.sql.SQLTransactionRollbackException;
 import java.util.Optional;
 
 import org.junit.Rule;
@@ -21,6 +22,32 @@ public class StringUtilTest {
     public void isOnlyWhitespace() {
         assertTrue(StringUtil.isOnlyWhiteSpace(" "));
         assertFalse(StringUtil.isOnlyWhiteSpace("test"));
+        assertFalse(StringUtil.isOnlyWhiteSpace("  test  "));
+    }
+
+    @Test
+    public void hasNoTrailingWhiteSpace() {
+        assertTrue(StringUtil.hasNoTrailingWhiteSpace("test"));
+        assertTrue(StringUtil.hasNoTrailingWhiteSpace("test A   some space     B"));
+
+        assertFalse(StringUtil.hasNoTrailingWhiteSpace("test  "));
+        assertFalse(StringUtil.hasNoTrailingWhiteSpace("  test"));
+        assertFalse(StringUtil.hasNoTrailingWhiteSpace("  test  B     A    "));
+    }
+
+    @Test
+    public void isOneWord_validInput() {
+        assertTrue(StringUtil.isOneWord("one"));
+        assertTrue(StringUtil.isOneWord("!@#!@$-one-word"));
+
+        assertFalse(StringUtil.isOneWord("one two"));
+        assertFalse(StringUtil.isOneWord("1 2 3 4 5"));
+    }
+
+    @Test
+    public void isOneWord_invalidInput() {
+        thrown.expect(IllegalArgumentException.class);
+        StringUtil.isOneWord("  string with trailing whitespace   ");
     }
 
     //---------------- Tests for isUnsignedPositiveInteger --------------------------------------
