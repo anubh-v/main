@@ -178,7 +178,9 @@ public class Dictionary {
         return expression.split(SPACE);
     }
 
-    private String clean(String s) { return s.trim(); }
+    private String clean(String s) { 
+        return s.trim();
+    }
 
     @Override
     public boolean equals(Object other) {
