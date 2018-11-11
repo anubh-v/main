@@ -93,7 +93,8 @@ public class Dictionary {
 
         // any tokens of this full phrase which are already tracked, are not added again.
         Arrays.stream(tokenize(cleanedFullPhrase))
-              .filter(spaceDelimitedFullToken-> !allFullPhrases.contains(spaceDelimitedFullToken))
+              .filter(token -> !isEmptyString(token))
+              .filter(token-> !allFullPhrases.contains(token))
               .forEach(allFullPhrases::add);
 
     }
