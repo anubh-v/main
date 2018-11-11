@@ -35,7 +35,7 @@ public class XmlSerializableEntryBookTest {
 
     /** EntryDescription related test files */
     private static final Path MISSING_BULLETS_FILE = TEST_DATA_FOLDER.resolve("missingBullets.xml");
- 
+
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
