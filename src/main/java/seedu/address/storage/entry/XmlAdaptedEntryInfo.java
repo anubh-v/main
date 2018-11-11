@@ -26,12 +26,6 @@ public class XmlAdaptedEntryInfo {
      */
     public XmlAdaptedEntryInfo() {}
 
-    public XmlAdaptedEntryInfo(String title, String subheader, String duration) {
-        this.title = title;
-        this.subheader = subheader;
-        this.duration = duration;
-    }
-
     public XmlAdaptedEntryInfo(EntryInfo source) {
         title = source.getTitle();
         subheader = source.getSubHeader();
