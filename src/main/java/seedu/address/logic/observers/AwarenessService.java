@@ -13,8 +13,8 @@ import seedu.address.model.Model;
 /** Represents the service that continually informs the user about ResuMaker's guess */
 public class AwarenessService implements CmdLineObserver {
 
-    public static final String MESSAGE_AVAILABLE_ENTRY = "Resume entry available for: %s";
-    public static final String MESSAGE_NO_ENTRY = "No resume entry for: %s";
+    public static final String MESSAGE_AVAILABLE_ENTRY = "Pre-filled Resume entry available for: %s";
+    public static final String MESSAGE_NO_ENTRY = "No pre-filled resume entry for: %s";
     private static final String COMMAND_WORD = "nus";
 
     private final Model model;
