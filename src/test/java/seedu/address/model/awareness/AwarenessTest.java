@@ -1,17 +1,17 @@
 package seedu.address.model.awareness;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+
 import java.util.TreeMap;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import seedu.address.model.awareness.Awareness;
-import seedu.address.model.awareness.Dictionary;
 import seedu.address.model.entry.ResumeEntry;
 import seedu.address.model.util.SampleDataUtil;
-
-import static org.junit.Assert.*;
 
 public class AwarenessTest {
 
