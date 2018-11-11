@@ -23,6 +23,7 @@ public class XmlAdaptedEntryDescription {
 
     public XmlAdaptedEntryDescription(List<String> bullets) {
         this.bullets = bullets;
+    }
       
     public XmlAdaptedEntryDescription(EntryDescription source) {
         bullets = new ArrayList<>(source.getDescriptionList());
