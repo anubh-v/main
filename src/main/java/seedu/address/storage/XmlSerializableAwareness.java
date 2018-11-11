@@ -79,7 +79,7 @@ public class XmlSerializableAwareness {
         if (mappings != null) {
             processMappings(dictionary);
         }
-        
+
         return new Awareness(dictionary, nameToEntryMappings);
     }
 
