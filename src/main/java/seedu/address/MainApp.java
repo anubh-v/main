@@ -142,7 +142,6 @@ public class MainApp extends Application {
 
         try {
             awarenessOptional = new XmlAwarenessStorage(AWARENESS_FILEPATH).readAwarenessData();
-
             awareness = awarenessOptional.orElseGet(() -> {
                 logger.info(String.format(messageFileNotFound, "awareness"));
                 return SampleDataUtil.getSampleAwareness();
