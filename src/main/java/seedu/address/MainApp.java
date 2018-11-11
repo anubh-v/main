@@ -1,5 +1,7 @@
 package seedu.address;
 
+import static seedu.address.storage.AwarenessStorage.AWARENESS_FILEPATH;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -132,10 +134,9 @@ public class MainApp extends Application {
 
         Optional<Awareness> awarenessOptional;
         Awareness awareness;
-        Path awarenessFilePath = Paths.get("awareness.xml");
 
         try {
-            awarenessOptional = new XmlAwarenessStorage(awarenessFilePath).readAwarenessData();
+            awarenessOptional = new XmlAwarenessStorage(AWARENESS_FILEPATH).readAwarenessData();
 
             awareness = awarenessOptional.orElseGet(() -> {
                 logger.info(String.format(messageFileNotFound, "awareness"));
