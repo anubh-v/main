@@ -178,7 +178,7 @@ public class Dictionary {
         return expression.split(SPACE);
     }
 
-    private String clean(String s) { 
+    private String clean(String s) {
         return s.trim();
     }
 
