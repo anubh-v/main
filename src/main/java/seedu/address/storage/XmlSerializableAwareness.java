@@ -81,7 +81,7 @@ public class XmlSerializableAwareness {
         }
 
         // wip - construct and return a new Awareness object
-        return new Awareness();
+        return new Awareness(dictionary, nameToEntryMappings);
     }
 
     /** Precondition: contextEntries is not null */
