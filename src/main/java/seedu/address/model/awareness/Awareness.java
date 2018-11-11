@@ -2,10 +2,8 @@ package seedu.address.model.awareness;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.HashMap;
 import java.util.Optional;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
 import seedu.address.model.entry.ResumeEntry;
 
