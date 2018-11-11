@@ -13,7 +13,7 @@ import seedu.address.model.awareness.Awareness;
  */
 public interface AwarenessStorage {
 
-    final Path AWARENESS_FILEPATH = Paths.get("awareness.xml");
+    Path AWARENESS_FILEPATH = Paths.get("awareness.xml");
 
     /**
      * Returns Awareness data wrapped in an Optional.
