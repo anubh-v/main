@@ -30,13 +30,14 @@ public class ExpandedEntryPanel extends UiPart<Region> {
         super(FXML);
         expandedEntryText.textProperty().bind(displayed);
         registerAsAnEventHandler(this);
+        // set word wrap
+        expandedEntryText.setWrapText(true);
     }
 
     @Subscribe
     private void handleUpdateExpandedEntryRequestEvent(UpdateExpandedEntryRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        Platform.runLater(() -> displayed.setValue(event.getUpdatedEntry().getDescription().toString()));
-
+        Platform.runLater(() -> displayed.setValue(event.getUpdatedEntry().toString()));
     }
 
 }
