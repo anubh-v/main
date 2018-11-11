@@ -6,7 +6,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.FileNotFoundException;
-import java.sql.SQLTransactionRollbackException;
 import java.util.Optional;
 
 import org.junit.Rule;
