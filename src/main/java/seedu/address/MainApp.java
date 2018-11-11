@@ -2,6 +2,7 @@ package seedu.address;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -27,13 +28,9 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyEntryBook;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.awareness.Awareness;
 import seedu.address.model.util.SampleDataUtil;
-import seedu.address.storage.AddressBookStorage;
-import seedu.address.storage.JsonUserPrefsStorage;
-import seedu.address.storage.Storage;
-import seedu.address.storage.StorageManager;
-import seedu.address.storage.UserPrefsStorage;
-import seedu.address.storage.XmlAddressBookStorage;
+import seedu.address.storage.*;
 import seedu.address.storage.entry.EntryBookStorage;
 import seedu.address.storage.entry.XmlEntryBookStorage;
 import seedu.address.ui.Ui;
@@ -92,6 +89,10 @@ public class MainApp extends Application {
      */
     private Model initModelManager(Storage storage, UserPrefs userPrefs) {
 
+        final String messageFileNotFound = "Data file not found. Will be starting with a sample %s.";
+        final String messageFormatProblem = "Data file not in the correct format. Will be starting with an empty %s.";
+        final String messageIoProblem = "Problem while reading from the file. Will be starting with an empty %s.";
+
         // need to update system tests before these can be removed
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
@@ -99,42 +100,58 @@ public class MainApp extends Application {
         try {
             addressBookOptional = storage.readAddressBook();
             initialData = addressBookOptional.orElseGet(() -> {
-                logger.info("Data file not found. Will be starting with a sample AddressBook");
+                logger.info(String.format(messageFileNotFound, "Addressbook"));
                 return SampleDataUtil.getSampleAddressBook();
             }
             );
         } catch (DataConversionException e) {
-            logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
+            logger.warning(String.format(messageFormatProblem, "Addressbook"));
             initialData = new AddressBook();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
+            logger.warning(String.format(messageIoProblem, "Addressbook"));
             initialData = new AddressBook();
         }
 
         Optional<ReadOnlyEntryBook> entryBookOptional;
         ReadOnlyEntryBook initialDataForEntryBook;
 
-        // filepath to the entrybook xml is hardcoded for now
-        // Path entryBookPath = Paths.get("resume-data.xml");
-
         try {
-            // entryBookOptional = new XmlEntryBookStorage(entryBookPath).readEntryBook();
             entryBookOptional = storage.readEntryBook();
             initialDataForEntryBook = entryBookOptional.orElseGet(() -> {
-                logger.info("Data file not found. Will be starting with a sample entrybook");
+                logger.info(String.format(messageFileNotFound, "entrybook"));
                 return SampleDataUtil.getSampleEntryBook();
             }
             );
         } catch (DataConversionException e) {
-            logger.warning("Data file not in the correct format. Will be starting with an empty entrybook");
+            logger.warning(String.format(messageFormatProblem, "entrybook"));
             initialDataForEntryBook = new EntryBook();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty entrybook");
+            logger.warning(String.format(messageIoProblem, "entrybook"));
             initialDataForEntryBook = new EntryBook();
         }
 
+        Optional<Awareness> awarenessOptional;
+        Awareness awareness;
+        Path awarenessFilePath = Paths.get("awareness.xml");
 
-        return new ModelManager(initialData, initialDataForEntryBook, userPrefs, SampleDataUtil.getSampleAwareness());
+        try {
+            awarenessOptional = new XmlAwarenessStorage(awarenessFilePath).readAwarenessData();
+
+            awareness = awarenessOptional.orElseGet(() -> {
+                logger.info(String.format(messageFileNotFound, "awareness"));
+                return SampleDataUtil.getSampleAwareness();
+            });
+
+        } catch (DataConversionException e) {
+            logger.warning(String.format(messageFormatProblem, "awareness"));
+            awareness = new Awareness();
+        } catch (IOException e) {
+            logger.warning(String.format(messageIoProblem, "awareness"));
+            awareness = new Awareness();
+        }
+
+
+        return new ModelManager(initialData, initialDataForEntryBook, userPrefs, awareness);
     }
 
     private void initLogging(Config config) {
