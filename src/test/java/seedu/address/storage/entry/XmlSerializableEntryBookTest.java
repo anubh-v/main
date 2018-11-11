@@ -26,7 +26,7 @@ public class XmlSerializableEntryBookTest {
     private static final Path TYPICAL_ENTRIES_FILE = TEST_DATA_FOLDER.resolve("typicalEntryBook.xml");
 
     /** Category and tag related test files */
-    private static final Path MISSING_CATEGORY_FILE = TEST_DATA_FOLDER.resolve("missingCategory.xml");  
+    private static final Path MISSING_CATEGORY_FILE = TEST_DATA_FOLDER.resolve("missingCategory.xml");
     private static final Path INVALID_CATEGORY_FILE = TEST_DATA_FOLDER.resolve("invalidCategory.xml");
     private static final Path INVALID_TAG_FILE = TEST_DATA_FOLDER.resolve("invalidTag.xml");
 
@@ -35,7 +35,7 @@ public class XmlSerializableEntryBookTest {
 
     /** EntryDescription related test files */
     private static final Path MISSING_BULLETS_FILE = TEST_DATA_FOLDER.resolve("missingBullets.xml");
-  
+ 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
