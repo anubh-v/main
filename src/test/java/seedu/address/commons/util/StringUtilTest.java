@@ -26,12 +26,12 @@ public class StringUtilTest {
 
     @Test
     public void hasNoTrailingWhiteSpace() {
-        assertTrue(StringUtil.hasNoTrailingWhiteSpace("test"));
-        assertTrue(StringUtil.hasNoTrailingWhiteSpace("test A   some space     B"));
+        assertTrue(StringUtil.isNotPaddedByWhiteSpace("test"));
+        assertTrue(StringUtil.isNotPaddedByWhiteSpace("test A   some space     B"));
 
-        assertFalse(StringUtil.hasNoTrailingWhiteSpace("test  "));
-        assertFalse(StringUtil.hasNoTrailingWhiteSpace("  test"));
-        assertFalse(StringUtil.hasNoTrailingWhiteSpace("  test  B     A    "));
+        assertFalse(StringUtil.isNotPaddedByWhiteSpace("test  "));
+        assertFalse(StringUtil.isNotPaddedByWhiteSpace("  test"));
+        assertFalse(StringUtil.isNotPaddedByWhiteSpace("  test  B     A    "));
     }
 
     @Test

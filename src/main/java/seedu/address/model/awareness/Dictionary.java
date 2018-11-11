@@ -2,7 +2,7 @@ package seedu.address.model.awareness;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.commons.util.StringUtil.hasNoTrailingWhiteSpace;
+import static seedu.address.commons.util.StringUtil.isNotPaddedByWhiteSpace;
 import static seedu.address.commons.util.StringUtil.isEmptyString;
 import static seedu.address.commons.util.StringUtil.isOneWord;
 
@@ -162,7 +162,7 @@ public class Dictionary {
      * @return true iff the given string is considered a valid slang in this Dictionary.
      */
     private boolean isValidSlang(String slang) {
-        assert hasNoTrailingWhiteSpace(slang);
+        assert isNotPaddedByWhiteSpace(slang);
 
         return !isEmptyString(slang) && !mappings.containsKey(slang)
                                      && isOneWord(slang);
@@ -177,7 +177,7 @@ public class Dictionary {
      * @return true iff the given string is considered a valid full phrase in this Dictionary.
      */
     private boolean isValidFullPhrase(String fullPhrase) {
-        assert hasNoTrailingWhiteSpace(fullPhrase);
+        assert isNotPaddedByWhiteSpace(fullPhrase);
         return !isEmptyString(fullPhrase);
     }
 

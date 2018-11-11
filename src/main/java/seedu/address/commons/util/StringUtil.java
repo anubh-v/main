@@ -83,9 +83,9 @@ public class StringUtil {
     }
 
     /**
-     * Returns true iff {@code s} has no trailing whitespaces.
+     * Returns true iff {@code s} has no trailing or leading whitespaces.
      */
-    public static boolean hasNoTrailingWhiteSpace(String s) {
+    public static boolean isNotPaddedByWhiteSpace(String s) {
         requireNonNull(s);
         return s.length() == s.trim().length();
     }
@@ -93,11 +93,11 @@ public class StringUtil {
     /**
      * Returns true iff the given string is a single word.
      *
-     * @param s must not have any trailing whitespaces.
+     * @param s must not have any trailing or leading whitespaces.
      * @return true iff {@code s} is a single word.
      */
     public static boolean isOneWord(String s) {
-        checkArgument(hasNoTrailingWhiteSpace(s));
+        checkArgument(isNotPaddedByWhiteSpace(s));
         return s.split(" ").length == 1;
     }
 }
