@@ -162,4 +162,14 @@ public class DictionaryTest {
                                     dictionary.getPossibleEventName("pg ml research opp"));
 
     }
+
+    @Test
+    public void getPossibleEventName_negativeCases() {
+
+        Dictionary dictionary = SampleDataUtil.getSampleDictionary();
+
+        // edge cases
+        assertEquals("", dictionary.getPossibleEventName(""));
+        assertEquals("", dictionary.getPossibleEventName("     "));
+    }
 }
