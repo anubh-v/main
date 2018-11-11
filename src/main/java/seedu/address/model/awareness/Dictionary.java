@@ -56,6 +56,7 @@ public class Dictionary {
             throw new IllegalValueException(MESSAGE_FULLPHRASE_CONSTRAINTS);
         }
 
+        registerFullPhrase(fullPhrase);
         mappings.put(cleanedSlang, cleanedFullPhrase);
     }
 
@@ -76,6 +77,7 @@ public class Dictionary {
 
     /**
      * Registers a new full phrase in the set of full phrases tracked in the Dictionary.
+     *
      * @param fullPhrase
      * @throws IllegalValueException
      */
@@ -88,7 +90,9 @@ public class Dictionary {
             throw new IllegalValueException(MESSAGE_FULLPHRASE_CONSTRAINTS);
         }
 
+        // any tokens of this full phrase which are already tracked, are not added again.
         Arrays.stream(tokenize(cleanedFullPhrase))
+              .filter(spaceDelimitedFullPhrase -> !allFullPhrases.contains(spaceDelimitedFullPhrase))
               .forEach(allFullPhrases::add);
 
     }
