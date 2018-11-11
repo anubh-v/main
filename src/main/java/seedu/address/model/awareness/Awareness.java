@@ -37,13 +37,6 @@ public class Awareness {
         this(new Dictionary(), new TreeMap<String, ResumeEntry>());
     }
 
-    /** Deprecated constructor. Required because the Awareness storage code still uses this constructor.
-     *  Will be removed very soon.
-     */
-    public Awareness(HashMap<String, String> dictionary, TreeSet<String> allEventNames) {
-        // this constructor has been deprecated. It will be removed very soon.
-    }
-
     /**
      * Given an expression, returns a possible Event name. An Event with this name may not actually exist.
      * For example, given the expression "cs", "computer science" is returned as an Event name.
