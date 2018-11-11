@@ -81,4 +81,12 @@ public class StringUtil {
         requireNonNull(s);
         return isEmptyString(s.trim());
     }
+
+    /**
+     * Returns true iff {@code s} has no trailing whitespaces.
+     */
+    public static boolean hasNoTrailingWhiteSpace(String s) {
+        requireNonNull(s);
+        return s.length() == s.trim().length();
+    }
 }
