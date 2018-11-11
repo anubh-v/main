@@ -37,6 +37,7 @@ import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.storage.XmlAddressBookStorage;
+import seedu.address.storage.XmlAwarenessStorage;
 import seedu.address.storage.entry.EntryBookStorage;
 import seedu.address.storage.entry.XmlEntryBookStorage;
 import seedu.address.ui.Ui;
