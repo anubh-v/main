@@ -2,8 +2,8 @@ package seedu.address.model.awareness;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.commons.util.StringUtil.isNotPaddedByWhiteSpace;
 import static seedu.address.commons.util.StringUtil.isEmptyString;
+import static seedu.address.commons.util.StringUtil.isNotPaddedByWhiteSpace;
 import static seedu.address.commons.util.StringUtil.isOneWord;
 
 import java.util.Arrays;
