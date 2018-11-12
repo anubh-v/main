@@ -663,7 +663,6 @@ Alternatives:
 
 * __**Defensively**__ copy the Dictionary and TreeMap. This ensures that future modifications to the Dictionary / TreeMap does not change the behaviour of Awareness.
 
-<<<<<<< HEAD
 Justification for my approach:
 
 In summary, defensive copying was not appropriate for the intended vision and possible use cases for Awareness.
@@ -673,8 +672,6 @@ In summary, defensive copying was not appropriate for the intended vision and po
 In this case, the user of the Awareness object could continue to use the same instance, while enjoying the new updates made to its internal components. 
 * The Dictionary class has sufficient defensive checks to prevent a callee from creating invalid conditions within the Awareness class.
 
-=======
->>>>>>> d34f3769a22da2a1f9f3521a901d12f8a603948e
 === Logging
 
 We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
