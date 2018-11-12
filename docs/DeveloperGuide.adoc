@@ -508,23 +508,37 @@ Please review their definitions in the Glossary before reading further. +
 ==== Overview
 Contextual Awareness enables ResuMaker to: +
 
-* Create pre-filled ResumeEntries for standard <<event, Events>>.
+* Create pre-filled ResumeEntries for standard <<event, Events>> (university modules, well known competitions, etc).
 * Understand slang and partial phrases in the user's input.
 
-The flowchart below illustrates the overall flow taken by an end-user when working with the Contextual Awareness feature. +
+The flowchart below illustrates the overall flow taken by an user when working with the Contextual Awareness feature. +
 
-image::AwarenessFlow.png[width="800"]
+image::awarenessFlow.png[width="800"]
 
-The flowchart highlights the 4 separate steps involved in the Contextual Awareness feature:
+The diagrams shows that there are 2 functions provided as part of the Awareness feature. 
+One is a real-time service that updates the User Interface **as the user types (without pressing `Enter`) **
+The other attempts to add a ResumeEntry, and is triggered only when the user presses `Enter`.
 
-1. Providing feedback to the user, as he types in an `<expression>`.
-2. Guessing an Event name, based on the user provided `<expression>`.
-3. Matching the guessed Event name, with an actual Event, as defined in the user provided data.
-4. Creating a ResumeEntry for the matched Event.
+Both services required the following steps to be executed.
 
-In this guide, we will discuss Steps 2, and 3.
+1. Guess the name of the Event that the user was referring to, when he / she typed `<argument>`.
+2. Matching the guessed Event name, with a pre-filled ResumeEntry.
 
-==== Guessing an Event name, based on user provided `<expression>`
+In Step 1 (`Guess` step), the `<argument>` is called a `expression`. 
+In Step 2 (`Match` step), the guessed Event name is called a `possibleEventName`. 
+
+We will first examine these 2 steps. 
+Information about implementation of the real-time service is given below.
+
+==== Guessing an Event name, and Matching it with a ResumeEntry (based on user provided `expression`)
+The Awareness class exposes a `getPossibleEventName` method that accepts a `expression` and returns a `possibleEventName`. +
+The `getPossibleEventName` corresponds to Step 1 mentioned in <<Overview, overview>>. +
+Awareness also exposes a `getContextualEntry` method that accepts a `possibleEventName` and returns a matching `ResumeEntry` (if it exists).
+Thus, the `possibleEventName` serves as a unique `key` to identify a `ResumeEntry`.
+The `getContextualEntry` method corresponds to Step 2 mentioned in <<Overview, overview>>.
+
+The breakdown given above is illustrated in the following sequence diagram.
+ 
 To guess the Event name, we parse the `slang`, `partial phrases` and `full phrases` in the `expression` to get a `possibleEventName`.
 This parsing is done by the `Awareness` class.
 
