@@ -456,9 +456,26 @@ If the file cannot be read or has errors in its XML, ResuMaker will start with n
 == Configuring Awareness data
 
 Awareness data can be provided via XML. +
-Create a XML file called `awareness` and place it in the same folder as `resumaker.jar`. +
+Create a XML file (with `.xml` extension) called `awareness` and place it in the same folder as `resumaker.jar`. +
 If the file cannot be found, ResuMaker will start with sample awareness data. +
 If the file cannot be read or has errors in its XML, ResuMaker will start with no awareness data.
+
+If you know some XML, you can easily configure your own slang and contextual events!
+The Awareness XML file consists of a series of `mapping` elements and a series of `context-entry` elements.
+Each `mapping` element defines a mapping between some slang (e.g. cs) and a full phrase (e.g computer science).
+
+These are the main rules to follow when writing the `mapping` elements.
+
+* You cannot use the same slang in multiple mapping elements.
+* Each slang can only be one word.
+* Each `slang` and `full phrase` element cannot be purely whitespace.
+
+These are the rules to follow when writing the `context-entry` elements.
+
+* Give each `context-entry` a unique name, and provide it in the `eventName` attribute.
+* For best results, do not have unnecessary spaces in your `eventName`.
+* The `eventName` cannot be purely whitespace.
+* For the resume entry's XML, follow the same format as used by the resume entries' XML file.
 
 The following can be used as a template for your awareness data.
 
@@ -483,17 +500,21 @@ The following can be used as a template for your awareness data.
       <slang>sg</slang>
    </mapping>
   <mapping>
+    <fullPhrase>financial technology</fullPhrase>
+      <slang>fintech</slang>
+   </mapping>
+  <mapping>
     <fullPhrase>hackathon</fullPhrase>
    </mapping>
-   <context-entry eventName="sep">
+   <context-entry eventName="uni">
      <entry category="education">
         <entryInfo title="National University of Singapore" subheader="Bachelor of computing" duration="2010 - 2013"/>
-        <tags>Machine Learning</tags>
+        <tags>education</tags>
      </entry>
    </context-entry>
-   <context-entry eventName="hack">
+   <context-entry eventName="noc">
      <entry category="education">
-        <entryInfo title="NUS Overseas College" subheader="Assistant CEO - Helped secure funding for an IoT startup." duration="2011 Semester "/>
+        <entryInfo title="NUS Overseas College" subheader="Attended entrepreneurship modules and worked at a startup" duration="2011 Semester "/>
         <tags>Leadership</tags>
         <tags>Entrepreneurship</tags>
      </entry>
