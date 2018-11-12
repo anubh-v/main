@@ -496,7 +496,7 @@ _[DIAGRAM OF NECESSARY ADDITIONS]_
 === Contextual Awareness
 
 ==== Key Terms
-Here are some terms that are used often when discussing Contexual Awareness. +
+Below are some terms that are used often when discussing Contexual Awareness. +
 Please review their definitions in the Glossary before reading further. +
 
 * <<event, Events>>
@@ -511,15 +511,15 @@ Contextual Awareness enables ResuMaker to: +
 * Create pre-filled ResumeEntries for standard <<event, Events>> (university modules, well known competitions, etc).
 * Understand slang and partial phrases in the user's input.
 
-The flowchart below illustrates the overall flow taken by an user when working with the Contextual Awareness feature. +
+The flowchart below shows the overall flow taken by an user when working with the Contextual Awareness feature. +
 
-image::awarenessFlow.png[width="800"]
+image::awarenessFlow.png[width=350, height=350]
 
-The diagrams shows that there are 2 functions provided as part of the Awareness feature. 
-One is a real-time service that updates the User Interface **as the user types (without pressing `Enter`) **
-The other attempts to add a ResumeEntry, and is triggered only when the user presses `Enter`.
+The diagrams shows that there are 2 functions provided as part of the Contextual Awareness feature.
+One is a real-time function that updates the User Interface **as the user types (without pressing `Enter`) ** +
+The other functions adds a ResumeEntry to the internal EntryBook, and is triggered only when the user presses `Enter`.
 
-Both services required the following steps to be executed.
+Both functions require the following steps to be executed.
 
 1. Guess the name of the Event that the user was referring to, when he / she typed `<argument>`.
 2. Matching the guessed Event name, with a pre-filled ResumeEntry.
@@ -527,18 +527,27 @@ Both services required the following steps to be executed.
 In Step 1 (`Guess` step), the `<argument>` is called a `expression`. 
 In Step 2 (`Match` step), the guessed Event name is called a `possibleEventName`. 
 
-We will first examine these 2 steps. 
-Information about implementation of the real-time service is given below.
+The following sections examine these 2 steps, in the context of the **second function**.
+The real-time function is similar, and is discussed later.
 
-==== Guessing an Event name, and Matching it with a ResumeEntry (based on user provided `expression`)
-The Awareness class exposes a `getPossibleEventName` method that accepts a `expression` and returns a `possibleEventName`. +
-The `getPossibleEventName` corresponds to Step 1 mentioned in <<Overview, overview>>. +
+==== Guessing an Event name, Matching it with a ResumeEntry, and Adding the Matched ResumeEntry
+The Awareness class exposes a `getPossibleEventName` method that accepts a `expression` and returns a `possibleEventName`. The `getPossibleEventName` corresponds to Step 1 mentioned in <<Overview, overview>>. +
+
 Awareness also exposes a `getContextualEntry` method that accepts a `possibleEventName` and returns a matching `ResumeEntry` (if it exists).
-Thus, the `possibleEventName` serves as a unique `key` to identify a `ResumeEntry`.
-The `getContextualEntry` method corresponds to Step 2 mentioned in <<Overview, overview>>.
+Hence, the `possibleEventName` serves as a unique `key` to identify a `ResumeEntry`.
+The `getContextualEntry` method corresponds to Step 2 mentioned in <<Overview, overview>>. +
 
-The breakdown given above is illustrated in the following sequence diagram.
+The information above is illustrated in the following sequence diagram. +
+
+image::awarenessHighLevelSeq.png[width=600, height=350]
+
+As seen, `ContextCommand` is responsible for (indirectly) called Awareness. Note that `ContextCommand` leverage on the existing `AddEntryCommand` to add the Matching ResumeEntry to the EntryBook. +
+
+==== Guessing an Event name, and Matching it with a ResumeEntry (Internal implementation)
  
+
+
+
 To guess the Event name, we parse the `slang`, `partial phrases` and `full phrases` in the `expression` to get a `possibleEventName`.
 This parsing is done by the `Awareness` class.
 
@@ -546,7 +555,7 @@ As shown <<Design-Storage, earlier>>, an instance of the Awareness class is init
 
 The following Figure shows the structure of the Awareness class.
 
-image::awarenessStructure.png[width="600"]
+image::awarenessStructure.png[alt=test, width=00, height=300]
 
 Parsing the `slang`, `partial phrases` and `full phrases` is a 2-step process:
 
