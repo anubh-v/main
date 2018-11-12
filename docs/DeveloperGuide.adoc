@@ -604,7 +604,7 @@ The User Guide provides details on the rules that determine the validity of a ma
 * To form the `possibleEventName`, the Dictionary breaks the given `expression` into a stream of space delimited tokens. +
 * Then, all empty string tokens are filtered out.
 * Next, each token is treated as a slang, and the internal `mappings` HashMap is searched to determine if the token should be expanded into a full phrase.
-* Next, each token is treated as a partial phrase and internal `allFullPhrases` TreeSet is searched to determine if the token should be expanded into a full phrase. 
+* Next, each token is treated as a partial phrase and internal `allFullPhrases` TreeSet is searched to determine if the token should be expanded into a full phrase.
 * Finally, all tokens are joined into a single string.
 * This gives us a string of `full phrases`, which is our `possibleEventName`.
 
