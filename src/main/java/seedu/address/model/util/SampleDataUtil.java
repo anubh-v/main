@@ -169,7 +169,7 @@ public class SampleDataUtil {
             dictionary.registerFullPhrase("research");
             dictionary.registerFullPhrase("programme");
             dictionary.registerFullPhrase("club");
-            
+
 
         } catch (IllegalValueException willNotOccur) {
 
