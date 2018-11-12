@@ -544,7 +544,10 @@ image::awarenessHighLevelSeq.png[width=600, height=350]
 As seen, `ContextCommand` is responsible for (indirectly) called Awareness. Note that `ContextCommand` leverage on the existing `AddEntryCommand` to add the Matching ResumeEntry to the EntryBook. +
 
 ==== Guessing an Event name, and Matching it with a ResumeEntry (Internal implementation)
- 
+The previous section considered Awareness as a black box. This section describes how the `Guess` and `Match` steps are implemented internally in Awareness. +
+The following diagram shows the internal structure of Awareness.
+
+
 
 
 
@@ -552,8 +555,6 @@ To guess the Event name, we parse the `slang`, `partial phrases` and `full phras
 This parsing is done by the `Awareness` class.
 
 As shown <<Design-Storage, earlier>>, an instance of the Awareness class is initialised from user provided XML data, upon startup.
-
-The following Figure shows the structure of the Awareness class.
 
 image::awarenessStructure.png[alt=test, width=00, height=300]
 
@@ -584,38 +585,54 @@ Work in Progress
 ==== Design Choices
 
 ===== ContextCommand
-The ContextCommand is constructed by passing it a CommandSupplier.
-This construction is done by ContextCommandParser.
-When it is time to `execute` the ContextCommand, the CommandSupplier supplies the relevant command.
+The ContextCommand adds a ResumeEntry to the Entrybook by creating and calling `execute` on an AddEntryCommand object.
 
-Pros:
+Pros: Re-uses existing code
 
-* ContextCommand can be decoupled from specific commands like AddCommand.
-* ContextCommand can be _extended_ to perform any type of Command, by passing the relevant CommandSupplier.
+Cons: Couples ContextCommand with AddEntryCommand. The writer of ContextCommand would need to be aware about any future changes done to AddEntryCommand (e.g. changes in API).
 
 Alternatives:
 
-* Create different types of ContextCommands for different purpose: i.e. ContextAddCommand, ContextFindCommand, etc
+ContextCommand should take advantage of polymorphism. Instead of creating and executing a AddEntryCommand object, it should obtain an instance of a Command and execute that. This would mean ContextCommand only needs to know about Command.
 
-The alternative may be equally valid.
+To implement the alternative, we could create a CommandSupplier class, which exposes a `supply` method that takes an instance of the Model, and returns a Command.
+ContextCommand would be constructed by passing a CommandSupplier to its constructor. ContextCommandParser would assume the responsibility of creating the correct ContextCommand by passing in an appropriate CommandSupplier. 
 
-===== Awareness class
-The Awareness class is constructed by passing it a Dictionary containing slang - full phrase mappings.
+When it is time to `execute`, ContextCommand would call the `supply` method of CommandSupplier, and call `execute` on the supplied Command.
+
+Decision made:
+
+The alternative may be valid in another project, **where ContextCommand is required to provide many types of functionality**. +
+For this project, creating the CommandSupplier class is a violation of the You-Ain't-Gonna-Need-It (YAGNI) principle. 
+
+===== Passing Dictionary into Awareness for construction
+The Awareness class is constructed by passing it a Dictionary.
 
 Alternatives:
 
-* Create the Dictionary instance within the constructor of Awareness, rather than accepting it.
+* Create the Dictionary instance within the constructor of Awareness, rather than accepting it as an argument.
 
 Pros:
 
-* Increased testability as the dependancy (Dictionary object) _can be controlled_ since it is passed into the constructor.
+* The Awareness features become __more extensibile__. Future projects can pass in different types of Dictionaries without having to rewrite the Awareness code.
+* Achieves better separation of concerns, where the Dictionary effectively acts as a blackbox that Awareness need not know about.
+* Increased testability as the dependancy (Dictionary object) _can be better controlled_ since it is passed into the constructor.
 
-// tag::dataencryption[]
-=== [Proposed] Data Encryption
+===== Lack of copying in Awareness constructor.
+The Dictionary and TreeMap passed into the Awareness constructor are stored directly as members of the Awareness object.
 
-_{Explain here how the data encryption feature will be implemented}_
+Alternatives:
 
-// end::dataencryption[]
+* __**Defensively**__ copy the Dictionary and TreeMap. This ensures that future modifications to the Dictionary / TreeMap does not change the behaviour of Awareness.
+
+Justification for my approach:
+
+In summary, defensive copying was not appropriate for the intended vision and possible use cases for Awareness.
+
+* Original vision for Awareness - It is true that Awareness can be indirectly modified by the callee, by modifying the Dictionary and TreeMap. However, Awareness was not envisioned to be used directly by the callee. After all, the callee already has access to both the Dictionary and TreeMap (eliminating the need for an Awareness class). It is expected that the callee will, rather than using the Awareness object, pass the Awareness object to another component of the application - which then uses Awareness as a black box. In our application, for example, the XML serialisation classes create the Awareness object and pass it to the Storage component.
+* Increased flexiblity for callee - The callee can keep a reference to the Dictionary and TreeMap, and keep updating them over time. This will easily update the Awareness class. Such a situation may be needed if a `WebDictionary` was implemented, where a `WebDictionary` would dynamically add mappings via a web service.
+In this case, the user of the Awareness object could continue to use the same instance, while enjoying the new updates made to its internal components. 
+* The Dictionary class has sufficient defensive checks to prevent a callee from creating invalid conditions within the Awareness class.
 
 === Logging
 
